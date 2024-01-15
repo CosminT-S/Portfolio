@@ -18,7 +18,7 @@
     transition: all .4s ease;
   }
   ::-webkit-scrollbar-track {
-    background: #101010;
+    background: #000000;
     border-radius: 4px;
     width: 4px;
   }
@@ -33,7 +33,7 @@ input[type=number] {
     -moz-appearance: textfield;
 }
   html{
-    background: #101010;
+    background: #000000;
 
   }
   #loader{
@@ -617,7 +617,7 @@ body{
     height:380px;
     width:28%;
     margin: 1.5%;
-    background-color: #191919;
+    background-color: #000000;
     ;
     display: inline-block;
     box-shadow:0px 0px 25px rgb(0,0,0,.05);
@@ -1081,7 +1081,7 @@ padding-bottom: 40px;
 }
 
 #blog{
-    background: #101010;
+    background: #000000;
     display: none;
     color:whitesmoke;
     width: 100%;
@@ -1219,7 +1219,7 @@ padding-bottom: 40px;
     position: absolute;
     top: 0;
     left: 0;
-    background: #101010;
+    background: #000000;
     opacity: .8;
     pointer-events: none;
 }
@@ -1672,7 +1672,7 @@ For devices with smaller width like mobile phone
         border-radius: 10%;
     }
     .service{
-        height:380px;
+        height:320px;
         width:90%;
         margin: 1.5%;
         background-color: #000000;
@@ -1858,7 +1858,7 @@ For devices with smaller width like mobile phone
                 position: absolute;
                 top: 0;
                 left: 0;
-                background: #101010;
+                background: #000000;
                 opacity: .7;
                 pointer-events: none;
             }
@@ -2144,7 +2144,7 @@ for tabs and large phones
         height:auto;
         width:45%;
         margin: 2%;
-        background-color: #191919;
+        background-color: #000000;
         display: inline-block;
         box-shadow:0px 0px 25px rgb(0,0,0,.1);
         position: relative;
@@ -2331,7 +2331,7 @@ for tabs and large phones
                 position: absolute;
                 top: 0;
                 left: 0;
-                background: #101010;
+                background: #000000;
                 opacity: .7;
                 pointer-events: none;
             }
@@ -2511,7 +2511,7 @@ for tabs and large phones
         width:28%;
         margin: 1.5%;
         padding: 10px;
-        background-color: #191919;
+        background-color: #000000;
         display: inline-block;
         box-shadow:0px 0px 25px rgb(0,0,0,.05);
         position: relative;
@@ -2659,7 +2659,7 @@ for tabs and large phones
         position: absolute;
         top: 0;
         left: 0;
-        background: #101010;
+        background: #000000;
         opacity: .7;
         pointer-events: none;
     }
