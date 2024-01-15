@@ -1537,6 +1537,13 @@ For devices with smaller width like mobile phone
 
 
 @media only screen and (max-width: 550px){
+    .header-content .firstline, .header-content .secondline {
+        background-color: rgba(0, 0, 0, 0.85);
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 2px 0;
+        border-radius: 10px;
+    }
     .header-content{
         height: 100vh;
         width: 100%;
@@ -1672,7 +1679,7 @@ For devices with smaller width like mobile phone
         border-radius: 10%;
     }
     .service{
-        height:380px;
+        height:auto;
         width:90%;
         margin: 1.5%;
         background-color: #000000;
@@ -1979,6 +1986,21 @@ For devices with smaller width like mobile phone
                 font-size: 14px;
                 opacity: .7;
             }
+            .contact-info-icon-text a {
+                color: whitesmoke;
+                text-decoration: none;
+                opacity: 0.8;
+            }
+
+            .contact-info-icon-text a:visited {
+                color: whitesmoke;
+            }
+
+            .contact-info-icon-text a:active {
+                color: whitesmoke;
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+
             .hire-me-section{
                 display: none;
             }
