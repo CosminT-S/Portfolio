@@ -463,6 +463,8 @@ body{
     width: 50%;
     padding: 30px;
     font-weight: 400;
+    margin: 0 auto;
+    text-align: center;
 }
 .about-first-paragraph .color{
     font-size: 40px;
