@@ -791,8 +791,6 @@ body{
 .python-progress {
     position: absolute;
     top: 10%;
-    left: 1%;
-    right:1%;
     height: 80%;
     display: flex;
     align-items: center;
@@ -807,7 +805,6 @@ body{
 .django-progress {
     position: absolute;
     top: 10%;
-    left: 1%;
     height: 80%;
     display: flex;
     align-items: center;
@@ -822,7 +819,6 @@ body{
 .pandas-progress {
     position: absolute;
     top: 10%;
-    left: 1%;
     height: 80%;
     display: flex;
     align-items: center;
@@ -837,7 +833,6 @@ body{
 .numpy-progress {
     position: absolute;
     top: 10%;
-    left: 1%;
     height: 80%;
     display: flex;
     align-items: center;
@@ -852,7 +847,6 @@ body{
 .selenium-progress {
     position: absolute;
     top: 10%;
-    left: 1%;
     height: 80%;
     display: flex;
     align-items: center;
@@ -867,7 +861,6 @@ body{
 .streamlit-progress {
     position: absolute;
     top: 10%;
-    left: 1%;
     height: 80%;
     display: flex;
     align-items: center;
