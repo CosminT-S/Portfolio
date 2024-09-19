@@ -796,7 +796,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 90%;
+    width: 100%;
     border-radius: 10px;
     background: #7f0024;
     transition: all .4s ease;
@@ -811,7 +811,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 38%;
+    width: 45%;
     border-radius: 10px;
     background: #7f0024;
     transition: all .4s ease;
@@ -826,7 +826,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 51%;
+    width: 75%;
     border-radius: 10px;
     background: #7f0024;
     transition: all .4s ease;
@@ -841,7 +841,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 43%;
+    width: 60%;
     border-radius: 10px;
     background: #7f0024;
     transition: all .4s ease;
@@ -871,7 +871,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 76%;
+    width: 77%;
     border-radius: 10px;
     background: #7f0024;
     transition: all .4s ease;
