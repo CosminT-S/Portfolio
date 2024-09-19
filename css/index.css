@@ -792,6 +792,7 @@ body{
     position: absolute;
     top: 10%;
     left: 1%;
+    right:1%;
     height: 80%;
     display: flex;
     align-items: center;
