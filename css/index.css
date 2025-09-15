@@ -1867,12 +1867,15 @@ For devices with smaller width like mobile phone
 
 
 @media only screen and (max-width: 550px){
-    /* Show navigation on mobile */
+    /* Hide navigation on mobile since all sections are visible for scrolling */
     #navigation-bar {
-        display: block !important;
+        display: none !important;
     }
     .menubar {
-        display: block !important;
+        display: none !important;
+    }
+    #navigation-content {
+        display: none !important;
     }
 
     /* Add section separators */
@@ -2415,12 +2418,15 @@ for tabs and large phones
 
 
 @media all and (max-width: 1025px) and (min-width: 551px){
-    /* Show navigation on tablet */
+    /* Hide navigation on tablet since all sections are visible for scrolling */
     #navigation-bar {
-        display: block !important;
+        display: none !important;
     }
     .menubar {
-        display: block !important;
+        display: none !important;
+    }
+    #navigation-content {
+        display: none !important;
     }
 
     /* Add section separators for tablet */
