@@ -77,7 +77,7 @@
                 <div class="firstline"><span class="color">Cosmin </span>T</div>
                 <div class="secondline">
                 I'm a
-            <span class="txt-rotate color" data-period="1200"data-rotate='[ " Python Developer.", " Freelancer.", " Motorcycle  Enthusiast." ]'></span>
+            <span class="txt-rotate color" data-period="1200"data-rotate='[ " Python Developer.", " Product Strategist.", " Process Optimizer." ]'></span>
             <span class="slash">|</span>
         </div>
                     <div class="contact">
@@ -135,41 +135,130 @@
                 </div>
                 <div class="about-main">
             <div class="about-first-paragraph wow">
-            <!--about description-->
                 <style>
-                    .about-first-line {
-                        margin: 0 auto;
+                    .about-text {
                         text-align: center;
-                        line-height: 1.2;
-                        margin-top: 0;
-                        margin-bottom: 0
+                        line-height: 1.8;
+                        font-family: poppins;
+                        color: whitesmoke;
+                        font-size: 18px;
+                        margin-bottom: 40px;
+                        max-width: 900px;
+                        margin-left: auto;
+                        margin-right: auto;
                     }
+
+                    .about-achievements {
+                        display: flex;
+                        justify-content: center;
+                        flex-wrap: wrap;
+                        gap: 30px;
+                        margin: 50px 0;
+                    }
+
+                    .achievement-item {
+                        text-align: center;
+                        min-width: 120px;
+                    }
+
+                    .achievement-number {
+                        font-size: 3em;
+                        font-weight: bold;
+                        line-height: 1;
+                    }
+
+                    .achievement-text {
+                        color: whitesmoke;
+                        font-size: 14px;
+                        margin-top: 10px;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                    }
+
+                    .cv {
+                        text-align: center;
+                        margin-top: 50px;
+                    }
+
                     .cv a button {
-                        border-radius: 15px;
+                        background: transparent;
+                        padding: 15px 40px;
+                        font-size: 16px;
+                        font-weight: 600;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        font-family: poppins;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                    }
+
+                    .cv a button:hover {
+                        color: white;
+                        transform: translateY(-2px);
+                    }
+
+                    .about-delimiter {
+                        width: 60%;
+                        height: 2px;
+                        background: #7f0024;
+                        margin: 40px auto;
+                    }
+
+                    @media (max-width: 768px) {
+                        .about-achievements {
+                            gap: 20px;
+                        }
+                        .achievement-number {
+                            font-size: 2.5em;
+                        }
+                        .about-text {
+                            font-size: 16px;
+                            padding: 0 20px;
+                        }
                     }
                 </style>
-                <span class="about-first-line">
-                    With three years of <span class="color">regional management</span> experience, I excelled in enhancing collaboration and operational efficiency, leading to a <span class="color">15%</span> increase in recovery rates and a <span class="color">4%</span> rise in productivity.
-                </span>
-                <br />
-                <br />
-                <br />
-                <span class = about-first-line>
-                    This management experience, combined with my ongoing commitment to advancing in technology, positions me uniquely in the IT realm.
-                </span>
-                <br />
-                <br />
-                <br />
-               <span class="about-first-line">
-                Consistently thriving in advancing my expertise, I engage in
-                    <span class="color">coding exercises</span>
-                    and pursue
-                    <span class="color">specialized training</span> including advanced courses to stay at the
-                    <span class="color">forefront</span> of technological development. </span>
-                    <br>
-               <div class="cv">
-                <a href="https://fb6e696e-ca0a-4885-8f7b-7d316dbf7433.filesusr.com/ugd/c7657d_964884c20cf746a9b3922203cc139adf.pdf"><button>Download CV</button></a>
-            </div>
+
+                <div class="about-text">
+                    Python Developer with <span class="color">2.5+ years</span> of experience building automation tools that reduced task processing time by <span class="color">80%</span>. Currently developing a multi-company SaaS ticketing platform while managing regional business operations with proven results in process optimization and team leadership.
+                </div>
+
+                <div class="about-delimiter color-bg"></div>
+
+                <div class="about-achievements">
+                    <div class="achievement-item">
+                        <div class="achievement-number color">80%</div>
+                        <div class="achievement-text">Task Time Reduction</div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-number color">10%</div>
+                        <div class="achievement-text">Revenue Growth</div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-number color">8%</div>
+                        <div class="achievement-text">Team Productivity</div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-number color">15%</div>
+                        <div class="achievement-text">Recovery Rate</div>
+                    </div>
+                </div>
+
+                <div class="about-delimiter color-bg"></div>
+
+                <div class="about-text">
+                    Built automation tools using Python, SQL and Pandas, created data extraction tools with Selenium and Playwright. Currently architecting a <span class="color">FastAPI-based SaaS platform</span> with real-time WebSocket functionality, Google OAuth authentication, and enterprise-grade access control.
+                </div>
+
+                <div class="about-delimiter color-bg"></div>
+
+                <div class="about-text">
+                    Consistently advancing my expertise through <span class="color">coding exercises</span> and pursuing <span class="color">specialized training</span>, including advanced courses to stay at the <span class="color">forefront</span> of technological development and product strategy.
+                </div>
+
+                <div class="cv">
+                    <a href="https://fb6e696e-ca0a-4885-8f7b-7d316dbf7433.filesusr.com/ugd/c7657d_0df51de2b9a54406b788cebf8a8671e3.pdf"><button class="cv-button color-border color-text" style="border: 2px solid;">Download CV</button></a>
+                </div>
             </div>
             </div>
             </div>
@@ -217,8 +306,8 @@
                                <img src="images/coding.png" alt="service-one">
                                </div>
                                <div class="service-description">
-                                <h2>Data <span class="color">Analysis</span></h2>
-                                <p>With my proficiency in Python, I transform raw data into critical insights. Using the <span class="color">Pandas</span> library, I excel in data cleaning and visualization. A notable project of mine is the "<span class="color">Call Report</span>", where I adeptly analyze patterns in invalid call logs, providing key business insights.</p>
+                                <h2>Process <span class="color">Optimization</span></h2>
+                                <p>With my expertise in Python and workflow automation, I develop solutions that streamline business processes. I've successfully built <span class="color">automated reporting systems</span> and process optimization tools that achieve over <span class="color">80% reduction</span> in task completion times and <span class="color">10% revenue growth</span>.</p>
                                </div>
                            </div>
                            <div class="service-two service wow">
@@ -226,8 +315,8 @@
                                <img src="images/instagram.png" alt="service-two">
                                </div>
                                <div class="service-description">
-                                <h2>Web <span class="color">Development</span></h2>
-                                <p>My expertise with Python's <span class="color">Django</span> framework enables me to develop intriguing web applications. A prime example is my "<span class="color">CRM X</span>", a dynamic platform for users to post, view, update and delete IT tickets, all efficiently managed by Django's robust backend capabilities.</p>
+                                <h2>SaaS <span class="color">Development</span></h2>
+                                <p>My expertise with Python's <span class="color">FastAPI</span> framework enables me to develop scalable web applications. Currently architecting "<span class="color">x-Data Pulse</span>", a multi-company SaaS ticketing platform with real-time WebSocket functionality, Google OAuth authentication, and enterprise-grade access control.</p>
                                </div>
                            </div>
                            <div class="service-three service wow">
@@ -235,8 +324,8 @@
                                <img src="images/bulb.png" alt="service-three">
                             </div>
                             <div class="service-description">
-                                <h2>Automation <span class="color">&</span> Scripting</h2>
-                                <p>I harness Python's strengths in automation and scripting to streamline complex tasks. A testament to this is my "<span class="color">Inventory Report</span>", which automatically scrapes data from multiple sources processing it using the <span class="color">Pandas</span> libary, significantly enhancing efficiency in organizing and managing inventory.</p>
+                                <h2>Data Extraction <span class="color">&</span> Processing</h2>
+                                <p>I specialize in developing data extraction tools using Python frameworks like <span class="color">Selenium</span> and <span class="color">Playwright</span>. These solutions have directly boosted team productivity by 8% and contributed to a measurable 10% increase in financial performance through streamlined workflows and elimination of operational bottlenecks.</p>
                             </div>
                         </div>
                     </div>
@@ -251,61 +340,111 @@
                     <div class="skill-html skill">
                         <div class="skill-text">
                     <div class="html">
+                        Product Strategy
+                    </div>
+                        </div>
+                    <div class="html-prog wow prog">
+                 <div class="product-strategy-progress wow"></div>
+                    </div>
+                    </div>
+                    <div class="skill-html skill">
+                        <div class="skill-text">
+                    <div class="html">
+                        Process Optimization
+                    </div>
+                        </div>
+                    <div class="html-prog wow prog">
+                 <div class="process-optimization-progress wow"></div>
+                    </div>
+                    </div>
+                    <div class="skill-html skill">
+                        <div class="skill-text">
+                    <div class="html">
+                        Team Leadership
+                    </div>
+                        </div>
+                    <div class="html-prog wow prog">
+                 <div class="team-leadership-progress wow"></div>
+                    </div>
+                    </div>
+                    <div class="skill-html skill">
+                        <div class="skill-text">
+                    <div class="html">
                         Python
                     </div>
                         </div>
                     <div class="html-prog wow prog">
-                 <div class="python-progress wow">100%</div>
+                 <div class="python-progress wow"></div>
                     </div>
                     </div>
                     <div class="skill-html skill">
                         <div class="skill-text">
                     <div class="html">
-                        Django
+                        SQL & Pandas
                     </div>
                         </div>
                     <div class="html-prog wow prog">
-                 <div class="django-progress wow">45%</div>
+                 <div class="sql-pandas-progress wow"></div>
                     </div>
                     </div>
                     <div class="skill-html skill">
                         <div class="skill-text">
                     <div class="html">
-                        Pandas
+                        FastAPI
                     </div>
                         </div>
                     <div class="html-prog wow prog">
-                 <div class="pandas-progress wow">75%</div>
+                 <div class="fastapi-progress wow"></div>
                     </div>
                     </div>
                     <div class="skill-html skill">
                         <div class="skill-text">
                     <div class="html">
-                        LLM
+                        Requirements Analysis
                     </div>
                         </div>
                     <div class="html-prog wow prog">
-                 <div class="numpy-progress wow">60%</div>
+                 <div class="requirements-analysis-progress wow"></div>
                     </div>
                     </div>
                     <div class="skill-html skill">
                         <div class="skill-text">
                     <div class="html">
-                        Selenium
+                        User-Centered Design
                     </div>
                         </div>
                     <div class="html-prog wow prog">
-                 <div class="selenium-progress wow">92%</div>
+                 <div class="user-centered-design-progress wow"></div>
                     </div>
                     </div>
                     <div class="skill-html skill">
                         <div class="skill-text">
                     <div class="html">
-                        Streamlit
+                        Project Management
                     </div>
                         </div>
                     <div class="html-prog wow prog">
-                 <div class="streamlit-progress wow">77%</div>
+                 <div class="project-management-progress wow"></div>
+                    </div>
+                    </div>
+                    <div class="skill-html skill">
+                        <div class="skill-text">
+                    <div class="html">
+                        Workflow Automation
+                    </div>
+                        </div>
+                    <div class="html-prog wow prog">
+                 <div class="workflow-automation-progress wow"></div>
+                    </div>
+                    </div>
+                    <div class="skill-html skill">
+                        <div class="skill-text">
+                    <div class="html">
+                        Data-Driven Decisions
+                    </div>
+                        </div>
+                    <div class="html-prog wow prog">
+                 <div class="data-driven-decisions-progress wow"></div>
                     </div>
                     </div>
                 </div>
@@ -356,43 +495,45 @@
              <div id="portfolio-content">
                  <div class="portfolio portfolio-first">
                      <div class="portfolio-image">
-                        <img src="images/portfolio-fourth.jpg" alt="portfolio-first">
+                        <video autoplay loop muted playsinline preload="auto" style="width: 100%; height: auto;" webkit-playsinline>
+                            <source src="images/x-data-pulse.mp4" type="video/mp4">
+                            <source src="images/x-data-pulse.mov" type="video/quicktime">
+                            Your browser does not support the video tag.
+                        </video>
                      </div>
                      <div class="portfolio-text">
-                         <h2>UnScraper</h2>
-                         <p>UnScrape is an AI-powered web scraping tool that automates data extraction from publicly accessible websites. It leverages artificial intelligence to identify and collect valuable information without requiring manual configuration or coding. The tool handles complex webpage structures efficiently, though it's limited to public sites without authentication requirements. While UnScrape doesn't work with login-protected platforms like certain e-commerce sites or banking portals, it provides a streamlined alternative to traditional scraping methods for public web content. The tool serves as a practical solution for basic web scraping needs, offering quick setup and data collection capabilities for accessible online resources..</p>
-                         <div class="button"><a href="https://dunscraper.serveo.net/"><button><span class="index"> View Project<i class="gg-arrow-right"></i></span></button></a></div>
+                         <h2>x-Data Pulse</h2>
+                         <p>A comprehensive FastAPI-based <span class="color">multi-company SaaS ticketing platform</span> designed for enterprise support systems. Features real-time WebSocket functionality for instant updates, Google OAuth authentication, and sophisticated access control for multiple organizations. The platform provides advanced ticket management capabilities, automated workflows, and enterprise-grade security features. Built with modern Python frameworks, it offers scalable architecture for growing businesses with comprehensive audit logging, real-time notifications, and multi-tenant data isolation ensuring secure operations across different client organizations.</p>
+                         <div class="button"><a href="#"><button><span class="index"> In Progress<i class="gg-arrow-right"></i></span></button></a></div>
                      </div>
                  </div>
                  <div class="portfolio portfolio-second">
                     <div class="portfolio-image">
-                        <img src="images/portfolio-second.jpg" alt="portfolio-second">
+                        <video autoplay loop muted playsinline preload="auto" style="width: 100%; height: auto;" webkit-playsinline>
+                            <source src="images/x-xata-bill.mp4" type="video/mp4">
+                            <source src="images/x-xata-bill.mov" type="video/quicktime">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
                     <div class="portfolio-text">
-                        <h2>Expense Tracker</h2>
-                        <p>The Streamlit Expense Tracker is a web application designed for managing personal finances, tracking expenses and incomes, and visualizing financial data. It utilizes Streamlit for a responsive and intuitive user interface, offering features like user authentication, categorized expense tracking, data visualization through Sankey diagrams, and a monthly tracker for recurring expenses. The application is modular with dedicated scripts for app logic, authentication, database management, and other functions. It emphasizes security, especially in data handling and user information, and encourages contributions through a standard open-source workflow. </p>
-                        <div class="button"><a href="https://expense-tracking.streamlit.app"><button><span class="index"> View Project<i class="gg-arrow-right"></i></span></button></a></div>
+                        <h2>x-Data Bill Manager</h2>
+                        <p>A FastAPI-based bill management system ("Gestionar Facturi") that provides comprehensive financial tracking and management capabilities. Built with modern web technologies including FastAPI for robust backend functionality, the system offers user authentication, bill creation and management, expense tracking, and data visualization features. The application features a clean, intuitive interface for managing personal and business finances, with secure user authentication and comprehensive database management for efficient bill tracking and financial oversight.</p>
+                        <div class="button"><a href="https://x-data-bill-manager.onrender.com/"><button><span class="index"> View Project<i class="gg-arrow-right"></i></span></button></a></div>
                     </div>
                 </div>
 
                 <div class="portfolio portfolio-third">
                     <div class="portfolio-image">
-                        <img src="images/portfolio-third.jpg" alt="portfolio-third">
+                        <video autoplay loop muted playsinline preload="auto" style="width: 100%; height: auto;" webkit-playsinline>
+                            <source src="images/unscraper.mp4" type="video/mp4">
+                            <source src="images/unscraper.mov" type="video/quicktime">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
                     <div class="portfolio-text">
-                        <h2>Ticket-X</h2>
-                        <p>The Django Ticket-X is a web application designed for managing IT tickets, offering a seamless platform for users to register and manipulate records. It utilizes Django for a robust and efficient backend, providing features like user authentication, record management, and customizable forms for various user interactions. The system boasts a clean interface for adding, viewing, updating, or deleting records, and integrates a Record model for streamlined ticket administration. Ticket-X is structured with clear modules for different functionalities including views, URLs, and model management, focusing on efficiency and user-friendliness. It encourages a productive workflow for managing IT-related records and tasks.</p>
-                        <div class="button"><a href="https://github.com/Cosmin-T/CRM-X"><button><span class="index"> View Project<i class="gg-arrow-right"></i></span></button></a></div>
-                    </div>
-                </div>
-                <div class="portfolio portfolio-fourth">
-                    <div class=" portfolio-image">
-                        <img src="images/portfolio-first.jpg" alt="portfolio-fourth">
-                    </div>
-                    <div class="portfolio-text">
-                        <h2>Image Editor</h2>
-                        <p>The Streamlit Image Editor App is a Python-based application that enables users to upload and edit images through a user-friendly interface. It leverages the Streamlit library alongside PIL, OpenCV, and NumPy for a range of editing features like resizing, rotation, filters, color adjustments, and cropping. Users can undo changes and download the edited image. The app includes files for editing functions, image uploading, and main app configuration. It's customizable and primarily educational, providing a basis for more complex image editing solutions.</p>
-                        <div class="button"><a href="https://github.com/Cosmin-T/PPTS"><button><span class="index"> View Project<i class="gg-arrow-right"></i></span></button></a></div>
+                        <h2>UnScraper</h2>
+                        <p>UnScrape is a web scraping tool that automates data extraction from publicly accessible websites. It leverages intelligent algorithms to identify and collect valuable information without requiring manual configuration or coding. The tool handles complex webpage structures efficiently, though it's limited to public sites without authentication requirements. While UnScrape doesn't work with login-protected platforms like certain e-commerce sites or banking portals, it provides a streamlined alternative to traditional scraping methods for public web content. The tool serves as a practical solution for basic web scraping needs, offering quick setup and data collection capabilities for accessible online resources.</p>
+                        <div class="button"><a href="https://dunscraper.serveo.net/"><button><span class="index"> View Project<i class="gg-arrow-right"></i></span></button></a></div>
                     </div>
                 </div>
                 <div style="display: flex; justify-content: center; width: 100%; padding: 50px 0;">
@@ -602,6 +743,51 @@
     <script src="js/particles.js"></script>
     <script src="js/particles.min.js"></script>
     <script src="js/index.js"></script>
+    <script>
+        // Advanced video buffering and smooth playback
+        document.addEventListener('DOMContentLoaded', function() {
+            const videos = document.querySelectorAll('video');
+
+            videos.forEach(video => {
+                // Force full preload
+                video.preload = 'auto';
+
+                // Wait for full video buffer before setting speed
+                video.addEventListener('canplaythrough', function() {
+                    this.playbackRate = 1.1;
+                });
+
+                // Monitor buffer health and prevent stuttering
+                video.addEventListener('waiting', function() {
+                    // Video is buffering - temporarily reduce speed
+                    this.playbackRate = 1.0;
+                });
+
+                video.addEventListener('playing', function() {
+                    // Video resumed - restore speed
+                    if (this.readyState >= 3) {
+                        this.playbackRate = 1.1;
+                    }
+                });
+
+                // Ensure continuous buffer ahead
+                video.addEventListener('timeupdate', function() {
+                    if (this.buffered.length > 0) {
+                        const bufferedEnd = this.buffered.end(this.buffered.length - 1);
+                        const currentTime = this.currentTime;
+                        const bufferAhead = bufferedEnd - currentTime;
+
+                        // Maintain at least 5 seconds buffer
+                        if (bufferAhead < 5 && this.playbackRate > 1.0) {
+                            this.playbackRate = 1.0; // Slow down to build buffer
+                        } else if (bufferAhead > 10) {
+                            this.playbackRate = 1.1; // Safe to speed up
+                        }
+                    }
+                });
+            });
+        });
+    </script>
     <!--particles script-->
     <script>
 particlesJS("particles", {"particles":{"number":{"value":40,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.5,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":3,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":true,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":6,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});
@@ -612,14 +798,17 @@ particlesJS("particles", {"particles":{"number":{"value":40,"density":{"enable":
         overflow: visible;
     }
 
-    .portfolio-image img {
+    .portfolio-image img, .portfolio-image video {
         width: 100%;
         transition: transform 0.5s ease;
         display: block;
+        position: relative;
+        z-index: 1;
     }
 
-    .portfolio-image:hover img {
-        transform: scale(1.5);
+    .portfolio-image:hover img, .portfolio-image:hover video {
+        transform: scale(1.1);
+        z-index: 10;
     }
 </style>
 </body>

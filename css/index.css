@@ -219,6 +219,15 @@ body{
 .header-image img{
     height: 100vh;
     float: right;
+    opacity: 0.9;
+    filter: brightness(0.95) contrast(1.1);
+    transition: all 0.3s ease;
+    mask: linear-gradient(to left, transparent 0%, rgba(0,0,0,0.3) 15%, rgba(0,0,0,0.8) 35%, black 50%);
+    -webkit-mask: linear-gradient(to left, transparent 0%, rgba(0,0,0,0.3) 15%, rgba(0,0,0,0.8) 35%, black 50%);
+}
+.header-image img:hover{
+    opacity: 1;
+    filter: brightness(1) contrast(1.15);
 }
 .header-image{
     float: right;
@@ -227,7 +236,18 @@ body{
     background-position: center;
     width: 40%;
     height: 100vh;
-
+    position: relative;
+}
+.header-image::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to left, transparent 0%, rgba(0,0,0,0.1) 20%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.6) 80%);
+    pointer-events: none;
+    z-index: 1;
 }
 .header-content{
     height: 100vh;
@@ -407,6 +427,33 @@ body{
 .color{
     color: #7f0024;
     transition: all .4s ease;
+}
+
+.color-bg {
+    background: #7f0024 !important;
+}
+
+.color-border {
+    border-color: #7f0024 !important;
+}
+
+.color-text {
+    color: #7f0024 !important;
+}
+
+.cv-button:hover {
+    background: #7f0024 !important;
+}
+
+/* Progress bar backgrounds - will be overridden by color theme files */
+.python-progress, .django-progress, .pandas-progress,
+.sql-progress, .selenium-progress, .playwright-progress,
+.product-strategy-progress, .process-optimization-progress,
+.team-leadership-progress, .sql-pandas-progress, .fastapi-progress,
+.requirements-analysis-progress, .user-centered-design-progress,
+.project-management-progress, .workflow-automation-progress,
+.data-driven-decisions-progress {
+    background: #7f0024 !important;
 }
 #about{
     background-color: #000000;
@@ -650,6 +697,19 @@ body{
 .service:hover .service-img img{
     box-shadow:0px 0px 0px 400px #7f0024 ;
 }
+
+.service:hover .service-description h2 {
+    color: white !important;
+}
+
+.service:hover .service-description p {
+    color: white !important;
+    opacity: 1;
+}
+
+.service:hover .service-description .color {
+    color: white !important;
+}
 .service-description{
     font-family: poppins;
     color:whitesmoke;
@@ -692,6 +752,10 @@ body{
     width:100%;
     margin-top: 20px;
     margin-bottom: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 .skill-html{
     height: auto;
@@ -702,17 +766,20 @@ body{
     color:whitesmoke;
     display: inline-block;
     padding:1.5%;
+    margin: 0 auto;
 }
 .skill-text{
-    width:80%;
+    width:100%;
     position: relative;
     height: 50px;
+    text-align: center;
 }
 .html{
     display: inline-block;
-    position: absolute;
-    left: 5%;
-    top:30%;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    top: 30%;
 }
 .html-prog{
    width:100%;
@@ -722,82 +789,194 @@ body{
    box-shadow:0px 0px 25px rgb(0,0,0,.1);
    position: relative;
    overflow: hidden;
+   margin: 0 auto;
 }
 @keyframes python-loading {
     0% {
-        transform: translateX(100%);
+        transform: translateX(50%);
         opacity: 0;
     }
     100% {
-        transform: translateX(0);
+        transform: translateX(-50%);
         opacity: 1;
     }
 }
 
 @keyframes django-loading {
     0% {
-        transform: translateX(100%);
+        transform: translateX(50%);
         opacity: 0;
     }
     100% {
-        transform: translateX(0);
+        transform: translateX(-50%);
         opacity: 1;
     }
 }
 
 @keyframes pandas-loading {
     0% {
-        transform: translateX(100%);
+        transform: translateX(50%);
         opacity: 0;
     }
     100% {
-        transform: translateX(0);
+        transform: translateX(-50%);
         opacity: 1;
     }
 }
 
-@keyframes numpy-loading {
+@keyframes sql-loading {
     0% {
-        transform: translateX(100%);
+        transform: translateX(50%);
         opacity: 0;
     }
     100% {
-        transform: translateX(0);
+        transform: translateX(-50%);
         opacity: 1;
     }
 }
 
 @keyframes selenium-loading {
     0% {
-        transform: translateX(100%);
+        transform: translateX(50%);
         opacity: 0;
     }
     100% {
-        transform: translateX(0);
+        transform: translateX(-50%);
         opacity: 1;
     }
 }
 
-@keyframes streamlit-loading {
+@keyframes playwright-loading {
     0% {
-        transform: translateX(100%);
+        transform: translateX(50%);
         opacity: 0;
     }
     100% {
-        transform: translateX(0);
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+}
+
+@keyframes product-strategy-loading {
+    0% {
+        transform: translateX(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+}
+
+@keyframes process-optimization-loading {
+    0% {
+        transform: translateX(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+}
+
+@keyframes team-leadership-loading {
+    0% {
+        transform: translateX(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+}
+
+@keyframes sql-pandas-loading {
+    0% {
+        transform: translateX(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+}
+
+@keyframes fastapi-loading {
+    0% {
+        transform: translateX(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+}
+
+@keyframes requirements-analysis-loading {
+    0% {
+        transform: translateX(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+}
+
+@keyframes user-centered-design-loading {
+    0% {
+        transform: translateX(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+}
+
+@keyframes project-management-loading {
+    0% {
+        transform: translateX(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+}
+
+@keyframes workflow-automation-loading {
+    0% {
+        transform: translateX(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+}
+
+@keyframes data-driven-decisions-loading {
+    0% {
+        transform: translateX(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-50%);
         opacity: 1;
     }
 }
 .python-progress {
     position: absolute;
     top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
     height: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 95%;
     border-radius: 10px;
-    background: #7f0024;
     transition: all .4s ease;
     animation: python-loading 4s ease-in-out;
 }
@@ -805,13 +984,14 @@ body{
 .django-progress {
     position: absolute;
     top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
     height: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 45%;
     border-radius: 10px;
-    background: #7f0024;
     transition: all .4s ease;
     animation: django-loading 3.5s ease-in-out;
 }
@@ -819,57 +999,209 @@ body{
 .pandas-progress {
     position: absolute;
     top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
     height: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 75%;
     border-radius: 10px;
-    background: #7f0024;
     transition: all .4s ease;
     animation: pandas-loading 4.5s ease-in-out;
 }
 
-.numpy-progress {
+.sql-progress {
     position: absolute;
     top: 10%;
     height: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60%;
+    width: 85%;
     border-radius: 10px;
-    background: #7f0024;
     transition: all .4s ease;
-    animation: numpy-loading 4.2s ease-in-out;
+    animation: sql-loading 4.2s ease-in-out;
 }
 
 .selenium-progress {
     position: absolute;
     top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 88%;
+    border-radius: 10px;
+    transition: all .4s ease;
+    animation: selenium-loading 4.0s ease-in-out;
+}
+
+.playwright-progress {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 88%;
+    border-radius: 10px;
+    transition: all .4s ease;
+    animation: playwright-loading 3.8s ease-in-out;
+}
+
+.product-strategy-progress {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    border-radius: 10px;
+    transition: all .4s ease;
+    animation: product-strategy-loading 4.4s ease-in-out;
+}
+
+.process-optimization-progress {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 85%;
+    border-radius: 10px;
+    transition: all .4s ease;
+    animation: process-optimization-loading 4.2s ease-in-out;
+}
+
+.team-leadership-progress {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 88%;
+    border-radius: 10px;
+    transition: all .4s ease;
+    animation: team-leadership-loading 4.0s ease-in-out;
+}
+
+.sql-pandas-progress {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    border-radius: 10px;
+    transition: all .4s ease;
+    animation: sql-pandas-loading 3.8s ease-in-out;
+}
+
+.fastapi-progress {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    border-radius: 10px;
+    transition: all .4s ease;
+    animation: fastapi-loading 3.6s ease-in-out;
+}
+
+.requirements-analysis-progress {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 88%;
+    border-radius: 10px;
+    transition: all .4s ease;
+    animation: requirements-analysis-loading 3.4s ease-in-out;
+}
+
+.user-centered-design-progress {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 85%;
+    border-radius: 10px;
+    transition: all .4s ease;
+    animation: user-centered-design-loading 3.2s ease-in-out;
+}
+
+.project-management-progress {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
     height: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 92%;
     border-radius: 10px;
-    background: #7f0024;
     transition: all .4s ease;
-    animation: selenium-loading 3.8s ease-in-out;
+    animation: project-management-loading 3.0s ease-in-out;
 }
 
-.streamlit-progress {
+.workflow-automation-progress {
     position: absolute;
     top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
     height: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 77%;
+    width: 90%;
     border-radius: 10px;
-    background: #7f0024;
     transition: all .4s ease;
-    animation: streamlit-loading 4.4s ease-in-out;
+    animation: workflow-automation-loading 2.8s ease-in-out;
+}
+
+.data-driven-decisions-progress {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 87%;
+    border-radius: 10px;
+    transition: all .4s ease;
+    animation: data-driven-decisions-loading 2.6s ease-in-out;
 }
 
 .portfolio-header{
@@ -908,7 +1240,8 @@ body{
     padding: 1.5%;
     padding-right: 2%;
 padding-top: 50px;
-padding-bottom: 40px;
+padding-bottom: 150px;
+margin-bottom: 100px;
 }
 @keyframes portfolio-text-animation {
     0% {
@@ -1000,8 +1333,9 @@ padding-bottom: 40px;
         position: relative;
     }
     .portfolio-image{
-        height: 400px;
+        height: auto;
         width: 40%;
+        overflow: visible;
     }
 .portfolio-image img::before{
     content: "";
@@ -1558,8 +1892,7 @@ For devices with smaller width like mobile phone
         display: none;
     }
     .header-image{
-        float: right;
-        height: auto;
+        display: none;
         width: 0%;
     }
     .social-media-links{
@@ -2027,8 +2360,7 @@ for tabs and large phones
         font-size: 40px;
     }
     .header-image{
-        float: right;
-        height: auto;
+        display: none;
         width: 0%;
     }
     .social-media-links{
