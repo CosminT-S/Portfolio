@@ -1878,8 +1878,10 @@ For devices with smaller width like mobile phone
         display: none !important;
     }
 
-    /* Add section separators */
+    /* Force all sections to be visible on mobile */
     #header, #about, #portfolio, #contact {
+        display: block !important;
+        position: relative !important;
         border-bottom: 3px solid #7f0024;
         margin-bottom: 30px;
         padding-bottom: 30px;
@@ -1891,27 +1893,6 @@ For devices with smaller width like mobile phone
         margin-bottom: 0;
     }
 
-    /* Add scroll indicator */
-    body::after {
-        content: "Scroll down to see more content ↓";
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(127, 0, 36, 0.9);
-        color: white;
-        padding: 10px 20px;
-        border-radius: 20px;
-        font-size: 14px;
-        z-index: 1000;
-        animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-        0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-        40% { transform: translateX(-50%) translateY(-10px); }
-        60% { transform: translateX(-50%) translateY(-5px); }
-    }
 
     /* Fix footer positioning on mobile */
     .footer {
@@ -2429,8 +2410,10 @@ for tabs and large phones
         display: none !important;
     }
 
-    /* Add section separators for tablet */
+    /* Force all sections to be visible on tablet */
     #header, #about, #portfolio, #contact {
+        display: block !important;
+        position: relative !important;
         border-bottom: 3px solid #7f0024;
         margin-bottom: 40px;
         padding-bottom: 40px;
