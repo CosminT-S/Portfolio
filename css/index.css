@@ -1867,6 +1867,18 @@ For devices with smaller width like mobile phone
 
 
 @media only screen and (max-width: 550px){
+    /* Show all sections on mobile instead of single-page navigation */
+    #header, #about, #portfolio, #contact {
+        display: block !important;
+        position: relative !important;
+    }
+    /* Hide navigation menu since everything is visible */
+    #navigation-content {
+        display: none !important;
+    }
+    .menubar {
+        display: none !important;
+    }
     .header-content .firstline, .header-content .secondline {
         background-color: rgba(0, 0, 0, 0.85);
         display: inline-block;
@@ -1889,7 +1901,7 @@ For devices with smaller width like mobile phone
         font-size: 40px;
     }
     .contact{
-        display: none;
+        display: flex;
     }
     .header-image{
         display: block;
@@ -1924,9 +1936,6 @@ For devices with smaller width like mobile phone
         padding-left: 0px;
         z-index: 2;
         text-align: center;
-    }
-    #contact{
-        display: block;
     }
     #breaker{
         height: 10px;
@@ -2372,6 +2381,18 @@ for tabs and large phones
 
 
 @media all and (max-width: 1025px) and (min-width: 551px){
+    /* Show all sections on tablet instead of single-page navigation */
+    #header, #about, #portfolio, #contact {
+        display: block !important;
+        position: relative !important;
+    }
+    /* Hide navigation menu since everything is visible */
+    #navigation-content {
+        display: none !important;
+    }
+    .menubar {
+        display: none !important;
+    }
     .header-content{
         height: 100vh;
         width: 100%;
