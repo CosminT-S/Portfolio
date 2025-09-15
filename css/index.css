@@ -1867,16 +1867,8 @@ For devices with smaller width like mobile phone
 
 
 @media only screen and (max-width: 550px){
-    /* Show all sections on mobile instead of single-page navigation */
-    #header, #about, #portfolio, #contact {
-        display: block !important;
-        position: relative !important;
-    }
-    /* Hide navigation menu since everything is visible */
-    #navigation-content {
-        display: none !important;
-    }
-    .menubar {
+    /* Hide navigation on mobile since all sections are visible */
+    .menubar, #navigation-content, #navigation-bar {
         display: none !important;
     }
     .header-content .firstline, .header-content .secondline {
@@ -2381,16 +2373,8 @@ for tabs and large phones
 
 
 @media all and (max-width: 1025px) and (min-width: 551px){
-    /* Show all sections on tablet instead of single-page navigation */
-    #header, #about, #portfolio, #contact {
-        display: block !important;
-        position: relative !important;
-    }
-    /* Hide navigation menu since everything is visible */
-    #navigation-content {
-        display: none !important;
-    }
-    .menubar {
+    /* Hide navigation on tablet since all sections are visible */
+    .menubar, #navigation-content, #navigation-bar {
         display: none !important;
     }
     .header-content{
