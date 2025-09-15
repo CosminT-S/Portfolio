@@ -1892,8 +1892,21 @@ For devices with smaller width like mobile phone
         display: none;
     }
     .header-image{
-        display: none;
-        width: 0%;
+        display: block;
+        width: 100%;
+        height: 50vh;
+        position: relative;
+        margin-top: 20px;
+    }
+    .header-image img{
+        height: 50vh;
+        width: 100%;
+        object-fit: cover;
+        opacity: 0.7;
+        filter: brightness(0.8);
+        border-radius: 0 0 20px 20px;
+        mask: none;
+        -webkit-mask: none;
     }
     .social-media-links{
         width: 100%;
@@ -1913,7 +1926,7 @@ For devices with smaller width like mobile phone
         text-align: center;
     }
     #contact{
-        display: none;
+        display: block;
     }
     #breaker{
         height: 10px;
@@ -2056,14 +2069,14 @@ For devices with smaller width like mobile phone
     }
     .portfolio-text{
         width: 90%;
-        padding-left: 0%;
+        padding: 20px;
         margin: 0%;
         margin-left: 0px;
-        margin-top: 0px;
+        margin-top: 15px;
         z-index: 1;
-        background: #070707;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        background: #080808;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
         .portfolio-image{
             position: relative;
@@ -2087,22 +2100,36 @@ For devices with smaller width like mobile phone
             .service:hover .service-img img{
                 box-shadow:0px 0px 0px 0px #7f0024 ;
             }
-            .portfolio-image img{
+            .portfolio-image img, .portfolio-image video{
                 height: 300px;
                 width: 100%;
+                object-fit: cover;
+                border-radius: 8px;
+                transition: transform 0.3s ease;
+            }
+            .portfolio-image video{
+                autoplay: true;
+                muted: true;
+                loop: true;
+                playsinline: true;
             }
             .portfolio-image{
                 height: 300px;
                 width: 90%;
+                overflow: hidden;
+                border-radius: 8px;
+            }
+            .portfolio-image:hover img, .portfolio-image:hover video {
+                transform: scale(1.05);
             }
             #navigation-bar img{
-                height: 80px;
+                height: 60px;
                 position: absolute;
-                top: 15%;
-                left: 2.5%;
+                top: 20%;
+                left: 5%;
                 opacity: .8;
                 transition: all .4s ease;
-                display: none;
+                display: block;
             }
             .blogs{
                 height: auto;
@@ -2360,8 +2387,21 @@ for tabs and large phones
         font-size: 40px;
     }
     .header-image{
-        display: none;
-        width: 0%;
+        display: block;
+        width: 100%;
+        height: 60vh;
+        position: relative;
+        margin-top: 30px;
+    }
+    .header-image img{
+        height: 60vh;
+        width: 100%;
+        object-fit: cover;
+        opacity: 0.8;
+        filter: brightness(0.9);
+        border-radius: 0 0 20px 20px;
+        mask: none;
+        -webkit-mask: none;
     }
     .social-media-links{
         width: 100%;
@@ -2542,14 +2582,14 @@ for tabs and large phones
     }
     .portfolio-text{
         width: 70%;
-        padding-left: 0%;
+        padding: 25px;
         margin: 0%;
         margin-left: 0px;
-        margin-top: 0px;
+        margin-top: 20px;
         z-index: 1;
         background: #080808;
-        padding-top: 15px;
-        padding-bottom: 15px;
+        border-radius: 10px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     }
         .portfolio-image{
             position: relative;
@@ -2573,14 +2613,28 @@ for tabs and large phones
             .service:hover .service-img img{
                 box-shadow:0px 0px 0px 0px #7f0024 ;
             }
-            .portfolio-image img{
+            .portfolio-image img, .portfolio-image video{
                 height: 380px;
                 width: 100%;
                 position: relative;
+                object-fit: cover;
+                border-radius: 8px;
+                transition: transform 0.3s ease;
+            }
+            .portfolio-image video{
+                autoplay: true;
+                muted: true;
+                loop: true;
+                playsinline: true;
             }
             .portfolio-image{
                 height: 380px;
                 width: 70%;
+                overflow: hidden;
+                border-radius: 8px;
+            }
+            .portfolio-image:hover img, .portfolio-image:hover video {
+                transform: scale(1.05);
             }
             #navigation-bar img{
                 height: 80px;
