@@ -485,22 +485,21 @@
              <div id="portfolio-content">
                  <div class="portfolio portfolio-first">
                      <div class="portfolio-image">
-                        <video
-                            autoplay
-                            loop
-                            muted
-                            playsinline
-                            preload="metadata"
-                            style="width: 100%; height: auto;"
-                            webkit-playsinline="true"
-                            x-webkit-airplay="allow"
-                            poster="images/x-data-pulse-poster.jpg">
-                            <source src="images/x-data-pulse.mp4" type="video/mp4">
-                            <source src="images/x-data-pulse.mov" type="video/quicktime">
-                            <div style="background: #080808; color: white; padding: 20px; text-align: center; border-radius: 8px;">
-                                <p>📹 Tap to play video</p>
+                        <div class="video-container" data-video="images/x-data-pulse.mp4">
+                            <img src="images/x-data-pulse-preview.jpg" alt="x-Data Pulse Preview" class="video-preview" style="width: 100%; height: auto; cursor: pointer; border-radius: 8px;">
+                            <div class="play-overlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(127, 0, 36, 0.9); color: white; padding: 15px 25px; border-radius: 50px; cursor: pointer; font-size: 16px; font-weight: bold; transition: all 0.3s ease;">
+                                ▶ Play Demo
                             </div>
-                        </video>
+                            <video
+                                loop
+                                muted
+                                playsinline
+                                preload="none"
+                                style="width: 100%; height: auto; display: none;"
+                                webkit-playsinline="true">
+                                <source src="images/x-data-pulse.mp4" type="video/mp4">
+                            </video>
+                        </div>
                      </div>
                      <div class="portfolio-text">
                          <h2>x-Data Pulse</h2>
@@ -510,22 +509,21 @@
                  </div>
                  <div class="portfolio portfolio-second">
                     <div class="portfolio-image">
-                        <video
-                            autoplay
-                            loop
-                            muted
-                            playsinline
-                            preload="metadata"
-                            style="width: 100%; height: auto;"
-                            webkit-playsinline="true"
-                            x-webkit-airplay="allow"
-                            poster="images/x-xata-bill-poster.jpg">
-                            <source src="images/x-xata-bill.mp4" type="video/mp4">
-                            <source src="images/x-xata-bill.mov" type="video/quicktime">
-                            <div style="background: #080808; color: white; padding: 20px; text-align: center; border-radius: 8px;">
-                                <p>📹 Tap to play video</p>
+                        <div class="video-container" data-video="images/x-xata-bill.mp4">
+                            <img src="images/x-xata-bill-preview.jpg" alt="x-Data Bill Manager Preview" class="video-preview" style="width: 100%; height: auto; cursor: pointer; border-radius: 8px;">
+                            <div class="play-overlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(127, 0, 36, 0.9); color: white; padding: 15px 25px; border-radius: 50px; cursor: pointer; font-size: 16px; font-weight: bold; transition: all 0.3s ease;">
+                                ▶ Play Demo
                             </div>
-                        </video>
+                            <video
+                                loop
+                                muted
+                                playsinline
+                                preload="none"
+                                style="width: 100%; height: auto; display: none;"
+                                webkit-playsinline="true">
+                                <source src="images/x-xata-bill.mp4" type="video/mp4">
+                            </video>
+                        </div>
                     </div>
                     <div class="portfolio-text">
                         <h2>x-Data Bill Manager</h2>
@@ -536,22 +534,21 @@
 
                 <div class="portfolio portfolio-third">
                     <div class="portfolio-image">
-                        <video
-                            autoplay
-                            loop
-                            muted
-                            playsinline
-                            preload="metadata"
-                            style="width: 100%; height: auto;"
-                            webkit-playsinline="true"
-                            x-webkit-airplay="allow"
-                            poster="images/unscraper-poster.jpg">
-                            <source src="images/unscraper.mp4" type="video/mp4">
-                            <source src="images/unscraper.mov" type="video/quicktime">
-                            <div style="background: #080808; color: white; padding: 20px; text-align: center; border-radius: 8px;">
-                                <p>📹 Tap to play video</p>
+                        <div class="video-container" data-video="images/unscraper.mp4">
+                            <img src="images/unscraper-preview.jpg" alt="UnScraper Preview" class="video-preview" style="width: 100%; height: auto; cursor: pointer; border-radius: 8px;">
+                            <div class="play-overlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(127, 0, 36, 0.9); color: white; padding: 15px 25px; border-radius: 50px; cursor: pointer; font-size: 16px; font-weight: bold; transition: all 0.3s ease;">
+                                ▶ Play Demo
                             </div>
-                        </video>
+                            <video
+                                loop
+                                muted
+                                playsinline
+                                preload="none"
+                                style="width: 100%; height: auto; display: none;"
+                                webkit-playsinline="true">
+                                <source src="images/unscraper.mp4" type="video/mp4">
+                            </video>
+                        </div>
                     </div>
                     <div class="portfolio-text">
                         <h2>UnScraper</h2>
@@ -769,84 +766,73 @@
     <script src="js/particles.min.js"></script>
     <script src="js/index.js"></script>
     <script>
-        // Enhanced video handling for mobile compatibility
+        // Mobile-optimized video loading system
         document.addEventListener('DOMContentLoaded', function() {
-            const videos = document.querySelectorAll('video');
+            const videoContainers = document.querySelectorAll('.video-container');
             const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-            videos.forEach(video => {
-                // Ensure required mobile attributes
-                video.muted = true;
-                video.setAttribute('playsinline', '');
-                video.setAttribute('webkit-playsinline', '');
+            videoContainers.forEach(container => {
+                const preview = container.querySelector('.video-preview');
+                const playOverlay = container.querySelector('.play-overlay');
+                const video = container.querySelector('video');
 
-                // Mobile-specific settings
-                if (isMobile) {
-                    video.preload = 'metadata';
+                // Style container for relative positioning
+                container.style.position = 'relative';
+                container.style.display = 'inline-block';
+                container.style.width = '100%';
 
-                    // Attempt to play when loaded
-                    video.addEventListener('loadedmetadata', function() {
-                        this.play().catch(error => {
-                            console.log('Mobile autoplay prevented:', error);
-                        });
-                    });
+                // Click handler for preview image and play button
+                const playVideo = () => {
+                    // Hide preview and overlay
+                    preview.style.display = 'none';
+                    playOverlay.style.display = 'none';
 
-                    // Touch to play fallback
-                    video.addEventListener('click', function() {
-                        if (this.paused) {
-                            this.play().catch(() => {});
-                        }
-                    });
-
-                    // Battery-saving intersection observer
-                    if ('IntersectionObserver' in window) {
-                        const observer = new IntersectionObserver((entries) => {
-                            entries.forEach(entry => {
-                                if (entry.isIntersecting) {
-                                    video.play().catch(() => {});
-                                } else {
-                                    video.pause();
-                                }
-                            });
-                        }, { threshold: 0.1 });
-                        observer.observe(video);
-                    }
-                } else {
-                    // Desktop optimization
+                    // Show and play video
+                    video.style.display = 'block';
                     video.preload = 'auto';
 
-                    video.addEventListener('canplaythrough', function() {
-                        this.playbackRate = 1.1;
+                    const playPromise = video.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(error => {
+                            console.log('Video play failed:', error);
+                            // Fallback: show preview again
+                            preview.style.display = 'block';
+                            playOverlay.style.display = 'block';
+                            video.style.display = 'none';
+                        });
+                    }
+                };
+
+                // Add click listeners
+                preview.addEventListener('click', playVideo);
+                playOverlay.addEventListener('click', playVideo);
+
+                // Hover effects for desktop
+                if (!isMobile) {
+                    playOverlay.addEventListener('mouseenter', function() {
+                        this.style.background = 'rgba(127, 0, 36, 1)';
+                        this.style.transform = 'translate(-50%, -50%) scale(1.05)';
                     });
 
-                    video.addEventListener('waiting', function() {
-                        this.playbackRate = 1.0;
-                    });
-
-                    video.addEventListener('playing', function() {
-                        if (this.readyState >= 3) {
-                            this.playbackRate = 1.1;
-                        }
-                    });
-
-                    video.addEventListener('timeupdate', function() {
-                        if (this.buffered.length > 0) {
-                            const bufferedEnd = this.buffered.end(this.buffered.length - 1);
-                            const currentTime = this.currentTime;
-                            const bufferAhead = bufferedEnd - currentTime;
-
-                            if (bufferAhead < 5 && this.playbackRate > 1.0) {
-                                this.playbackRate = 1.0;
-                            } else if (bufferAhead > 10) {
-                                this.playbackRate = 1.1;
-                            }
-                        }
+                    playOverlay.addEventListener('mouseleave', function() {
+                        this.style.background = 'rgba(127, 0, 36, 0.9)';
+                        this.style.transform = 'translate(-50%, -50%) scale(1)';
                     });
                 }
 
-                // Universal error handling
+                // Video event handlers
+                video.addEventListener('ended', function() {
+                    // Loop the video manually for better mobile compatibility
+                    this.currentTime = 0;
+                    this.play().catch(() => {});
+                });
+
                 video.addEventListener('error', function(e) {
-                    console.log('Video loading error:', e);
+                    console.log('Video error:', e);
+                    // Show preview again on error
+                    preview.style.display = 'block';
+                    playOverlay.style.display = 'block';
+                    video.style.display = 'none';
                 });
             });
         });
