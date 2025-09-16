@@ -86,6 +86,10 @@ form button{
     background: #04A777 !important;
 }
 
+#submit {
+    background: #04A777 !important;
+}
+
 /* Progress bar backgrounds */
 .python-progress, .django-progress, .pandas-progress,
 .sql-progress, .selenium-progress, .playwright-progress,
@@ -95,4 +99,20 @@ form button{
 .project-management-progress, .workflow-automation-progress,
 .data-driven-decisions-progress {
     background: #04A777 !important;
+}
+
+.footer {
+    border-top-color: #04A777 !important;
+}
+
+@media all and (max-width: 1025px) and (min-width: 551px) {
+    #header, #about, #portfolio {
+        border-bottom-color: #04A777 !important;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .footer {
+        border-top-color: #04A777 !important;
+    }
 }

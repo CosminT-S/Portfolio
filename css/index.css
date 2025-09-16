@@ -271,7 +271,11 @@ body{
     height: auto;
     padding-right: 60px;
     width: auto;
+}
 
+/* Hide mobile profile image on desktop */
+.header-profile-image {
+    display: none;
 }
 .header-content .firstline{
     z-index: 2;
@@ -429,6 +433,12 @@ body{
     transition: all .4s ease;
 }
 
+.about-delimiter {
+    width: 60%;
+    height: 2px;
+    margin: 40px auto;
+}
+
 .color-bg {
     background: #7f0024 !important;
 }
@@ -443,6 +453,28 @@ body{
 
 .cv-button:hover {
     background: #7f0024 !important;
+}
+
+#submit {
+    background: #7f0024 !important;
+}
+
+.footer {
+    border-top: 2px solid #7f0024 !important;
+}
+
+/* Mobile section borders */
+@media all and (max-width: 1025px) and (min-width: 551px) {
+    #header, #about, #portfolio {
+        border-bottom: 3px solid #7f0024 !important;
+    }
+}
+
+/* Mobile footer border */
+@media only screen and (max-width: 550px) {
+    .footer {
+        border-top: 2px solid #7f0024 !important;
+    }
 }
 
 /* Progress bar backgrounds - will be overridden by color theme files */
@@ -1741,7 +1773,7 @@ form button:hover{
     flex-direction: row;
     position: fixed;
     right:-150px;
-    top:40%;
+    top:85%;
     z-index: 4;
     color:black;
     transition:all .4s ease;
@@ -1842,7 +1874,6 @@ form button:hover{
   list-style: none;
 }
 #submit {
-    background-color: #7f0024;
     color: white;
     border: none;
     padding: 15px 32px;
@@ -1852,7 +1883,12 @@ form button:hover{
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    transition: all 0.3s ease;
   }
+
+#submit:hover {
+    opacity: 0.8;
+}
 
 
 /*
@@ -1900,7 +1936,11 @@ For devices with smaller width like mobile phone
     .header-content {
         height: auto !important;
         min-height: 60vh;
-        padding: 60px 0 40px 0;
+        padding: 60px 20px 40px 20px !important;
+        width: 100% !important;
+        position: relative !important;
+        float: none !important;
+        box-sizing: border-box !important;
     }
 
     /* Fix contact icons being cut off */
@@ -1921,7 +1961,6 @@ For devices with smaller width like mobile phone
         position: relative !important;
         margin-top: 50px !important;
         padding: 30px 20px !important;
-        border-top: 2px solid #7f0024 !important;
         text-align: center !important;
     }
     .header-content .firstline, .header-content .secondline {
@@ -1949,20 +1988,51 @@ For devices with smaller width like mobile phone
         display: flex;
     }
     .header-image{
-        display: block;
-        width: 200px;
-        height: 200px;
-        margin: 20px auto;
-        text-align: center;
+        display: none !important;
     }
     .header-image img{
-        height: 200px;
-        width: 200px;
+        display: none !important;
+    }
+
+    .header-profile-image {
+        display: block;
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 25px auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    .header-profile-image img {
+        width: 120px;
+        height: 120px;
         object-fit: cover;
         border-radius: 50%;
-        border: 2px solid #7f0024;
-        box-shadow: 0 4px 20px rgba(127, 0, 36, 0.2);
-        display: block;
+        border: 2px solid rgba(127, 0, 36, 0.3);
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        filter: brightness(0.9) contrast(1.1);
+        transition: all 0.3s ease;
+    }
+
+    .header-profile-image::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, transparent, rgba(127, 0, 36, 0.1), transparent);
+        border-radius: 50%;
+        z-index: -1;
+        animation: subtle-glow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes subtle-glow {
+        0% { opacity: 0.5; }
+        100% { opacity: 0.8; }
     }
     .social-media-links{
         width: 100%;
@@ -1978,8 +2048,12 @@ For devices with smaller width like mobile phone
     }
     .header-content-box{
         padding-left: 0px;
+        padding-right: 0px;
         z-index: 2;
         text-align: center;
+        width: 100%;
+        max-width: 100vw;
+        margin: 0 auto;
     }
     #breaker{
         height: 10px;
@@ -2436,7 +2510,6 @@ for tabs and large phones
     #header, #about, #portfolio, #contact {
         display: block !important;
         position: relative !important;
-        border-bottom: 3px solid #7f0024;
         margin-bottom: 40px;
         padding-bottom: 40px;
     }

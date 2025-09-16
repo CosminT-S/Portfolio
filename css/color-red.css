@@ -71,19 +71,23 @@ form button{
 }
 
 .color-bg {
-    background: #7f0024 !important;
+    background: #750021 !important;
 }
 
 .color-border {
-    border-color: #7f0024 !important;
+    border-color: #750021 !important;
 }
 
 .color-text {
-    color: #7f0024 !important;
+    color: #750021 !important;
 }
 
 .cv-button:hover {
-    background: #7f0024 !important;
+    background: #750021 !important;
+}
+
+#submit {
+    background: #750021 !important;
 }
 
 /* Progress bar backgrounds */
@@ -94,5 +98,23 @@ form button{
 .requirements-analysis-progress, .user-centered-design-progress,
 .project-management-progress, .workflow-automation-progress,
 .data-driven-decisions-progress {
-    background: #7f0024 !important;
+    background: #750021 !important;
+}
+
+.footer {
+    border-top-color: #750021 !important;
+}
+
+/* Mobile section borders */
+@media all and (max-width: 1025px) and (min-width: 551px) {
+    #header, #about, #portfolio {
+        border-bottom-color: #750021 !important;
+    }
+}
+
+/* Mobile footer border */
+@media only screen and (max-width: 550px) {
+    .footer {
+        border-top-color: #750021 !important;
+    }
 }
