@@ -485,7 +485,18 @@
              <div id="portfolio-content">
                  <div class="portfolio portfolio-first">
                      <div class="portfolio-image">
-                        <video autoplay loop muted playsinline preload="auto" style="width: 100%; height: auto;" webkit-playsinline>
+                        <video
+                            autoplay
+                            muted
+                            playsinline
+                            loop
+                            preload="metadata"
+                            style="width: 100%; height: auto;"
+                            webkit-playsinline="true"
+                            x5-video-player-type="h5"
+                            x5-video-orientation="portraint"
+                            x5-video-player-fullscreen="true"
+                            data-setup="{}">
                             <source src="images/x-data-pulse.mp4" type="video/mp4">
                             <source src="images/x-data-pulse.mov" type="video/quicktime">
                             Your browser does not support the video tag.
@@ -499,7 +510,18 @@
                  </div>
                  <div class="portfolio portfolio-second">
                     <div class="portfolio-image">
-                        <video autoplay loop muted playsinline preload="auto" style="width: 100%; height: auto;" webkit-playsinline>
+                        <video
+                            autoplay
+                            muted
+                            playsinline
+                            loop
+                            preload="metadata"
+                            style="width: 100%; height: auto;"
+                            webkit-playsinline="true"
+                            x5-video-player-type="h5"
+                            x5-video-orientation="portraint"
+                            x5-video-player-fullscreen="true"
+                            data-setup="{}">
                             <source src="images/x-xata-bill.mp4" type="video/mp4">
                             <source src="images/x-xata-bill.mov" type="video/quicktime">
                             Your browser does not support the video tag.
@@ -514,7 +536,18 @@
 
                 <div class="portfolio portfolio-third">
                     <div class="portfolio-image">
-                        <video autoplay loop muted playsinline preload="auto" style="width: 100%; height: auto;" webkit-playsinline>
+                        <video
+                            autoplay
+                            muted
+                            playsinline
+                            loop
+                            preload="metadata"
+                            style="width: 100%; height: auto;"
+                            webkit-playsinline="true"
+                            x5-video-player-type="h5"
+                            x5-video-orientation="portraint"
+                            x5-video-player-fullscreen="true"
+                            data-setup="{}">
                             <source src="images/unscraper.mp4" type="video/mp4">
                             <source src="images/unscraper.mov" type="video/quicktime">
                             Your browser does not support the video tag.
@@ -736,50 +769,93 @@
     <script src="js/particles.min.js"></script>
     <script src="js/index.js"></script>
     <script>
-        // Enhanced video handling for mobile compatibility
+        // Comprehensive mobile video autoplay solution
         document.addEventListener('DOMContentLoaded', function() {
             const videos = document.querySelectorAll('video');
             const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
-            videos.forEach(video => {
-                // Ensure required mobile attributes
+            // Add user interaction event to enable autoplay
+            let userInteracted = false;
+            const enableAutoplay = () => {
+                userInteracted = true;
+                videos.forEach(video => {
+                    if (video.paused) {
+                        video.play().catch(() => {});
+                    }
+                });
+            };
+
+            // Listen for any user interaction
+            ['touchstart', 'touchend', 'mousedown', 'keydown'].forEach(event => {
+                document.addEventListener(event, enableAutoplay, { once: true, passive: true });
+            });
+
+            videos.forEach((video, index) => {
+                // Force critical mobile attributes
                 video.muted = true;
-                video.setAttribute('playsinline', '');
-                video.setAttribute('webkit-playsinline', '');
+                video.playsInline = true;
+                video.setAttribute('playsinline', 'true');
+                video.setAttribute('webkit-playsinline', 'true');
+                video.setAttribute('muted', 'true');
 
-                // Mobile-specific settings
                 if (isMobile) {
+                    // Mobile: lighter preload due to data constraints
                     video.preload = 'metadata';
 
-                    // Attempt to play when loaded
-                    video.addEventListener('loadedmetadata', function() {
-                        this.play().catch(error => {
-                            console.log('Mobile autoplay prevented:', error);
-                        });
-                    });
+                    // Multiple autoplay attempts for mobile
+                    const attemptPlay = () => {
+                        const playPromise = video.play();
+                        if (playPromise !== undefined) {
+                            playPromise
+                                .then(() => {
+                                    console.log(`Mobile video ${index + 1} playing successfully`);
+                                })
+                                .catch(error => {
+                                    console.log(`Mobile autoplay blocked for video ${index + 1}:`, error.message);
 
-                    // Touch to play fallback
-                    video.addEventListener('click', function() {
-                        if (this.paused) {
-                            this.play().catch(() => {});
+                                    // Retry after user interaction
+                                    if (!userInteracted) {
+                                        const retryPlay = () => {
+                                            video.play().catch(() => {});
+                                            document.removeEventListener('touchstart', retryPlay);
+                                        };
+                                        document.addEventListener('touchstart', retryPlay, { once: true, passive: true });
+                                    }
+                                });
                         }
-                    });
+                    };
 
-                    // Battery-saving intersection observer
+                    // Try to play when video is ready
+                    video.addEventListener('canplay', attemptPlay, { once: true });
+                    video.addEventListener('loadeddata', attemptPlay, { once: true });
+
+                    // Intersection Observer for battery saving
                     if ('IntersectionObserver' in window) {
                         const observer = new IntersectionObserver((entries) => {
                             entries.forEach(entry => {
-                                if (entry.isIntersecting) {
+                                if (entry.isIntersecting && userInteracted) {
                                     video.play().catch(() => {});
-                                } else {
+                                } else if (!entry.isIntersecting) {
                                     video.pause();
                                 }
                             });
-                        }, { threshold: 0.1 });
+                        }, { threshold: 0.25 });
                         observer.observe(video);
                     }
+
+                    // Direct tap to play
+                    video.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        if (this.paused) {
+                            this.play().catch(() => {});
+                        } else {
+                            this.pause();
+                        }
+                    }, { passive: false });
+
                 } else {
-                    // Desktop optimization
+                    // Desktop: full preload and enhanced playback
                     video.preload = 'auto';
 
                     video.addEventListener('canplaythrough', function() {
@@ -796,6 +872,7 @@
                         }
                     });
 
+                    // Advanced buffering management
                     video.addEventListener('timeupdate', function() {
                         if (this.buffered.length > 0) {
                             const bufferedEnd = this.buffered.end(this.buffered.length - 1);
@@ -811,11 +888,30 @@
                     });
                 }
 
-                // Universal error handling
-                video.addEventListener('error', function(e) {
-                    console.log('Video loading error:', e);
+                // Universal handlers
+                video.addEventListener('ended', function() {
+                    this.currentTime = 0;
+                    this.play().catch(() => {});
                 });
+
+                video.addEventListener('error', function(e) {
+                    console.log(`Video ${index + 1} error:`, e);
+                });
+
+                // iOS specific: try immediate play
+                if (isIOS) {
+                    setTimeout(() => {
+                        video.play().catch(() => {});
+                    }, 100);
+                }
             });
+
+            // Global play all videos function
+            window.playAllVideos = function() {
+                videos.forEach(video => {
+                    video.play().catch(() => {});
+                });
+            };
         });
     </script>
     <!--particles script-->
