@@ -506,9 +506,12 @@
                         </video>
                      </div>
                      <div class="portfolio-text">
-                         <h2>x-Data Pulse</h2>
+                         <div class="project-header">
+                             <h2>x-Data Pulse</h2>
+                             <div class="status-badge in-progress">In Progress</div>
+                         </div>
                          <p>A comprehensive FastAPI-based <span class="color">multi-company SaaS ticketing platform</span> designed for enterprise support systems. Features real-time WebSocket functionality for instant updates, Google OAuth authentication, and sophisticated access control for multiple organizations. The platform provides advanced ticket management capabilities, automated workflows, and enterprise-grade security features. Built with modern Python frameworks, it offers scalable architecture for growing businesses with comprehensive audit logging, real-time notifications, and multi-tenant data isolation ensuring secure operations across different client organizations.</p>
-                         <div class="button"><a href="#"><button><span class="index"> In Progress<i class="gg-arrow-right"></i></span></button></a></div>
+                         <div class="button"><a href="mailto:cosmin.turculeanu@gmail.com?subject=Demo Request - x-Data Pulse&body=Hi Cosmin,%0D%0A%0D%0AI'm interested in seeing a demo of your x-Data Pulse project. Could we schedule a time to discuss?%0D%0A%0D%0AThanks!"><button><span class="index"> Email for Demo<i class="gg-arrow-right"></i></span></button></a></div>
                      </div>
                  </div>
                  <div class="portfolio portfolio-second">
@@ -534,9 +537,12 @@
                         </video>
                     </div>
                     <div class="portfolio-text">
-                        <h2>x-Data Bill Manager</h2>
+                        <div class="project-header">
+                            <h2>x-Data Bill Manager</h2>
+                            <div class="status-badge completed">Completed</div>
+                        </div>
                         <p>A FastAPI-based bill management system ("Gestionar Facturi") that provides comprehensive financial tracking and management capabilities. Built with modern web technologies including FastAPI for robust backend functionality, the system offers user authentication, bill creation and management, expense tracking, and data visualization features. The application features a clean, intuitive interface for managing personal and business finances, with secure user authentication and comprehensive database management for efficient bill tracking and financial oversight.</p>
-                        <div class="button"><a href="https://x-data-bill-manager.onrender.com/"><button><span class="index"> View Project<i class="gg-arrow-right"></i></span></button></a></div>
+                        <div class="button"><a href="mailto:cosmin.turculeanu@gmail.com?subject=Demo Request - x-Data Bill Manager&body=Hi Cosmin,%0D%0A%0D%0AI'm interested in seeing a demo of your x-Data Bill Manager project. Could we schedule a time to discuss?%0D%0A%0D%0AThanks!"><button><span class="index"> Email for Demo<i class="gg-arrow-right"></i></span></button></a></div>
                     </div>
                 </div>
 
@@ -563,9 +569,12 @@
                         </video>
                     </div>
                     <div class="portfolio-text">
-                        <h2>UnScraper</h2>
+                        <div class="project-header">
+                            <h2>UnScraper</h2>
+                            <div class="status-badge completed">Completed</div>
+                        </div>
                         <p>UnScrape is a web scraping tool that automates data extraction from publicly accessible websites. It leverages intelligent algorithms to identify and collect valuable information without requiring manual configuration or coding. The tool handles complex webpage structures efficiently, though it's limited to public sites without authentication requirements. While UnScrape doesn't work with login-protected platforms like certain e-commerce sites or banking portals, it provides a streamlined alternative to traditional scraping methods for public web content. The tool serves as a practical solution for basic web scraping needs, offering quick setup and data collection capabilities for accessible online resources.</p>
-                        <div class="button"><a href="https://dunscraper.serveo.net/"><button><span class="index"> View Project<i class="gg-arrow-right"></i></span></button></a></div>
+                        <div class="button"><a href="mailto:cosmin.turculeanu@gmail.com?subject=Demo Request - UnScraper&body=Hi Cosmin,%0D%0A%0D%0AI'm interested in seeing a demo of your UnScraper project. Could we schedule a time to discuss?%0D%0A%0D%0AThanks!"><button><span class="index"> Email for Demo<i class="gg-arrow-right"></i></span></button></a></div>
                     </div>
                 </div>
                 <div style="display: flex; justify-content: center; width: 100%; padding: 50px 0;">
@@ -963,6 +972,58 @@ particlesJS("particles", {"particles":{"number":{"value":40,"density":{"enable":
         transform: scale(1.1);
         z-index: 10;
     }
+
+    /* Project header and status badge styling */
+    .project-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+    }
+
+    .status-badge {
+        padding: 8px 16px;
+        border-radius: 50px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: 2px solid;
+        background: transparent;
+        transition: all 0.3s ease;
+    }
+
+    .status-badge.in-progress {
+        color: #ff9800;
+        border-color: #ff9800;
+        background: rgba(255, 152, 0, 0.1);
+    }
+
+    .status-badge.completed {
+        color: #4caf50;
+        border-color: #4caf50;
+        background: rgba(76, 175, 80, 0.1);
+    }
+
+    .status-badge:hover {
+        transform: scale(1.05);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    /* Mobile responsive adjustments */
+    @media (max-width: 768px) {
+        .project-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .project-header h2 {
+            margin-bottom: 0;
+        }
+    }
+
 </style>
 </body>
 </html>
