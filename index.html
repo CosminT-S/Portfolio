@@ -485,7 +485,16 @@
              <div id="portfolio-content">
                  <div class="portfolio portfolio-first">
                      <div class="portfolio-image">
-                        <video autoplay loop muted playsinline preload="auto" style="width: 100%; height: auto;" webkit-playsinline>
+                        <video
+                            autoplay
+                            loop
+                            muted
+                            playsinline
+                            preload="metadata"
+                            style="width: 100%; height: auto;"
+                            webkit-playsinline="true"
+                            x-webkit-airplay="allow"
+                            poster="images/x-data-pulse-poster.jpg">
                             <source src="images/x-data-pulse.mp4" type="video/mp4">
                             <source src="images/x-data-pulse.mov" type="video/quicktime">
                             Your browser does not support the video tag.
@@ -499,7 +508,16 @@
                  </div>
                  <div class="portfolio portfolio-second">
                     <div class="portfolio-image">
-                        <video autoplay loop muted playsinline preload="auto" style="width: 100%; height: auto;" webkit-playsinline>
+                        <video
+                            autoplay
+                            loop
+                            muted
+                            playsinline
+                            preload="metadata"
+                            style="width: 100%; height: auto;"
+                            webkit-playsinline="true"
+                            x-webkit-airplay="allow"
+                            poster="images/x-xata-bill-poster.jpg">
                             <source src="images/x-xata-bill.mp4" type="video/mp4">
                             <source src="images/x-xata-bill.mov" type="video/quicktime">
                             Your browser does not support the video tag.
@@ -514,7 +532,16 @@
 
                 <div class="portfolio portfolio-third">
                     <div class="portfolio-image">
-                        <video autoplay loop muted playsinline preload="auto" style="width: 100%; height: auto;" webkit-playsinline>
+                        <video
+                            autoplay
+                            loop
+                            muted
+                            playsinline
+                            preload="metadata"
+                            style="width: 100%; height: auto;"
+                            webkit-playsinline="true"
+                            x-webkit-airplay="allow"
+                            poster="images/unscraper-poster.jpg">
                             <source src="images/unscraper.mp4" type="video/mp4">
                             <source src="images/unscraper.mov" type="video/quicktime">
                             Your browser does not support the video tag.
@@ -736,46 +763,84 @@
     <script src="js/particles.min.js"></script>
     <script src="js/index.js"></script>
     <script>
-        // Advanced video buffering and smooth playback
+        // Enhanced video handling for mobile compatibility
         document.addEventListener('DOMContentLoaded', function() {
             const videos = document.querySelectorAll('video');
+            const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
             videos.forEach(video => {
-                // Force full preload
-                video.preload = 'auto';
+                // Ensure required mobile attributes
+                video.muted = true;
+                video.setAttribute('playsinline', '');
+                video.setAttribute('webkit-playsinline', '');
 
-                // Wait for full video buffer before setting speed
-                video.addEventListener('canplaythrough', function() {
-                    this.playbackRate = 1.1;
-                });
+                // Mobile-specific settings
+                if (isMobile) {
+                    video.preload = 'metadata';
 
-                // Monitor buffer health and prevent stuttering
-                video.addEventListener('waiting', function() {
-                    // Video is buffering - temporarily reduce speed
-                    this.playbackRate = 1.0;
-                });
+                    // Attempt to play when loaded
+                    video.addEventListener('loadedmetadata', function() {
+                        this.play().catch(error => {
+                            console.log('Mobile autoplay prevented:', error);
+                        });
+                    });
 
-                video.addEventListener('playing', function() {
-                    // Video resumed - restore speed
-                    if (this.readyState >= 3) {
-                        this.playbackRate = 1.1;
-                    }
-                });
-
-                // Ensure continuous buffer ahead
-                video.addEventListener('timeupdate', function() {
-                    if (this.buffered.length > 0) {
-                        const bufferedEnd = this.buffered.end(this.buffered.length - 1);
-                        const currentTime = this.currentTime;
-                        const bufferAhead = bufferedEnd - currentTime;
-
-                        // Maintain at least 5 seconds buffer
-                        if (bufferAhead < 5 && this.playbackRate > 1.0) {
-                            this.playbackRate = 1.0; // Slow down to build buffer
-                        } else if (bufferAhead > 10) {
-                            this.playbackRate = 1.1; // Safe to speed up
+                    // Touch to play fallback
+                    video.addEventListener('click', function() {
+                        if (this.paused) {
+                            this.play().catch(() => {});
                         }
+                    });
+
+                    // Battery-saving intersection observer
+                    if ('IntersectionObserver' in window) {
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    video.play().catch(() => {});
+                                } else {
+                                    video.pause();
+                                }
+                            });
+                        }, { threshold: 0.1 });
+                        observer.observe(video);
                     }
+                } else {
+                    // Desktop optimization
+                    video.preload = 'auto';
+
+                    video.addEventListener('canplaythrough', function() {
+                        this.playbackRate = 1.1;
+                    });
+
+                    video.addEventListener('waiting', function() {
+                        this.playbackRate = 1.0;
+                    });
+
+                    video.addEventListener('playing', function() {
+                        if (this.readyState >= 3) {
+                            this.playbackRate = 1.1;
+                        }
+                    });
+
+                    video.addEventListener('timeupdate', function() {
+                        if (this.buffered.length > 0) {
+                            const bufferedEnd = this.buffered.end(this.buffered.length - 1);
+                            const currentTime = this.currentTime;
+                            const bufferAhead = bufferedEnd - currentTime;
+
+                            if (bufferAhead < 5 && this.playbackRate > 1.0) {
+                                this.playbackRate = 1.0;
+                            } else if (bufferAhead > 10) {
+                                this.playbackRate = 1.1;
+                            }
+                        }
+                    });
+                }
+
+                // Universal error handling
+                video.addEventListener('error', function(e) {
+                    console.log('Video loading error:', e);
                 });
             });
         });
