@@ -1878,19 +1878,41 @@ For devices with smaller width like mobile phone
         display: none !important;
     }
 
-    /* Force all sections to be visible on mobile */
+    /* Force all sections to be visible on mobile with elegant spacing */
     #header, #about, #portfolio, #contact {
         display: block !important;
         position: relative !important;
-        border-bottom: 3px solid #7f0024;
-        margin-bottom: 30px;
-        padding-bottom: 30px;
+        padding: 40px 20px;
+        margin-bottom: 0;
     }
 
-    /* Last section doesn't need bottom border */
-    #contact {
-        border-bottom: none;
-        margin-bottom: 0;
+    /* Elegant section separators */
+    #header::after, #about::after, #portfolio::after {
+        content: "";
+        display: block;
+        width: 80%;
+        height: 1px;
+        background: linear-gradient(to right, transparent, #7f0024, transparent);
+        margin: 40px auto;
+    }
+
+    /* Remove header height constraint on mobile */
+    .header-content {
+        height: auto !important;
+        min-height: 60vh;
+        padding: 60px 0 40px 0;
+    }
+
+    /* Fix contact icons being cut off */
+    .contact-content {
+        width: 100% !important;
+        padding: 0 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    .contact-left, .contact-right {
+        width: 100% !important;
+        padding: 10px !important;
     }
 
 
@@ -1928,20 +1950,18 @@ For devices with smaller width like mobile phone
     }
     .header-image{
         display: block;
-        width: 100%;
-        height: auto;
-        position: relative;
-        margin: 30px 0;
+        width: 200px;
+        height: 200px;
+        margin: 20px auto;
         text-align: center;
     }
     .header-image img{
-        height: 250px;
-        width: 250px;
+        height: 200px;
+        width: 200px;
         object-fit: cover;
         border-radius: 50%;
-        border: 3px solid #7f0024;
-        box-shadow: 0 8px 32px rgba(127, 0, 36, 0.3);
-        margin: 0 auto;
+        border: 2px solid #7f0024;
+        box-shadow: 0 4px 20px rgba(127, 0, 36, 0.2);
         display: block;
     }
     .social-media-links{
@@ -2101,15 +2121,15 @@ For devices with smaller width like mobile phone
     padding-bottom: 40px;
     }
     .portfolio-text{
-        width: 90%;
-        padding: 20px;
-        margin: 0%;
-        margin-left: 0px;
-        margin-top: 15px;
+        width: 100%;
+        padding: 25px 20px;
+        margin: 0;
+        margin-top: 20px;
         z-index: 1;
-        background: #080808;
-        border-radius: 8px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        background: rgba(8, 8, 8, 0.95);
+        border-radius: 12px;
+        box-shadow: 0 6px 25px rgba(0,0,0,0.4);
+        border: 1px solid rgba(127, 0, 36, 0.2);
     }
         .portfolio-image{
             position: relative;
@@ -2134,17 +2154,19 @@ For devices with smaller width like mobile phone
                 box-shadow:0px 0px 0px 0px #7f0024 ;
             }
             .portfolio-image img, .portfolio-image video{
-                height: 300px;
+                height: 250px;
                 width: 100%;
                 object-fit: cover;
-                border-radius: 8px;
+                border-radius: 12px;
                 transition: transform 0.3s ease;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
             }
             .portfolio-image{
-                height: 300px;
-                width: 90%;
+                height: 250px;
+                width: 100%;
                 overflow: hidden;
-                border-radius: 8px;
+                border-radius: 12px;
+                margin-bottom: 25px;
             }
             .portfolio-image:hover img, .portfolio-image:hover video {
                 transform: scale(1.05);
@@ -2438,22 +2460,10 @@ for tabs and large phones
         font-size: 40px;
     }
     .header-image{
-        display: block;
-        width: 100%;
-        height: auto;
-        position: relative;
-        margin: 40px 0;
-        text-align: center;
+        display: none;
     }
     .header-image img{
-        height: 350px;
-        width: 350px;
-        object-fit: cover;
-        border-radius: 50%;
-        border: 4px solid #7f0024;
-        box-shadow: 0 12px 40px rgba(127, 0, 36, 0.4);
-        margin: 0 auto;
-        display: block;
+        display: none;
     }
     .social-media-links{
         width: 100%;
