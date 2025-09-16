@@ -766,7 +766,7 @@
     <script src="js/particles.min.js"></script>
     <script src="js/index.js"></script>
     <script>
-        // Mobile-optimized video loading system
+        // Smart video system: autoplay on desktop, click-to-play on mobile
         document.addEventListener('DOMContentLoaded', function() {
             const videoContainers = document.querySelectorAll('.video-container');
             const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -776,63 +776,68 @@
                 const playOverlay = container.querySelector('.play-overlay');
                 const video = container.querySelector('video');
 
-                // Style container for relative positioning
+                // Style container
                 container.style.position = 'relative';
                 container.style.display = 'inline-block';
                 container.style.width = '100%';
 
-                // Click handler for preview image and play button
-                const playVideo = () => {
-                    // Hide preview and overlay
-                    preview.style.display = 'none';
-                    playOverlay.style.display = 'none';
+                if (isMobile) {
+                    // Mobile: Show play button, click-to-play
+                    playOverlay.style.display = 'block';
 
-                    // Show and play video
-                    video.style.display = 'block';
-                    video.preload = 'auto';
+                    const playVideo = () => {
+                        preview.style.display = 'none';
+                        playOverlay.style.display = 'none';
+                        video.style.display = 'block';
+                        video.preload = 'auto';
 
-                    const playPromise = video.play();
-                    if (playPromise !== undefined) {
-                        playPromise.catch(error => {
-                            console.log('Video play failed:', error);
-                            // Fallback: show preview again
+                        video.play().catch(error => {
+                            console.log('Mobile video play failed:', error);
                             preview.style.display = 'block';
                             playOverlay.style.display = 'block';
                             video.style.display = 'none';
                         });
-                    }
-                };
+                    };
 
-                // Add click listeners
-                preview.addEventListener('click', playVideo);
-                playOverlay.addEventListener('click', playVideo);
+                    preview.addEventListener('click', playVideo);
+                    playOverlay.addEventListener('click', playVideo);
+                } else {
+                    // Desktop: Auto-play immediately, no play button
+                    playOverlay.style.display = 'none';
+                    preview.style.display = 'none';
+                    video.style.display = 'block';
+                    video.preload = 'auto';
+                    video.autoplay = true;
 
-                // Hover effects for desktop
-                if (!isMobile) {
-                    playOverlay.addEventListener('mouseenter', function() {
-                        this.style.background = 'rgba(127, 0, 36, 1)';
-                        this.style.transform = 'translate(-50%, -50%) scale(1.05)';
+                    // Enhanced desktop playback
+                    video.addEventListener('canplaythrough', function() {
+                        this.playbackRate = 1.1;
                     });
 
-                    playOverlay.addEventListener('mouseleave', function() {
-                        this.style.background = 'rgba(127, 0, 36, 0.9)';
-                        this.style.transform = 'translate(-50%, -50%) scale(1)';
+                    video.addEventListener('waiting', function() {
+                        this.playbackRate = 1.0;
+                    });
+
+                    video.addEventListener('playing', function() {
+                        if (this.readyState >= 3) {
+                            this.playbackRate = 1.1;
+                        }
                     });
                 }
 
-                // Video event handlers
+                // Universal video handlers
                 video.addEventListener('ended', function() {
-                    // Loop the video manually for better mobile compatibility
                     this.currentTime = 0;
                     this.play().catch(() => {});
                 });
 
                 video.addEventListener('error', function(e) {
                     console.log('Video error:', e);
-                    // Show preview again on error
-                    preview.style.display = 'block';
-                    playOverlay.style.display = 'block';
-                    video.style.display = 'none';
+                    if (isMobile) {
+                        preview.style.display = 'block';
+                        playOverlay.style.display = 'block';
+                        video.style.display = 'none';
+                    }
                 });
             });
         });
