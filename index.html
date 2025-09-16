@@ -496,8 +496,11 @@
                             x5-video-player-type="h5"
                             x5-video-orientation="portraint"
                             x5-video-player-fullscreen="true"
+                            data-desktop="images/x-data-pulse.mp4"
+                            data-mobile="images/x-data-pulse-mobile.mp4"
                             data-setup="{}">
-                            <source src="images/x-data-pulse.mp4" type="video/mp4">
+                            <source src="images/x-data-pulse.mp4" type="video/mp4" class="desktop-video">
+                            <source src="images/x-data-pulse-mobile.mp4" type="video/mp4" class="mobile-video">
                             <source src="images/x-data-pulse.mov" type="video/quicktime">
                             Your browser does not support the video tag.
                         </video>
@@ -521,8 +524,11 @@
                             x5-video-player-type="h5"
                             x5-video-orientation="portraint"
                             x5-video-player-fullscreen="true"
+                            data-desktop="images/x-xata-bill.mp4"
+                            data-mobile="images/x-xata-bill-mobile.mp4"
                             data-setup="{}">
-                            <source src="images/x-xata-bill.mp4" type="video/mp4">
+                            <source src="images/x-xata-bill.mp4" type="video/mp4" class="desktop-video">
+                            <source src="images/x-xata-bill-mobile.mp4" type="video/mp4" class="mobile-video">
                             <source src="images/x-xata-bill.mov" type="video/quicktime">
                             Your browser does not support the video tag.
                         </video>
@@ -547,8 +553,11 @@
                             x5-video-player-type="h5"
                             x5-video-orientation="portraint"
                             x5-video-player-fullscreen="true"
+                            data-desktop="images/unscraper.mp4"
+                            data-mobile="images/unscraper-mobile.mp4"
                             data-setup="{}">
-                            <source src="images/unscraper.mp4" type="video/mp4">
+                            <source src="images/unscraper.mp4" type="video/mp4" class="desktop-video">
+                            <source src="images/unscraper-mobile.mp4" type="video/mp4" class="mobile-video">
                             <source src="images/unscraper.mov" type="video/quicktime">
                             Your browser does not support the video tag.
                         </video>
@@ -798,6 +807,24 @@
                 video.setAttribute('playsinline', 'true');
                 video.setAttribute('webkit-playsinline', 'true');
                 video.setAttribute('muted', 'true');
+
+                // Switch video sources based on device
+                const desktopSrc = video.getAttribute('data-desktop');
+                const mobileSrc = video.getAttribute('data-mobile');
+
+                if (isMobile && mobileSrc) {
+                    // Mobile: use lightweight video
+                    video.src = mobileSrc;
+                    // Remove desktop source to save bandwidth
+                    const desktopSource = video.querySelector('.desktop-video');
+                    if (desktopSource) desktopSource.remove();
+                } else if (!isMobile && desktopSrc) {
+                    // Desktop: use full quality video
+                    video.src = desktopSrc;
+                    // Remove mobile source
+                    const mobileSource = video.querySelector('.mobile-video');
+                    if (mobileSource) mobileSource.remove();
+                }
 
                 if (isMobile) {
                     // Mobile: lighter preload due to data constraints
