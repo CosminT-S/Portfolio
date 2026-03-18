@@ -99,11 +99,7 @@ $(function(){
         gsap.to('#header',0,{display:"none"});
         gsap.to('#blog',0,{display:"none"});
         gsap.to('#portfolio',0,{display:"none"});
-        gsap.to('#breaker',0,{display:"block"});
-        gsap.to('#breaker-two',0,{display:"block",delay:.1});
         gsap.to('#contact',0,{display:"none"});
-        gsap.to('#breaker',0,{display:"none",delay:2});
-        gsap.to('#breaker-two',0,{display:"none",delay:2});
         gsap.to('#about',0,{display:"block",delay:.7});
         gsap.to('#navigation-content',0,{display:'flex',delay:2});
         
@@ -121,22 +117,7 @@ $(function(){
         }, 800);
       }
  })
- $('#contact-link').on('click',function(){
-   if (window.innerWidth > 1025) {
-     gsap.to('#navigation-content',0,{display:"none",delay:.7});
-     gsap.to('#navigation-content',0,{y:'-100%',delay:.7});
-     gsap.to('#header',0,{display:"none"});
-     gsap.to('#about',0,{display:"none"});
-     gsap.to('#blog',0,{display:"none"});
-     gsap.to('#portfolio',0,{display:"none"});
-     gsap.to('#breaker',0,{display:"block"});
-     gsap.to('#breaker-two',0,{display:"block",delay:.1});
-     gsap.to('#breaker',0,{display:"none",delay:2});
-     gsap.to('#breaker-two',0,{display:"none",delay:2});
-     gsap.to('#contact',0,{display:"block",delay:.7});
-     gsap.to('#navigation-content',0,{display:'flex',delay:2});
-   }
-})
+
 $('#portfolio-link').on('click',function(){
   if (window.innerWidth > 1025) {
     gsap.to('#navigation-content',0,{display:"none",delay:.7});
@@ -145,12 +126,21 @@ $('#portfolio-link').on('click',function(){
     gsap.to('#about',0,{display:"none"});
     gsap.to('#contact',0,{display:"none"});
     gsap.to('#blog',0,{display:"none"});
-    gsap.to('#breaker',0,{display:"block"});
-    gsap.to('#breaker-two',0,{display:"block",delay:.1});
-    gsap.to('#breaker',0,{display:"none",delay:2});
-    gsap.to('#breaker-two',0,{display:"none",delay:2});
     gsap.to('#portfolio',0,{display:"block",delay:.7});
     gsap.to('#navigation-content',0,{display:'flex',delay:2});
+    
+    // Initialize particles for portfolio after it becomes visible
+    setTimeout(function() {
+      if (window.pJSDom) {
+        for (var i = window.pJSDom.length - 1; i >= 0; i--) {
+          if (window.pJSDom[i].pJS.canvas.el.id === 'particles-portfolio') {
+            window.pJSDom[i].pJS.fn.vendors.destroypJS();
+            window.pJSDom.splice(i, 1);
+          }
+        }
+      }
+      particlesJS("particles-portfolio", window.particlesCVConfig);
+    }, 800);
   }
 })
 $('#blog-link').on('click',function(){
@@ -161,10 +151,6 @@ $('#blog-link').on('click',function(){
     gsap.to('#about',0,{display:"none"});
     gsap.to('#portfolio',0,{display:"none"});
     gsap.to('#contact',0,{display:"none"});
-    gsap.to('#breaker',0,{display:"block"});
-    gsap.to('#breaker-two',0,{display:"block",delay:.1});
-    gsap.to('#breaker',0,{display:"none",delay:2});
-    gsap.to('#breaker-two',0,{display:"none",delay:2});
     gsap.to('#blog',0,{display:"block",delay:.7});
     gsap.to('#navigation-content',0,{display:'flex',delay:2});
   }
@@ -178,10 +164,6 @@ $('#home-link').on('click',function(){
     gsap.to('#portfolio',0,{display:"none"});
     gsap.to('#contact',0,{display:"none"});
     gsap.to('#blog',0,{display:"none"});
-    gsap.to('#breaker',0,{display:"block"});
-    gsap.to('#breaker-two',0,{display:"block",delay:.1});
-    gsap.to('#breaker',0,{display:"none",delay:2});
-    gsap.to('#breaker-two',0,{display:"none",delay:2});
     gsap.to('#header',0,{display:"block",delay:.7});
     gsap.to('#navigation-content',0,{display:'flex',delay:2});
   }

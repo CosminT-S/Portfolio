@@ -28,12 +28,6 @@
             <span class="color">Cosmin</span>T
         </div>
     <!--loader-end-->
-    <!--link-screen-->
-        <div id="breaker">
-        </div>
-        <div id="breaker-two">
-        </div>
-    <!--link-screen-->
         <!--Main-Section-->
         <!--Navigator-fullscreen-->
         <div id="navigation-content">
@@ -48,7 +42,6 @@
                 <a href="#" data-text="HOME" id="home-link" >HOME</a>
                 <a href="#" data-text="ABOUT" id="about-link" >ABOUT/CV</a>
                 <a href="#" data-text="PORTFOLIO" id="portfolio-link" >PORTFOLIO</a>
-                <a href="#" data-text="CONTACT" id="contact-link" >CONTACT</a>
             </div>
         </div>
         <!--Navigator-Fullscreen END-->
@@ -368,6 +361,7 @@
         <!--portfolio-->
         <!--portfolio-->
         <div id="portfolio">
+            <div id="particles-portfolio"></div>
             <div class="portfolio-header"> <span class="color"> My </span> Portfolio
             <span class ="header-caption"> Some Of My <span class="color"> Work</span></span></div>
              <div id="portfolio-content">
@@ -481,154 +475,7 @@
                  </div>
                 </div>
         <!--portfolio end-->
-        <!--contact-->
-     <div id="contact">
-         <div class="contact-header">Contact <span class="color"> Me</span>
-        <div class="contact-header-caption"> <span class="color"> Get</span> In Touch.</div></div>
-        <div class="contact-content">
-            <!-- Custom Modal -->
-            <style>
-                .modal {
-                    display: none;
-                    position: fixed;
-                    z-index: 1;
-                    left: 0;
-                    top: 0;
-                    width: 100%;
-                    height: 100%;
-                    overflow: auto;
-                    background-color: rgba(0,0,0,0.4);
-                }
-                .modal-content {
-                    background-color: #000000;
-                    position: absolute;
-                    top: 55%;
-                    left: 35%;
-                    transform: translate(-50%, 0);
-                    padding: 20px;
-                    border: none;
-                    width: 10%;
-                    height: 8%;
-                    color: white;
-                    font-family: 'YourFont', poppins;
-                    font-size: 0.95rem;
-                    font-weight: small;
-                }
-                .modal-content:hover {
-                    color: #7f0024; /* White text on hover */
-                }
 
-                .close {
-                    color: #7f0024;
-                    float: right;
-                    font-size: 28px;
-                    font-weight: bold;
-                }
-
-                .close:hover,
-                .close:focus {
-                    color: white;
-                    text-decoration: none;
-                    cursor: pointer;
-                }
-            </style>
-            <div id="customModal" class="modal" style="display:none;">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <p>Please complete all the form fields before submitting.</p>
-                </div>
-            </div>
-            <!--Contact form-->
-             <div class="contact-form">
-                 <div class="form-header">
-                     Message Me
-                 </div>
-                 <form id="myForm" action="#">
-                    <div class="input-line">
-                        <input  id="name" type="text" placeholder="Name" class="input-name">
-                        <input id="email" type="email" placeholder="Email"  class="input-name">
-                    </div>
-                    <input type="text" id="subject" placeholder="subject" class="input-subject">
-                    <textarea id ="body" class="input-textarea" placeholder="message"></textarea>
-                    <button type="button" id="submit" onclick="sendEmail()">Submit</button>
-                 </form>
-             </div>
-             <script>
-                function sendEmail() {
-                    var name = document.getElementById('name').value.trim();
-                    var email = document.getElementById('email').value.trim();
-                    var subject = document.getElementById('subject').value.trim();
-                    var message = document.getElementById('body').value.trim();
-
-                    if (name === '' || email === '' || subject === '' || message === '') {
-                        showModal();
-                        return;
-                    }
-
-                    var emailBody = 'Hello Cosmin,\n\n' + message + '\n\n' + name + '\n' + email;
-
-                    var mailtoLink = 'mailto:cosminturculeanu@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(emailBody);
-
-                    window.location.href = mailtoLink;
-                }
-
-                function showModal() {
-                    var modal = document.getElementById("customModal");
-                    var span = document.getElementsByClassName("close")[0];
-
-                    modal.style.display = "block";
-                    span.onclick = function() {
-                        modal.style.display = "none";
-                    }
-                    window.onclick = function(event) {
-                        if (event.target == modal) {
-                            modal.style.display = "none";
-                        }
-                    }
-                }
-            </script>
-            <!--Contact form-->
-            <!--Contact information-->
-             <div class="contact-info">
-                <div class="contact-info-header">
-                    Contact Info
-                </div>
-                <div class="contact-info-content">
-                <div class="contect-info-content-line">
-                    <img src="./images/icon-name.png" class="icon" alt="name-icon">
-                    <div class="contact-info-icon-text">
-                        <h6>Name</h6>
-                        <p>Cosmin T</p>
-                  </div>
-                </div>
-                <div class="contect-info-content-line">
-                  <img src="./images/icon-location.png" class="icon" alt="location-icon">
-                  <div class="contact-info-icon-text">
-                      <h6>Location</h6>
-                      <p>Romania</p>
-                </div>
-              </div>
-              <div class="contect-info-content-line">
-                  <img src="./images/icon-phone.png" class="icon" alt="phone-icon">
-                  <div class="contact-info-icon-text">
-                      <h6>Call</h6>
-                      <p>+40743233047</p>
-                </div>
-              </div>
-
-              <div class="contect-info-content-line">
-                  <img src="./images/icon-email.png" class="icon" alt="email-icon">
-                  <div class="contact-info-icon-text">
-                      <h6>Email</h6>
-                      <p>cosminturculeanu@gmail.com</p>
-                </div>
-              </div>
-                </div>
-            <!--Contact information end-->
-           </div>
-        </div>
-     </div>
-        <!--contact end-->
 
     <!--copyright-section-->
     <div class="footer">
