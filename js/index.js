@@ -18,18 +18,7 @@ $(window).on('load',function(){
     gsap.to('#navigation-content',0,{display:"flex",delay:1});
   }
 })
-$(function(){
-  $('.color-panel').on("click",function(e) {
-    e.preventDefault();
-    $('.color-changer').toggleClass('color-changer-active');
-});
-$('.colors a').on("click",function(e) {
-  e.preventDefault();
-  var attr = $(this).attr("title");
-  console.log(attr);
-  $('head').append('<link rel="stylesheet" href="css/'+attr+'.css">');
-});
-});
+
 $(function(){
      $('.menubar').on('click',function(){
          // Only show navigation on desktop
@@ -117,6 +106,19 @@ $(function(){
         gsap.to('#breaker-two',0,{display:"none",delay:2});
         gsap.to('#about',0,{display:"block",delay:.7});
         gsap.to('#navigation-content',0,{display:'flex',delay:2});
+        
+        // Initialize particles for CV section after it becomes visible
+        setTimeout(function() {
+          // Destroy existing instance if it exists
+          if (window.pJSDom && window.pJSDom.length > 1) {
+            window.pJSDom[1].pJS.fn.vendors.destroypJS();
+            window.pJSDom.splice(1, 1);
+          }
+          // Initialize with stored config
+          if (window.particlesCVConfig) {
+            particlesJS("particles-cv", window.particlesCVConfig);
+          }
+        }, 800);
       }
  })
  $('#contact-link').on('click',function(){

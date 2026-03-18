@@ -62,7 +62,6 @@ body{
     height: 100vh;
     width: 100%;;
     overflow: hidden;
-    animation: scale 1.5s ease;
     position:relative;
     display: block;
 }
@@ -80,7 +79,7 @@ body{
     height: 100vh;
     width: 100%;
     position:fixed;
-    z-index: 5;
+    z-index: 200;
     background-color:#020202;
     transform: translateY(-200%);
     display: flex;
@@ -92,10 +91,10 @@ body{
     position: fixed;
     height: 100px;
     width: 100%;
-    z-index: 3;
+    z-index: 100;
     padding: 10px;
-    background:transparent;
-    overflow: hidden;
+    background: transparent;
+    overflow: visible;
 }
 .menubar{
     position: absolute;
@@ -204,10 +203,10 @@ body{
     transform: rotate(-45deg);
 }
 #navigation-bar img{
-    height: 80px;
     position: absolute;
-    ;
-    top: 15%;
+    height: 70px;
+    width: auto;
+    top: 20%;
     left: 2.5%;
     opacity: .8;
     transition: all .4s ease;
@@ -216,39 +215,7 @@ body{
     opacity: 1;
     transform:rotate(-45deg);
 }
-.header-image img{
-    height: 100vh;
-    float: right;
-    opacity: 0.9;
-    filter: brightness(0.95) contrast(1.1);
-    transition: all 0.3s ease;
-    mask: linear-gradient(to left, transparent 0%, rgba(0,0,0,0.3) 15%, rgba(0,0,0,0.8) 35%, black 50%);
-    -webkit-mask: linear-gradient(to left, transparent 0%, rgba(0,0,0,0.3) 15%, rgba(0,0,0,0.8) 35%, black 50%);
-}
-.header-image img:hover{
-    opacity: 1;
-    filter: brightness(1) contrast(1.15);
-}
-.header-image{
-    float: right;
-    height: auto;
-    background-size: cover;
-    background-position: center;
-    width: 40%;
-    height: 100vh;
-    position: relative;
-}
-.header-image::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to left, transparent 0%, rgba(0,0,0,0.1) 20%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.6) 80%);
-    pointer-events: none;
-    z-index: 1;
-}
+
 .header-content{
     height: 100vh;
     width: 100%;
@@ -276,6 +243,127 @@ body{
 /* Hide mobile profile image on desktop */
 .header-profile-image {
     display: none;
+}
+
+/* Header Image - Particle Integration Effect with Circular Frame */
+.header-image {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 70vh;
+    width: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.header-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    object-position: center center;
+    border-radius: 50%;
+    
+    /* Crescent moon effect - circular shape with left side fading to transparent */
+    mask-image: 
+        radial-gradient(circle at 50% 50%, black 60%, transparent 60%),
+        linear-gradient(
+            to right,
+            transparent 0%,
+            transparent 15%,
+            rgba(0, 0, 0, 0.2) 25%,
+            rgba(0, 0, 0, 0.4) 30%,
+            rgba(0, 0, 0, 0.6) 35%,
+            rgba(0, 0, 0, 0.8) 40%,
+            black 45%
+        );
+    -webkit-mask-image: 
+        radial-gradient(circle at 50% 50%, black 60%, transparent 60%),
+        linear-gradient(
+            to right,
+            transparent 0%,
+            transparent 15%,
+            rgba(0, 0, 0, 0.2) 25%,
+            rgba(0, 0, 0, 0.4) 30%,
+            rgba(0, 0, 0, 0.6) 35%,
+            rgba(0, 0, 0, 0.8) 40%,
+            black 45%
+        );
+    mask-composite: intersect;
+    -webkit-mask-composite: source-in;
+    
+    /* Subtle entrance animation */
+    animation: imageReveal 1.5s ease-out forwards;
+}
+
+/* Gold ring - visible on right side, fades on left */
+.header-image::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    pointer-events: none;
+    
+    /* Create the ring using box-shadow instead of border for better masking */
+    background: transparent;
+    box-shadow: 
+        inset 0 0 0 2px rgba(212, 175, 55, 0.4),
+        0 0 30px rgba(212, 175, 55, 0.2),
+        inset 0 0 30px rgba(212, 175, 55, 0.1);
+    
+    animation: ringGlow 3s ease-in-out infinite;
+    
+    /* Apply crescent moon mask - same as image */
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 15%,
+        rgba(0, 0, 0, 0.2) 25%,
+        rgba(0, 0, 0, 0.4) 30%,
+        rgba(0, 0, 0, 0.6) 35%,
+        rgba(0, 0, 0, 0.8) 40%,
+        black 45%
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 15%,
+        rgba(0, 0, 0, 0.2) 25%,
+        rgba(0, 0, 0, 0.4) 30%,
+        rgba(0, 0, 0, 0.6) 35%,
+        rgba(0, 0, 0, 0.8) 40%,
+        black 45%
+    );
+}
+
+@keyframes imageReveal {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes ringGlow {
+    0%, 100% {
+        opacity: 0.5;
+        box-shadow: 
+            0 0 30px rgba(212, 175, 55, 0.2),
+            inset 0 0 30px rgba(212, 175, 55, 0.1);
+    }
+    50% {
+        opacity: 0.8;
+        box-shadow: 
+            0 0 50px rgba(212, 175, 55, 0.4),
+            inset 0 0 50px rgba(212, 175, 55, 0.2);
+    }
 }
 .header-content .firstline{
     z-index: 2;
@@ -383,28 +471,32 @@ body{
 }
 .contact{
     display: flex;
-    position: absolute;
-    width: 10%;
-    right: 0;
-    top: 0;
-    height: 100%;
+    position: fixed;
+    right: 20px;
+    bottom: 120px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    z-index: 3;
+    z-index: 50;
+    gap: 15px;
 }
 .contact a{
     z-index: 3;
 }
-.contact img{
+.contact img,
+.contact svg{
     margin:10px;
     height:30px;
+    width: 30px;
     opacity: .6;
     transition: all .4s ease;
+    color: #e8e8e8;
 }
-.contact img:hover{
+.contact img:hover,
+.contact svg:hover{
     opacity: 1;
     transform: scale(1.1);
+    color: #d4af37;
 }
 #breaker{
     height: 10px;
@@ -492,7 +584,8 @@ body{
     display: none;
     width: 100%;
     height: auto;
-    overflow: hidden;
+    overflow: visible;
+    position: relative;
 }
 @keyframes scale{
     0%{
@@ -1774,7 +1867,7 @@ form button:hover{
     position: fixed;
     right:-150px;
     top:85%;
-    z-index: 4;
+    z-index: 50;
     color:black;
     transition:all .4s ease;
 }
@@ -1987,12 +2080,7 @@ For devices with smaller width like mobile phone
     .contact{
         display: flex;
     }
-    .header-image{
-        display: none !important;
-    }
-    .header-image img{
-        display: none !important;
-    }
+
 
     .header-profile-image {
         display: block;
@@ -2532,12 +2620,7 @@ for tabs and large phones
         letter-spacing: 2px;
         font-size: 40px;
     }
-    .header-image{
-        display: none;
-    }
-    .header-image img{
-        display: none;
-    }
+
     .social-media-links{
         width: 100%;
         left: 0;

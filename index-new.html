@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cosmin T - Operations × Engineering Portfolio" />
+    <meta name="author" content="Cosmin T" />
+    <title>Cosmin T — Operations × Engineering</title>
+    
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    
+    <style>
+        :root {
+            --noir: #0a0a0a;
+            --charcoal: #1a1a1a;
+            --slate: #2a2a2a;
+            --smoke: #404040;
+            --ash: #707070;
+            --pearl: #e8e8e8;
+            --ivory: #f5f5f5;
+            --gold: #d4af37;
+            --bronze: #cd7f32;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -10%); }
+            20% { transform: translate(-15%, 5%); }
+            30% { transform: translate(7%, -25%); }
+            40% { transform: translate(-5%, 25%); }
+            50% { transform: translate(-15%, 10%); }
+            60% { transform: translate(15%, 0%); }
+            70% { transform: translate(0%, 15%); }
+            80% { transform: translate(3%, 35%); }
+            90% { transform: translate(-10%, 10%); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes drawLine {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--noir);
+            color: var(--pearl);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,.03) 2px, rgba(255,255,255,.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,.03) 2px, rgba(255,255,255,.03) 4px);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="3.5" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.08"/></svg>');
+            opacity: 0.4;
+            pointer-events: none;
+            animation: grain 8s steps(10) infinite;
+            z-index: 1;
+        }
+
+        /* Loader */
+        #loader {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: fixed;
+            z-index: 100;
+            font-family: 'Playfair Display', serif;
+            background-color: var(--charcoal);
+            color: var(--ivory);
+            font-size: 70px;
+            width: 100%;
+            font-weight: 900;
+        }
+
+        .loader-text {
+            background: linear-gradient(135deg, var(--ivory) 0%, var(--ash) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .loader-color {
+            color: var(--gold);
+        }
+
+        /* Navigation Bar */
+        #navigation-bar {
+            position: fixed;
+            height: 100px;
+            width: 100%;
+            z-index: 50;
+            padding: 20px 40px;
+            background: transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 80px;
+            opacity: 0.8;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .logo img:hover {
+            opacity: 1;
+            transform: rotate(-45deg);
+        }
+
+        .menubar {
+            cursor: pointer;
+            opacity: 0.8;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .menubar span {
+            background-color: var(--pearl);
+            height: 2px;
+            width: 35px;
+            display: block;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .menubar:hover {
+            opacity: 1;
+        }
+
+        .menubar:hover .first-span {
+            width: 35px;
+        }
+
+        .menubar:hover .second-span {
+            width: 35px;
+        }
+
+        .first-span {
+            width: 20px;
+        }
+
+        .second-span {
+            width: 28px;
+        }
+
+        /* Navigation Content */
+        #navigation-content {
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            z-index: 60;
+            background-color: var(--charcoal);
+            transform: translateY(-100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #navigation-content.active {
+            transform: translateY(0);
+        }
+
+        .navigation-close {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .navigation-close:hover {
+            opacity: 1;
+            transform: rotate(90deg);
+        }
+
+        .close-first,
+        .close-second {
+            height: 2px;
+            width: 35px;
+            background-color: var(--pearl);
+            display: block;
+            margin: 4px;
+            border-radius: 20px;
+        }
+
+        .close-first {
+            transform: rotate(45deg);
+        }
+
+        .close-second {
+            transform: rotate(-45deg);
+            margin-top: -6px;
+        }
+
+        .navigation-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .navigation-links a {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--pearl);
+            opacity: 0.7;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .navigation-links a:hover {
+            opacity: 1;
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        #header {
+            background: var(--noir);
+            min-height: 100vh;
+            width: 100%;
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 40%;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        #particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .header-content {
+            z-index: 3;
+            position: relative;
+            padding-right: 60px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 500;
+            animation: slideInLeft 0.8s ease-out 0.2s both;
+        }
+
+        .hero-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 900;
+            line-height: 0.95;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--ivory) 0%, var(--ash) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInLeft 0.8s ease-out 0.3s both;
+        }
+
+        .hero-title {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-weight: 300;
+            color: var(--ash);
+            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            animation: slideInLeft 0.8s ease-out 0.4s both;
+        }
+
+        .hero-title .txt-rotate {
+            color: var(--gold);
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        .slash {
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .hero-statement {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--ash);
+            max-width: 650px;
+            margin-bottom: 35px;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .hero-statement strong {
+            color: var(--pearl);
+            font-weight: 600;
+        }
+
+        .social-media-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+
+        .social-media {
+            width: 24px;
+            height: 24px;
+            opacity: 0.6;
+            transition: all 0.4s ease;
+            filter: brightness(0) invert(1);
+        }
+
+        .social-media:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .contact-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contactpic {
+            width: 30px;
+            height: 30px;
+            opacity: 0.6;
+            transition: all 0.4s ease;
+            filter: brightness(0) invert(1);
+        }
+
+        .contactpic:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Header Image */
+        .header-image {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+            animation: slideInRight 0.8s ease-out 0.5s both;
+        }
+
+        .header-image img {
+            height: 100vh;
+            width: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+            filter: grayscale(100%) contrast(1.1);
+            transition: filter 0.6s ease;
+            mask: linear-gradient(to left, transparent 0%, rgba(0,0,0,0.3) 15%, rgba(0,0,0,0.8) 35%, black 50%);
+            -webkit-mask: linear-gradient(to left, transparent 0%, rgba(0,0,0,0.3) 15%, rgba(0,0,0,0.8) 35%, black 50%);
+        }
+
+        .header-image img:hover {
+            filter: grayscale(0%) contrast(1);
+        }
+
+        .header-image::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to left, transparent 0%, rgba(0,0,0,0.1) 20%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.6) 80%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Main Content Container */
+        .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-content {
+            padding: 80px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 100px;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 20px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--ivory);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            height: 2px;
+            width: 100px;
+            background: var(--gold);
+            animation: drawLine 1s ease-out forwards;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--charcoal);
+            border: 1px solid var(--slate);
+            padding: 40px 30px;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: scaleIn 0.6s ease-out both;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-card:hover::before {
+            width: 100%;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--slate);
+            border-radius: 50%;
+        }
+
+        .service-icon img {
+            width: 35px;
+            height: 35px;
+            filter: brightness(0) invert(1);
+            opacity: 0.8;
+        }
+
+        .service-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .service-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--ivory);
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .service-description {
+            color: var(--ash);
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+        }
+
+        .portfolio-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .portfolio-item:nth-child(1) { animation-delay: 0.1s; }
+        .portfolio-item:nth-child(2) { animation-delay: 0.2s; }
+        .portfolio-item:nth-child(3) { animation-delay: 0.3s; }
+
+        .portfolio-item:nth-child(even) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .portfolio-item:nth-child(even) .portfolio-image {
+            order: 2;
+        }
+
+        .portfolio-item:nth-child(even) .portfolio-text {
+            order: 1;
+        }
+
+        .portfolio-image {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--slate);
+            background: var(--charcoal);
+        }
+
+        .portfolio-image video {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-image:hover video {
+            transform: scale(1.05);
+        }
+
+        .portfolio-text {
+            padding: 20px;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .project-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--ivory);
+        }
+
+        .status-badge {
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .status-badge.in-progress {
+            color: var(--gold);
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .status-badge.completed {
+            color: #4caf50;
+            border-color: #4caf50;
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        .portfolio-text p {
+            color: var(--ash);
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .portfolio-text .color {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .portfolio-button {
+            display: inline-block;
+            padding: 12px 28px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            background: transparent;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .portfolio-button:hover {
+            color: var(--noir);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .portfolio-button:hover::before {
+            left: 0;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: var(--charcoal);
+            padding: 80px 40px;
+            margin-top: 100px;
+        }
+
+        .contact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-form {
+            background: var(--noir);
+            padding: 40px;
+            border: 1px solid var(--slate);
+        }
+
+        .form-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--ivory);
+            margin-bottom: 30px;
+        }
+
+        .input-line {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 15px;
+            background: var(--charcoal);
+            border: 1px solid var(--slate);
+            color: var(--pearl);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .input-subject {
+            margin-bottom: 20px;
+        }
+
+        .input-textarea {
+            min-height: 150px;
+            resize: vertical;
+            margin-bottom: 20px;
+        }
+
+        #submit {
+            width: 100%;
+            padding: 15px;
+            background: var(--gold);
+            border: none;
+            color: var(--noir);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        #submit:hover {
+            background: var(--ivory);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-info-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--ivory);
+            margin-bottom: 10px;
+        }
+
+        .contact-info-content-line {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: var(--noir);
+            border: 1px solid var(--slate);
+            transition: all 0.3s ease;
+        }
+
+        .contact-info-content-line:hover {
+            border-color: var(--gold);
+            transform: translateX(5px);
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) invert(1);
+            opacity: 0.8;
+        }
+
+        .contact-info-icon-text h6 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .contact-info-icon-text p {
+            color: var(--pearl);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--slate);
+            color: var(--ash);
+            font-size: 0.85rem;
+        }
+
+        .footer-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .footer-text img {
+            height: 14px;
+            filter: brightness(0) invert(0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            #header {
+                grid-template-columns: 1fr;
+                min-height: auto;
+                padding: 100px 40px 60px;
+            }
+
+            .header-image {
+                display: none;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-item,
+            .portfolio-item:nth-child(even) {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-item:nth-child(even) .portfolio-image,
+            .portfolio-item:nth-child(even) .portfolio-text {
+                order: initial;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #navigation-bar {
+                padding: 20px 25px;
+            }
+
+            .hero-name {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .main-content {
+                padding: 60px 25px;
+            }
+
+            .input-line {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            background-color: var(--charcoal);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 40px;
+            border: 1px solid var(--gold);
+            color: var(--pearl);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            max-width: 400px;
+        }
+
+        .close {
+            color: var(--gold);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .close:hover {
+            color: var(--ivory);
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
+</head>
+<body>
+    <div id="all">
+        <!-- Loader -->
+        <div id="loader">
+            <span class="loader-text"><span class="loader-color">Cosmin</span> T</span>
+        </div>
+
+        <!-- Navigation Bar -->
+        <div id="navigation-bar">
+            <div class="logo">
+                <img src="images/Cosmin-T logo.png" alt="logo">
+            </div>
+            <div class="menubar">
+                <span class="first-span"></span>
+                <span class="second-span"></span>
+                <span class="third-span"></span>
+            </div>
+        </div>
+
+        <!-- Navigation Content -->
+        <div id="navigation-content">
+            <div class="logo">
+                <img src="images/Cosmin-T logo.png" alt="logo">
+            </div>
+            <div class="navigation-close">
+                <span class="close-first"></span>
+                <span class="close-second"></span>
+            </div>
+            <div class="navigation-links">
+                <a href="#header" data-section="header">HOME</a>
+                <a href="#about" data-section="about">ABOUT/CV</a>
+                <a href="#portfolio" data-section="portfolio">PORTFOLIO</a>
+                <a href="#contact" data-section="contact">CONTACT</a>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Hero Section -->
+            <section id="header">
+                <div id="particles"></div>
+                
+                <div class="header-content">
+                    <div class="eyebrow">Operations × Engineering</div>
+                    <h1 class="hero-name">Cosmin<br>Turculeanu</h1>
+                    <p class="hero-title">
+                        I'm a <span class="txt-rotate" data-period="1200" data-rotate='[" Python Developer.", " Product Strategist.", " Process Optimizer."]'></span><span class="slash">|</span>
+                    </p>
+                    
+                    <div class="hero-statement">
+                        Python Developer with <strong>2.5+ years</strong> of experience building automation tools that reduced task processing time by <strong>80%</strong>. Currently developing a multi-company SaaS ticketing platform while managing regional business operations with proven results in process optimization and team leadership.
+                    </div>
+
+                    <div class="social-media-links">
+                        <a href="https://www.instagram.com/yuu.hiiro?igshid=MmVlMjlkMTBhMg%3D%3D&utm_source=qr" target="_blank">
+                            <img src="images/instagram logo.png" class="social-media" alt="instagram">
+                        </a>
+                        <a href="https://github.com/Cosmin-T?tab=repositories" target="_blank">
+                            <img src="images/github-mark-white logo.png" class="social-media" alt="github">
+                        </a>
+                        <a href="https://www.linkedin.com/in/cosmin-turculeanu-b03677a0/" target="_blank">
+                            <img src="images/linkedin logo.png" class="social-media" alt="linkedin">
+                        </a>
+                    </div>
+
+                    <div class="contact-icons">
+                        <a href="mailto:cosminturculeanu@gmail.com">
+                            <img src="images/mail.png" alt="email" class="contactpic">
+                        </a>
+                        <a href="tel:+40743233047">
+                            <img src="images/call.png" alt="phone" class="contactpic">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="header-image">
+                    <img src="images/Cosmin-T.png" alt="Cosmin T">
+                </div>
+            </section>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Services Section -->
+                <section class="section" id="about">
+                    <div class="section-header">
+                        <h2 class="section-title">My Services</h2>
+                    </div>
+
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <img src="images/coding.png" alt="coding">
+                            </div>
+                            <div class="service-label">Automation</div>
+                            <h3 class="service-title">Process Optimization</h3>
+                            <p class="service-description">
+                                With my expertise in Python and workflow automation, I develop solutions that streamline business processes. I've successfully built automated reporting systems and process optimization tools that achieve over 80% reduction in task completion times and 10% revenue growth.
+                            </p>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <img src="images/instagram.png" alt="saas">
+                            </div>
+                            <div class="service-label">Development</div>
+                            <h3 class="service-title">SaaS Development</h3>
+                            <p class="service-description">
+                                My expertise with Python's FastAPI framework enables me to develop scalable web applications. Currently architecting "x-Data Pulse", a multi-company SaaS ticketing platform with real-time WebSocket functionality, Google OAuth authentication, and enterprise-grade access control.
+                            </p>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <img src="images/bulb.png" alt="data">
+                            </div>
+                            <div class="service-label">Data</div>
+                            <h3 class="service-title">Data Extraction & Processing</h3>
+                            <p class="service-description">
+                                I specialize in developing data extraction tools using Python frameworks like Selenium and Playwright. These solutions have directly boosted team productivity by 8% and contributed to a measurable 10% increase in financial performance through streamlined workflows.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Portfolio Section -->
+                <section class="section" id="portfolio">
+                    <div class="section-header">
+                        <h2 class="section-title">My Portfolio</h2>
+                    </div>
+
+                    <div class="portfolio-grid">
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">
+                                <video autoplay muted playsinline loop preload="metadata">
+                                    <source src="images/x-data-pulse.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="portfolio-text">
+                                <div class="project-header">
+                                    <h2>x-Data Pulse</h2>
+                                    <div class="status-badge in-progress">In Progress</div>
+                                </div>
+                                <p>
+                                    A comprehensive FastAPI-based <span class="color">multi-company SaaS ticketing platform</span> designed for enterprise support systems. Features real-time WebSocket functionality for instant updates, Google OAuth authentication, and sophisticated access control for multiple organizations. Built with modern Python frameworks, it offers scalable architecture for growing businesses with comprehensive audit logging and multi-tenant data isolation.
+                                </p>
+                                <a href="mailto:cosmin.turculeanu@gmail.com?subject=Demo Request - x-Data Pulse" class="portfolio-button">
+                                    Email for Demo
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">
+                                <video autoplay muted playsinline loop preload="metadata">
+                                    <source src="images/x-xata-bill.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="portfolio-text">
+                                <div class="project-header">
+                                    <h2>x-Data Bill Manager</h2>
+                                    <div class="status-badge completed">Completed</div>
+                                </div>
+                                <p>
+                                    A FastAPI-based bill management system that provides comprehensive financial tracking and management capabilities. Built with modern web technologies including FastAPI for robust backend functionality, the system offers user authentication, bill creation and management, expense tracking, and data visualization features. The application features a clean, intuitive interface for managing personal and business finances.
+                                </p>
+                                <a href="mailto:cosmin.turculeanu@gmail.com?subject=Demo Request - x-Data Bill Manager" class="portfolio-button">
+                                    Email for Demo
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">
+                                <video autoplay muted playsinline loop preload="metadata">
+                                    <source src="images/unscraper.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="portfolio-text">
+                                <div class="project-header">
+                                    <h2>UnScraper</h2>
+                                    <div class="status-badge completed">Completed</div>
+                                </div>
+                                <p>
+                                    UnScrape is a web scraping tool that automates data extraction from publicly accessible websites. It leverages intelligent algorithms to identify and collect valuable information without requiring manual configuration or coding. The tool handles complex webpage structures efficiently and provides a streamlined alternative to traditional scraping methods for public web content.
+                                </p>
+                                <a href="mailto:cosmin.turculeanu@gmail.com?subject=Demo Request - UnScraper" class="portfolio-button">
+                                    Email for Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Contact Section -->
+            <section id="contact">
+                <div class="section-header" style="margin-bottom: 60px;">
+                    <h2 class="section-title">Contact Me</h2>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-form">
+                        <div class="form-header">Message Me</div>
+                        <form id="myForm">
+                            <div class="input-line">
+                                <input id="name" type="text" placeholder="Name" class="input-name">
+                                <input id="email" type="email" placeholder="Email" class="input-name">
+                            </div>
+                            <input type="text" id="subject" placeholder="Subject" class="input-subject">
+                            <textarea id="body" class="input-textarea" placeholder="Message"></textarea>
+                            <button type="button" id="submit" onclick="sendEmail()">Submit</button>
+                        </form>
+                    </div>
+
+                    <div class="contact-info">
+                        <div class="contact-info-header">Contact Info</div>
+                        <div class="contact-info-content">
+                            <div class="contact-info-content-line">
+                                <img src="./images/icon-name.png" class="icon" alt="name">
+                                <div class="contact-info-icon-text">
+                                    <h6>Name</h6>
+                                    <p>Cosmin T</p>
+                                </div>
+                            </div>
+                            <div class="contact-info-content-line">
+                                <img src="./images/icon-location.png" class="icon" alt="location">
+                                <div class="contact-info-icon-text">
+                                    <h6>Location</h6>
+                                    <p>Romania</p>
+                                </div>
+                            </div>
+                            <div class="contact-info-content-line">
+                                <img src="./images/icon-phone.png" class="icon" alt="phone">
+                                <div class="contact-info-icon-text">
+                                    <h6>Call</h6>
+                                    <p>+40743233047</p>
+                                </div>
+                            </div>
+                            <div class="contact-info-content-line">
+                                <img src="./images/icon-email.png" class="icon" alt="email">
+                                <div class="contact-info-icon-text">
+                                    <h6>Email</h6>
+                                    <p>cosminturculeanu@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <div class="footer">
+                <div class="footer-text">
+                    <img src="./images/copyright.png" alt="copyright"> Cosmin T
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="customModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Please complete all the form fields before submitting.</p>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/particles.min.js"></script>
+    <script>
+        // Loader
+        window.addEventListener('load', function() {
+            gsap.to('#loader', 1, {y: "-100%", opacity: 0});
+            gsap.to('#loader', 0, {display: "none", delay: 1});
+        });
+
+        // Text Rotation
+        var TxtRotate = function(el, toRotate, period) {
+            this.toRotate = toRotate;
+            this.el = el;
+            this.loopNum = 0;
+            this.period = parseInt(period, 10) || 2000;
+            this.txt = '';
+            this.tick();
+            this.isDeleting = false;
+        };
+
+        TxtRotate.prototype.tick = function() {
+            var i = this.loopNum % this.toRotate.length;
+            var fullTxt = this.toRotate[i];
+
+            if (this.isDeleting) {
+                this.txt = fullTxt.substring(0, this.txt.length - 1);
+            } else {
+                this.txt = fullTxt.substring(0, this.txt.length + 1);
+            }
+
+            this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+            var that = this;
+            var delta = 200 - Math.random() * 100;
+
+            if (this.isDeleting) { delta /= 2; }
+
+            if (!this.isDeleting && this.txt === fullTxt) {
+                delta = this.period;
+                this.isDeleting = true;
+            } else if (this.isDeleting && this.txt === '') {
+                this.isDeleting = false;
+                this.loopNum++;
+                delta = 100;
+            }
+
+            setTimeout(function() {
+                that.tick();
+            }, delta);
+        };
+
+        window.onload = function() {
+            var elements = document.getElementsByClassName('txt-rotate');
+            for (var i = 0; i < elements.length; i++) {
+                var toRotate = elements[i].getAttribute('data-rotate');
+                var period = elements[i].getAttribute('data-period');
+                if (toRotate) {
+                    new TxtRotate(elements[i], JSON.parse(toRotate), period);
+                }
+            }
+        };
+
+        // Navigation
+        document.querySelector('.menubar').addEventListener('click', function() {
+            document.getElementById('navigation-content').classList.add('active');
+        });
+
+        document.querySelector('.navigation-close').addEventListener('click', function() {
+            document.getElementById('navigation-content').classList.remove('active');
+        });
+
+        document.querySelectorAll('.navigation-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.getElementById('navigation-content').classList.remove('active');
+                
+                setTimeout(() => {
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }, 300);
+            });
+        });
+
+        // Contact Form
+        function sendEmail() {
+            var name = document.getElementById('name').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var subject = document.getElementById('subject').value.trim();
+            var message = document.getElementById('body').value.trim();
+
+            if (name === '' || email === '' || subject === '' || message === '') {
+                showModal();
+                return;
+            }
+
+            var emailBody = 'Hello Cosmin,\n\n' + message + '\n\n' + name + '\n' + email;
+            var mailtoLink = 'mailto:cosminturculeanu@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(emailBody);
+            window.location.href = mailtoLink;
+        }
+
+        function showModal() {
+            var modal = document.getElementById("customModal");
+            var span = document.getElementsByClassName("close")[0];
+
+            modal.style.display = "block";
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+
+        // Particles
+        particlesJS("particles", {
+            "particles": {
+                "number": {"value": 40, "density": {"enable": true, "value_area": 800}},
+                "color": {"value": "#d4af37"},
+                "shape": {
+                    "type": "circle",
+                    "stroke": {"width": 0, "color": "#000000"}
+                },
+                "opacity": {"value": 0.3, "random": false},
+                "size": {"value": 3, "random": true},
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#d4af37",
+                    "opacity": 0.2,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {"enable": true, "mode": "repulse"},
+                    "onclick": {"enable": true, "mode": "push"},
+                    "resize": true
+                },
+                "modes": {
+                    "repulse": {"distance": 100, "duration": 0.4},
+                    "push": {"particles_nb": 4}
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>

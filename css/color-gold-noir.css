@@ -1,0 +1,1105 @@
+/* 
+ * Gold Noir Theme - Black HTML Aesthetic
+ * Replaces red (#7f0024) with gold (#d4af37)
+ * Adds Playfair Display, grain texture, and refined styling
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+    --noir: #0a0a0a;
+    --charcoal: #1a1a1a;
+    --slate: #2a2a2a;
+    --smoke: #404040;
+    --ash: #707070;
+    --pearl: #e8e8e8;
+    --ivory: #f5f5f5;
+    --gold: #d4af37;
+    --bronze: #cd7f32;
+}
+
+/* Override all red colors with gold */
+.color {
+    color: var(--gold) !important;
+}
+
+.color-bg {
+    background: var(--gold) !important;
+}
+
+.color-border {
+    border-color: var(--gold) !important;
+}
+
+.color-text {
+    color: var(--gold) !important;
+}
+
+/* Grain texture overlay */
+body::after {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="3.5" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.08"/></svg>');
+    opacity: 0.4;
+    pointer-events: none;
+    animation: grain 8s steps(10) infinite;
+    z-index: 1;
+}
+
+@keyframes grain {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-5%, -10%); }
+    20% { transform: translate(-15%, 5%); }
+    30% { transform: translate(7%, -25%); }
+    40% { transform: translate(-5%, 25%); }
+    50% { transform: translate(-15%, 10%); }
+    60% { transform: translate(15%, 0%); }
+    70% { transform: translate(0%, 15%); }
+    80% { transform: translate(3%, 35%); }
+    90% { transform: translate(-10%, 10%); }
+}
+
+/* Grid pattern overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,.02) 2px, rgba(255,255,255,.02) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,.02) 2px, rgba(255,255,255,.02) 4px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Typography - Playfair Display for headings */
+.firstline,
+.hero-name,
+.about-header,
+.services-heading,
+.portfolio-header,
+.blog-header,
+.contact-header,
+.skills-header,
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 700 !important;
+}
+
+/* Loader with Playfair */
+#loader {
+    font-family: 'Playfair Display', serif !important;
+    background: linear-gradient(135deg, var(--charcoal) 0%, var(--noir) 100%);
+}
+
+/* Navigation links with Playfair */
+.navigation-links a {
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 700 !important;
+}
+
+/* Body text with DM Sans */
+body,
+.secondline,
+.about-text,
+.service-description p,
+.portfolio-text p,
+input,
+textarea {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Monospace for labels */
+.eyebrow,
+.service-label,
+.status-badge,
+button,
+.cv a button {
+    font-family: 'JetBrains Mono', monospace !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+}
+
+/* Gold color replacements */
+#breaker,
+#breaker-two {
+    background-color: var(--gold) !important;
+}
+
+.cv a button {
+    background: var(--gold) !important;
+    border: 2px solid var(--gold) !important;
+    color: var(--noir) !important;
+}
+
+.cv a button:hover {
+    background: var(--ivory) !important;
+    color: var(--noir) !important;
+}
+
+#submit {
+    background: var(--gold) !important;
+    color: var(--noir) !important;
+}
+
+#submit:hover {
+    background: var(--ivory) !important;
+}
+
+.service-img img {
+    border: 0px solid var(--gold) !important;
+    background: var(--gold) !important;
+    box-shadow: 0px 0px 0px 0px var(--gold) !important;
+}
+
+.service:hover .service-img img {
+    box-shadow: 0px 0px 0px 400px var(--gold) !important;
+}
+
+.portfolio-text h2 {
+    color: var(--gold) !important;
+}
+
+.portfolio-text button {
+    color: var(--gold) !important;
+    border: 1.5px solid var(--gold) !important;
+}
+
+.portfolio-text button::before {
+    background: var(--gold) !important;
+}
+
+.blog-date {
+    background: var(--gold) !important;
+}
+
+.footer {
+    border-top: 2px solid var(--gold) !important;
+}
+
+/* Progress bars */
+.python-progress,
+.django-progress,
+.pandas-progress,
+.sql-progress,
+.selenium-progress,
+.playwright-progress,
+.product-strategy-progress,
+.process-optimization-progress,
+.team-leadership-progress,
+.sql-pandas-progress,
+.fastapi-progress,
+.requirements-analysis-progress,
+.user-centered-design-progress,
+.project-management-progress,
+.workflow-automation-progress,
+.data-driven-decisions-progress {
+    background: var(--gold) !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar-thumb {
+    background: var(--gold) !important;
+}
+
+/* Mobile borders */
+@media all and (max-width: 1025px) and (min-width: 551px) {
+    #header, #about, #portfolio {
+        border-bottom: 3px solid var(--gold) !important;
+    }
+}
+
+/* Header/Homepage styling */
+#header {
+    position: relative !important;
+    background: var(--noir) !important;
+}
+
+#particles {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+}
+
+#particles canvas {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Enhanced shadows and depth */
+.service {
+    box-shadow: 0px 0px 25px rgba(212, 175, 55, 0.05) !important;
+    border: 1px solid var(--slate);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service:hover {
+    box-shadow: 0px 15px 40px rgba(212, 175, 55, 0.2) !important;
+    border-color: var(--gold);
+    transform: translateY(-5px);
+}
+
+/* Portfolio cards enhancement */
+.portfolio {
+    position: relative;
+}
+
+.portfolio::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    opacity: 0.3;
+}
+
+/* Status badges */
+.status-badge {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.7rem !important;
+    letter-spacing: 0.1em !important;
+}
+
+.status-badge.in-progress {
+    color: var(--gold) !important;
+    border-color: var(--gold) !important;
+    background: rgba(212, 175, 55, 0.1) !important;
+}
+
+.status-badge.completed {
+    color: #4caf50 !important;
+    border-color: #4caf50 !important;
+    background: rgba(76, 175, 80, 0.1) !important;
+}
+
+/* Contact form styling */
+input,
+textarea {
+    background: var(--charcoal) !important;
+    border: 1px solid var(--slate) !important;
+    color: var(--pearl) !important;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--gold) !important;
+    outline: none !important;
+}
+
+/* Contact info cards */
+.contact-info-content-line {
+    background: var(--noir) !important;
+    border: 1px solid var(--slate) !important;
+    transition: all 0.3s ease;
+}
+
+.contact-info-content-line:hover {
+    border-color: var(--gold) !important;
+    transform: translateX(5px);
+}
+
+.contact-info-icon-text h6 {
+    color: var(--gold) !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.7rem !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+}
+
+/* Modal styling */
+.modal-content {
+    background-color: var(--charcoal) !important;
+    border: 1px solid var(--gold) !important;
+    color: var(--pearl) !important;
+}
+
+.close {
+    color: var(--gold) !important;
+}
+
+.close:hover {
+    color: var(--ivory) !important;
+}
+
+/* About delimiter */
+.about-delimiter {
+    background: var(--gold) !important;
+}
+
+/* Achievement numbers */
+.achievement-number {
+    color: var(--gold) !important;
+}
+
+/* Refined animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Section headers with underline */
+.about-header::after,
+.services-heading::after,
+.portfolio-header::after,
+.skills-header::after,
+.contact-header::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: var(--gold);
+    margin: 15px auto 0;
+    animation: drawLine 1s ease-out forwards;
+}
+
+@keyframes drawLine {
+    from {
+        width: 0;
+    }
+    to {
+        width: 80px;
+    }
+}
+
+/* Remove any mask overrides - let index.css handle it */
+
+/* Enhanced hover states */
+.social-media:hover,
+.contactpic:hover {
+    filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(25deg);
+    transform: scale(1.15);
+}
+
+/* Navigation enhancement */
+.navigation-links a:hover {
+    color: var(--gold) !important;
+}
+
+.navigation-links a::before {
+    color: rgba(212, 175, 55, 0.1) !important;
+}
+
+/* Logo hover */
+.logo img:hover,
+#navigation-bar img:hover {
+    filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.3));
+}
+
+/* Menubar enhancement */
+.menubar .first-span::before,
+.menubar .second-span::before,
+.menubar .third-span::before {
+    background-color: var(--pearl) !important;
+}
+
+.menubar:hover {
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.2));
+}
+
+/* Portfolio button enhancement */
+.portfolio-text button:hover {
+    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+}
+
+/* Cursor enhancement */
+.cursor {
+    border: 1px solid var(--gold) !important;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+/* Background cards */
+.service,
+.portfolio-text,
+.contact-form,
+.contact-info-content-line {
+    background: var(--charcoal) !important;
+}
+
+/* Text colors */
+.service-description p,
+.portfolio-text p,
+.about-text {
+    color: var(--ash) !important;
+}
+
+.service-description h2,
+.portfolio-text h2 {
+    color: var(--ivory) !important;
+}
+
+/* Refined spacing and typography */
+.firstline {
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+}
+
+.about-header,
+.services-heading,
+.portfolio-header,
+.skills-header,
+.contact-header {
+    letter-spacing: -0.01em;
+}
+
+/* Enhanced depth with subtle shadows */
+.service-card,
+.portfolio-item,
+.contact-form {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Refined color for rotating text */
+.txt-rotate {
+    color: var(--gold) !important;
+    font-weight: 500 !important;
+}
+
+/* CV Section with Particles */
+#about {
+    position: relative !important;
+    background: var(--noir) !important;
+    min-height: 100vh !important;
+    padding: 80px 40px !important;
+    overflow: visible !important;
+}
+
+#particles-cv {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+#particles-cv canvas {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.cv-content-wrapper {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* CV Hero */
+.cv-hero {
+    text-align: center;
+    margin-bottom: 80px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.eyebrow-cv {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.cv-name {
+    font-family: 'Playfair Display', serif !important;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--ivory) 0%, var(--ash) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.cv-tagline {
+    font-family: 'Playfair Display', serif !important;
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    font-weight: 300;
+    color: var(--ash);
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.cv-statement {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--ash);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cv-statement strong {
+    color: var(--pearl);
+    font-weight: 600;
+}
+
+/* CV Contact Icons - centered below hero statement */
+.cv-contact-icons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.cv-contactpic {
+    width: 30px;
+    height: 30px;
+    opacity: 0.6;
+    transition: all 0.4s ease;
+    filter: brightness(0) invert(1);
+}
+
+.cv-contactpic:hover {
+    opacity: 1;
+    transform: scale(1.15);
+    filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(25deg);
+}
+
+.cv-contact-icons .cv-download-icon {
+    filter: brightness(0) invert(1) !important;
+}
+
+.cv-contact-icons .cv-download-icon:hover {
+    filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(25deg) !important;
+}
+
+/* CV Sections */
+.cv-section {
+    margin-bottom: 80px;
+    animation: fadeInUp 0.8s ease-out both;
+}
+
+.cv-section-title {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--ivory);
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.cv-section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: var(--gold);
+    margin: 15px auto 0;
+}
+
+/* Expertise Grid */
+.expertise-grid-cv {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.expertise-card-cv {
+    background: var(--charcoal);
+    border: 1px solid var(--slate);
+    padding: 30px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.expertise-card-cv:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+}
+
+.expertise-label-cv {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+
+.expertise-title-cv {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--ivory);
+    margin-bottom: 15px;
+}
+
+.expertise-desc-cv {
+    color: var(--ash);
+    line-height: 1.6;
+    font-size: 0.9rem;
+}
+
+/* Experience & Skills Layout */
+.experience-skills-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 60px;
+}
+
+/* Skills Sidebar */
+.skills-sidebar-cv {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.skill-box-cv {
+    background: var(--charcoal);
+    border: 1px solid var(--slate);
+    padding: 15px;
+}
+
+.skill-box-title-cv {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--slate);
+    padding-bottom: 12px;
+}
+
+.skill-tags-cv {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.skill-tag-cv {
+    font-size: 0.85rem;
+    padding: 8px 14px;
+    background: var(--slate);
+    border-left: 3px solid var(--gold);
+    color: var(--pearl);
+    transition: all 0.3s ease;
+}
+
+.skill-tag-cv:hover {
+    background: var(--smoke);
+    transform: translateX(5px);
+}
+
+/* Timeline */
+.timeline-cv {
+    position: relative;
+    padding-left: 45px;
+}
+
+.timeline-cv::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+}
+
+.timeline-item-cv {
+    position: relative;
+    margin-bottom: 45px;
+}
+
+.timeline-item-cv::before {
+    content: '';
+    position: absolute;
+    left: -52px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 3px solid var(--noir);
+    box-shadow: 0 0 0 2px var(--charcoal);
+}
+
+.timeline-header-cv {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.timeline-role-cv {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ivory);
+    margin-bottom: 6px;
+}
+
+.timeline-company-cv {
+    color: var(--gold);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.timeline-duration-cv {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--ash);
+    padding: 6px 12px;
+    background: var(--slate);
+    border: 1px solid var(--smoke);
+    white-space: nowrap;
+}
+
+.timeline-desc-cv {
+    color: var(--ash);
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.timeline-achievements-cv {
+    list-style: none;
+}
+
+.timeline-achievements-cv li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    color: var(--pearl);
+    line-height: 1.6;
+    font-size: 0.9rem;
+}
+
+.timeline-achievements-cv li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+}
+
+.timeline-achievements-cv strong {
+    color: var(--ivory);
+    font-weight: 600;
+}
+
+/* Current Projects */
+.project-item-cv {
+    background: var(--charcoal);
+    border: 1px solid var(--slate);
+    padding: 30px;
+    margin-bottom: 30px;
+    transition: all 0.4s ease;
+}
+
+.project-item-cv:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+}
+
+.project-header-cv {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.project-title-cv {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--ivory);
+    margin-bottom: 8px;
+}
+
+.project-type-cv {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.project-status-cv {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--ash);
+    padding: 6px 12px;
+    background: var(--slate);
+    border: 1px solid var(--smoke);
+    white-space: nowrap;
+}
+
+.project-desc-cv {
+    color: var(--ash);
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.project-details-cv {
+    list-style: none;
+}
+
+.project-details-cv li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    color: var(--pearl);
+    line-height: 1.6;
+    font-size: 0.9rem;
+}
+
+.project-details-cv li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+}
+
+.project-details-cv strong {
+    color: var(--ivory);
+    font-weight: 600;
+}
+
+/* Stats Grid */
+.stats-grid-cv {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.stat-card-cv {
+    background: var(--charcoal);
+    border: 1px solid var(--slate);
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+.stat-card-cv:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+}
+
+.stat-number-cv {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.stat-label-cv {
+    font-size: 0.75rem;
+    color: var(--ash);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+}
+
+/* Info Grid */
+.info-grid-cv {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 35px;
+}
+
+.info-section-cv {
+    animation: fadeInUp 0.8s ease-out both;
+}
+
+.info-title-cv {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--ivory);
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.info-title-cv::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: var(--gold);
+}
+
+.info-item-cv {
+    background: var(--charcoal);
+    border: 1px solid var(--slate);
+    padding: 18px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.info-item-cv:hover {
+    border-color: var(--gold);
+    transform: translateX(5px);
+}
+
+.info-item-title-cv {
+    font-weight: 600;
+    color: var(--ivory);
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+}
+
+.info-item-subtitle-cv {
+    color: var(--ash);
+    font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .expertise-grid-cv {
+        grid-template-columns: 1fr;
+    }
+    
+    .experience-skills-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid-cv {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .info-grid-cv {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Download CV Icon - matches email/call style (Homepage) */
+.contact .download-cv-icon {
+    stroke: #e8e8e8 !important;
+    fill: none !important;
+    display: block !important;
+    width: 30px !important;
+    height: 30px !important;
+}
+
+.contact .download-cv-icon:hover {
+    stroke: var(--gold) !important;
+    opacity: 1 !important;
+}
+
+/* Contact icons on About/CV page - positioned on right like homepage */
+.contact-cv {
+    display: flex !important;
+    position: fixed !important;
+    right: 20px !important;
+    bottom: 120px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+    z-index: 50 !important;
+    gap: 15px !important;
+}
+
+.contact-cv a {
+    z-index: 3 !important;
+}
+
+.contact-cv img,
+.contact-cv svg {
+    margin: 10px !important;
+    height: 30px !important;
+    width: 30px !important;
+    opacity: 0.6 !important;
+    transition: all 0.4s ease !important;
+}
+
+.contact-cv img:hover,
+.contact-cv svg:hover {
+    opacity: 1 !important;
+    transform: scale(1.1) !important;
+}
+
+.contact-cv .download-cv-icon {
+    stroke: #e8e8e8 !important;
+    fill: none !important;
+    display: block !important;
+}
+
+.contact-cv .download-cv-icon:hover {
+    stroke: var(--gold) !important;
+}
+
+@media (max-width: 768px) {
+    #about {
+        padding: 60px 25px !important;
+    }
+    
+    .stats-grid-cv {
+        grid-template-columns: 1fr;
+    }
+    
+    .cv-download-button {
+        padding: 15px 30px;
+        font-size: 0.75rem;
+    }
+    
+    .download-icon {
+        width: 20px;
+        height: 20px;
+    }
+}
