@@ -405,10 +405,13 @@ body{
     }
 }
 .social-media-links{
-    height: 100vh;
-    position: absolute;
-    z-index: 2;
-    padding: 60px;
+    height: auto;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 20px;
     width: auto;
     display: flex;
     flex-direction: column;
@@ -497,6 +500,63 @@ body{
     opacity: 1;
     transform: scale(1.1);
     color: #d4af37;
+}
+
+/* Social media icons in contact section */
+.contact .social-media {
+    height: 25px;
+    width: 25px;
+    opacity: 0.5;
+}
+
+.contact .social-media:hover {
+    opacity: 1;
+    transform: scale(1.15);
+}
+
+/* Tooltips for contact icons */
+.contact a {
+    position: relative;
+}
+
+.contact a[data-tooltip]::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    right: 55px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(212, 175, 55, 0.95);
+    color: #0a0a0a;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    letter-spacing: 0.5px;
+}
+
+.contact a[data-tooltip]::after {
+    content: '';
+    position: absolute;
+    right: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-left-color: rgba(212, 175, 55, 0.95);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.contact a[data-tooltip]:hover::before,
+.contact a[data-tooltip]:hover::after {
+    opacity: 1;
 }
 #breaker{
     height: 10px;
