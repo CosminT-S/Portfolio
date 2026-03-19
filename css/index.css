@@ -8,11 +8,11 @@
 }
 ::-webkit-scrollbar{
     width: 4px;
-    color:#7f0024;
+    color:#d4af37;
     transition: all .4s ease;
 }
 ::-webkit-scrollbar-thumb {
-    background: #7f0024;
+    background: #d4af37;
     border-radius: 4px;
     width: 4px;
     transition: all .4s ease;
@@ -777,7 +777,7 @@ body{
     font-family: aileron;
     font-weight: 400;
     font-size: 35px;
-    color: #7f0024;
+    color: #d4af37;
     transition: all .4s ease;
 }
 .cv {
@@ -788,7 +788,7 @@ body{
     border:none;
     padding: 15px 30px;
     color: whitesmoke;
-    background: #7f0024;
+    background: #d4af37;
     outline: none;
     font-size:20px;
     font-family: aileron;
@@ -875,14 +875,14 @@ body{
     margin: 20px;
     border-radius: 30%;
     padding: 10px;
-    border: 0px solid #7f0024;
-    background: #7f0024;
-    box-shadow:0px 0px 0px 0px #7f0024 ;
+    border: 0px solid #d4af37;
+    background: #d4af37;
+    box-shadow:0px 0px 0px 0px #d4af37 ;
     height:100px;
     transition: all .8s ease;
 }
 .service:hover .service-img img{
-    box-shadow:0px 0px 0px 400px #7f0024 ;
+    box-shadow:0px 0px 0px 400px #d4af37 ;
 }
 
 .service:hover .service-description h2 {
@@ -1461,7 +1461,7 @@ margin-bottom: 100px;
     font-family: poppins;
     font-weight: 200;
     padding: 20px;
-    color: #7f0024;
+    color: #d4af37;
     transition: all .4s ease;
 }
 .portfolio-text p{
@@ -1478,11 +1478,11 @@ margin-bottom: 100px;
     font-weight: 200;
     padding: 10px 20px;
     background:transparent;
-    color:#7f0024;
+    color:#d4af37;
     transition: all .4s ease;
     outline: none;
     margin: 20px;
-    border: 1.5px solid #7f0024;
+    border: 1.5px solid #d4af37;
     cursor: pointer;
     overflow: hidden;
     position: relative;
@@ -1497,7 +1497,7 @@ margin-bottom: 100px;
     top: 0;
     left: 0;
     z-index: 3;
-    background: #7f0024;
+    background: #d4af37;
     transition: all .7s ease;
 }
 .portfolio-text button:hover{
@@ -1529,7 +1529,7 @@ margin-bottom: 100px;
     content: "";
     height: 100%;
     width: 100%;
-    background: #7f0024;
+    background: #d4af37;
     opacity: .1;
     top: 0;
     left: 0;
@@ -1636,7 +1636,7 @@ margin-bottom: 100px;
     position: absolute;
     left: 0;
     bottom: 0;
-    background: #7f0024;
+    background: #d4af37;
     color: whitesmoke;
     font-size: 18px;
     text-align: center;
@@ -2000,7 +2000,7 @@ form button:hover{
     width: 100%;
 }
 .color-red{
-    background: #7f0024;
+    background: #d4af37;
 }
 .color-purple{
     background: #481380;
@@ -2104,7 +2104,7 @@ For devices with smaller width like mobile phone
         display: block;
         width: 80%;
         height: 1px;
-        background: linear-gradient(to right, transparent, #7f0024, transparent);
+        background: linear-gradient(to right, transparent, #d4af37, transparent);
         margin: 40px auto;
     }
 
@@ -2179,7 +2179,7 @@ For devices with smaller width like mobile phone
         height: 120px;
         object-fit: cover;
         border-radius: 50%;
-        border: 2px solid rgba(127, 0, 36, 0.3);
+        border: 2px solid rgba(212, 175, 55, 0.3);
         background: rgba(0, 0, 0, 0.4);
         backdrop-filter: blur(10px);
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6),
@@ -2195,7 +2195,7 @@ For devices with smaller width like mobile phone
         left: -2px;
         right: -2px;
         bottom: -2px;
-        background: linear-gradient(45deg, transparent, rgba(127, 0, 36, 0.1), transparent);
+        background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.1), transparent);
         border-radius: 50%;
         z-index: -1;
         animation: subtle-glow 3s ease-in-out infinite alternate;
@@ -2374,7 +2374,7 @@ For devices with smaller width like mobile phone
         background: rgba(8, 8, 8, 0.95);
         border-radius: 12px;
         box-shadow: 0 6px 25px rgba(0,0,0,0.4);
-        border: 1px solid rgba(127, 0, 36, 0.2);
+        border: 1px solid rgba(212, 175, 55, 0.2);
     }
         .portfolio-image{
             position: relative;
@@ -2396,7 +2396,7 @@ For devices with smaller width like mobile phone
                 display: none;
             }
             .service:hover .service-img img{
-                box-shadow:0px 0px 0px 0px #7f0024 ;
+                box-shadow:0px 0px 0px 0px #d4af37 ;
             }
             .portfolio-image img, .portfolio-image video{
                 height: 250px;
@@ -2727,7 +2727,7 @@ for tabs and large phones
     #breaker{
         height: 10px;
         width: 100vh;
-        background-color: #7f0024;
+        background-color: #d4af37;
         opacity: 1;
         animation: breakeranimate 2s linear;
         display: none;
@@ -2912,7 +2912,7 @@ for tabs and large phones
                 display: none;
             }
             .service:hover .service-img img{
-                box-shadow:0px 0px 0px 0px #7f0024 ;
+                box-shadow:0px 0px 0px 0px #d4af37 ;
             }
             .portfolio-image img, .portfolio-image video{
                 height: 380px;
