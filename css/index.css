@@ -597,14 +597,37 @@ body{
 /* Mobile section borders */
 @media all and (max-width: 1025px) and (min-width: 551px) {
     #header, #about, #portfolio {
-        border-bottom: 3px solid #7f0024 !important;
+        border-bottom: 3px solid #d4af37 !important;
+    }
+    
+    /* Hide large header image on tablet */
+    .header-image {
+        display: none !important;
     }
 }
 
-/* Mobile footer border */
+/* Mobile styles */
 @media only screen and (max-width: 550px) {
     .footer {
-        border-top: 2px solid #7f0024 !important;
+        border-top: 2px solid #d4af37 !important;
+    }
+    
+    /* Hide large header image on mobile */
+    .header-image {
+        display: none !important;
+    }
+    
+    /* Adjust header content for mobile */
+    .header-content {
+        width: 100% !important;
+        padding: 20px !important;
+        text-align: center !important;
+    }
+    
+    /* Keep small profile image visible */
+    .header-profile-image {
+        display: block !important;
+        margin: 0 auto 20px !important;
     }
 }
 
