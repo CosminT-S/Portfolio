@@ -857,6 +857,84 @@ console.log('All particles initialized on page load');
             min-height: 100vh !important;
             overflow-y: visible !important;
         }
+        
+        /* Enhanced mobile contact icons with animations */
+        .contact img,
+        .contact svg {
+            height: 30px !important;
+            width: 30px !important;
+            opacity: 0.8 !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.3));
+        }
+        
+        .contact a {
+            position: relative;
+            display: block;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .contact a:nth-child(1) { animation-delay: 0s; }
+        .contact a:nth-child(2) { animation-delay: 0.2s; }
+        .contact a:nth-child(3) { animation-delay: 0.4s; }
+        .contact a:nth-child(4) { animation-delay: 0.6s; }
+        .contact a:nth-child(5) { animation-delay: 0.8s; }
+        
+        /* Active/tap state for mobile */
+        .contact a:active img,
+        .contact a:active svg {
+            opacity: 1 !important;
+            transform: scale(1.2) !important;
+            filter: drop-shadow(0 4px 16px rgba(212, 175, 55, 0.6)) !important;
+        }
+        
+        /* Pulse animation on page load */
+        .contact a {
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes iconPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        /* Add glow effect to icons */
+        .contact .social-media {
+            height: 28px !important;
+            width: 28px !important;
+            opacity: 0.7 !important;
+        }
+        
+        .contact .social-media:active {
+            opacity: 1 !important;
+            transform: scale(1.2) rotate(5deg) !important;
+        }
+        
+        .download-cv-icon {
+            animation: bounce 2s ease-in-out infinite !important;
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
     }
     
     @media all and (max-width: 1025px) and (min-width: 551px) {
@@ -869,6 +947,23 @@ console.log('All particles initialized on page load');
             height: auto !important;
             min-height: 100vh !important;
             overflow-y: visible !important;
+        }
+        
+        /* Enhanced tablet contact icons */
+        .contact img,
+        .contact svg {
+            height: 32px !important;
+            width: 32px !important;
+            opacity: 0.75 !important;
+            transition: all 0.3s ease !important;
+            filter: drop-shadow(0 2px 6px rgba(212, 175, 55, 0.2));
+        }
+        
+        .contact a:active img,
+        .contact a:active svg {
+            opacity: 1 !important;
+            transform: scale(1.15) !important;
+            filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.5)) !important;
         }
     }
 
