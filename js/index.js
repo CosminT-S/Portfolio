@@ -105,12 +105,18 @@ $(function(){
         
         // Initialize particles for CV section after it becomes visible
         setTimeout(function() {
-          // Destroy existing instance if it exists
-          if (window.pJSDom && window.pJSDom.length > 1) {
-            window.pJSDom[1].pJS.fn.vendors.destroypJS();
-            window.pJSDom.splice(1, 1);
+          // Destroy existing CV particles instance if it exists
+          if (window.pJSDom && window.pJSDom.length > 0) {
+            // Find and destroy the particles-cv instance
+            for (var i = window.pJSDom.length - 1; i >= 0; i--) {
+              if (window.pJSDom[i].pJS.canvas.el.id === 'particles-cv') {
+                window.pJSDom[i].pJS.fn.vendors.destroypJS();
+                window.pJSDom.splice(i, 1);
+                break;
+              }
+            }
           }
-          // Initialize with stored config
+          // Always reinitialize particles-cv when returning to About section
           if (window.particlesCVConfig) {
             particlesJS("particles-cv", window.particlesCVConfig);
           }
