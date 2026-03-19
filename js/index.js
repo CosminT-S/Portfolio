@@ -128,19 +128,6 @@ $('#portfolio-link').on('click',function(){
     gsap.to('#blog',0,{display:"none"});
     gsap.to('#portfolio',0,{display:"block",delay:.7});
     gsap.to('#navigation-content',0,{display:'flex',delay:2});
-    
-    // Initialize particles for portfolio after it becomes visible
-    setTimeout(function() {
-      if (window.pJSDom) {
-        for (var i = window.pJSDom.length - 1; i >= 0; i--) {
-          if (window.pJSDom[i].pJS.canvas.el.id === 'particles-portfolio') {
-            window.pJSDom[i].pJS.fn.vendors.destroypJS();
-            window.pJSDom.splice(i, 1);
-          }
-        }
-      }
-      particlesJS("particles-portfolio", window.particlesCVConfig);
-    }, 800);
   }
 })
 $('#blog-link').on('click',function(){
