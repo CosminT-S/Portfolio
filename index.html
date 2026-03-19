@@ -28,6 +28,8 @@
             <span class="color">Cosmin</span>T
         </div>
     <!--loader-end-->
+    <!-- Particles for Portfolio - moved outside portfolio section -->
+    <div id="particles-portfolio"></div>
         <!--Main-Section-->
         <!--Navigator-fullscreen-->
         <div id="navigation-content">
@@ -362,9 +364,6 @@
         <!--portfolio-->
         <!--portfolio-->
         <div id="portfolio">
-            <!-- Particles background for Portfolio section -->
-            <div id="particles-portfolio"></div>
-            
             <div class="portfolio-header"> <span class="color"> My </span> Portfolio
             <span class ="header-caption"> Some Of My <span class="color"> Work</span></span></div>
              <div id="portfolio-content">
@@ -773,11 +772,10 @@ window.particlesPortfolioConfig = {
     "retina_detect": true
 };
 
-// Initialize particles-cv on mobile (where #about is visible on load)
-if (window.innerWidth <= 1025) {
-    particlesJS("particles-cv", window.particlesCVConfig);
-    particlesJS("particles-portfolio", window.particlesPortfolioConfig);
-}
+// Initialize particles immediately for all sections
+particlesJS("particles-cv", window.particlesCVConfig);
+particlesJS("particles-portfolio", window.particlesPortfolioConfig);
+console.log('All particles initialized on page load');
     </script>
 <style>
     /* Zoom effect on hover CSS */

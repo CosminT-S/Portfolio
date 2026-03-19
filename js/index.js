@@ -28,6 +28,36 @@ $(function(){
      })
      $('.navigation-close').on('click',function(){
         gsap.to('#navigation-content',.6,{y:"-100%"});
+        
+        // Reinitialize particles for the current visible section after menu closes
+        setTimeout(function() {
+            // Check which section is currently visible and reinitialize its particles
+            if ($('#portfolio').css('display') === 'block' && window.particlesPortfolioConfig) {
+                // Destroy existing Portfolio particles instance if it exists
+                if (window.pJSDom && window.pJSDom.length > 0) {
+                    for (var i = window.pJSDom.length - 1; i >= 0; i--) {
+                        if (window.pJSDom[i].pJS.canvas.el.id === 'particles-portfolio') {
+                            window.pJSDom[i].pJS.fn.vendors.destroypJS();
+                            window.pJSDom.splice(i, 1);
+                            break;
+                        }
+                    }
+                }
+                particlesJS("particles-portfolio", window.particlesPortfolioConfig);
+            } else if ($('#about').css('display') === 'block' && window.particlesCVConfig) {
+                // Destroy existing CV particles instance if it exists
+                if (window.pJSDom && window.pJSDom.length > 0) {
+                    for (var i = window.pJSDom.length - 1; i >= 0; i--) {
+                        if (window.pJSDom[i].pJS.canvas.el.id === 'particles-cv') {
+                            window.pJSDom[i].pJS.fn.vendors.destroypJS();
+                            window.pJSDom.splice(i, 1);
+                            break;
+                        }
+                    }
+                }
+                particlesJS("particles-cv", window.particlesCVConfig);
+            }
+        }, 700);
     });
    }); 
 
@@ -137,11 +167,13 @@ $('#portfolio-link').on('click',function(){
     
     // Initialize particles for Portfolio section after it becomes visible
     setTimeout(function() {
+      console.log('Initializing portfolio particles...');
       // Destroy existing Portfolio particles instance if it exists
       if (window.pJSDom && window.pJSDom.length > 0) {
         // Find and destroy the particles-portfolio instance
         for (var i = window.pJSDom.length - 1; i >= 0; i--) {
           if (window.pJSDom[i].pJS.canvas.el.id === 'particles-portfolio') {
+            console.log('Destroying existing portfolio particles');
             window.pJSDom[i].pJS.fn.vendors.destroypJS();
             window.pJSDom.splice(i, 1);
             break;
@@ -150,7 +182,9 @@ $('#portfolio-link').on('click',function(){
       }
       // Always reinitialize particles-portfolio when navigating to Portfolio section
       if (window.particlesPortfolioConfig) {
+        console.log('Creating new portfolio particles');
         particlesJS("particles-portfolio", window.particlesPortfolioConfig);
+        console.log('Portfolio particles created, pJSDom:', window.pJSDom);
       }
     }, 800);
   }
