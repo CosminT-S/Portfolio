@@ -362,6 +362,9 @@
         <!--portfolio-->
         <!--portfolio-->
         <div id="portfolio">
+            <!-- Particles background for Portfolio section -->
+            <div id="particles-portfolio"></div>
+            
             <div class="portfolio-header"> <span class="color"> My </span> Portfolio
             <span class ="header-caption"> Some Of My <span class="color"> Work</span></span></div>
              <div id="portfolio-content">
@@ -730,9 +733,50 @@ window.particlesCVConfig = {
     "retina_detect": true
 };
 
+// Particles for Portfolio section - store config for later use
+window.particlesPortfolioConfig = {
+    "particles": {
+        "number": {"value": 40, "density": {"enable": true, "value_area": 800}},
+        "color": {"value": "#d4af37"},
+        "shape": {"type": "circle"},
+        "opacity": {"value": 0.3, "random": false},
+        "size": {"value": 3, "random": true},
+        "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#d4af37",
+            "opacity": 0.2,
+            "width": 1
+        },
+        "move": {
+            "enable": true,
+            "speed": 2,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false
+        }
+    },
+    "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+            "onhover": {"enable": true, "mode": "repulse"},
+            "onclick": {"enable": true, "mode": "push"},
+            "resize": true
+        },
+        "modes": {
+            "repulse": {"distance": 100, "duration": 0.4},
+            "push": {"particles_nb": 4}
+        }
+    },
+    "retina_detect": true
+};
+
 // Initialize particles-cv on mobile (where #about is visible on load)
 if (window.innerWidth <= 1025) {
     particlesJS("particles-cv", window.particlesCVConfig);
+    particlesJS("particles-portfolio", window.particlesPortfolioConfig);
 }
     </script>
 <style>

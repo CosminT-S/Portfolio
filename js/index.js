@@ -134,6 +134,25 @@ $('#portfolio-link').on('click',function(){
     gsap.to('#blog',0,{display:"none"});
     gsap.to('#portfolio',0,{display:"block",delay:.7});
     gsap.to('#navigation-content',0,{display:'flex',delay:2});
+    
+    // Initialize particles for Portfolio section after it becomes visible
+    setTimeout(function() {
+      // Destroy existing Portfolio particles instance if it exists
+      if (window.pJSDom && window.pJSDom.length > 0) {
+        // Find and destroy the particles-portfolio instance
+        for (var i = window.pJSDom.length - 1; i >= 0; i--) {
+          if (window.pJSDom[i].pJS.canvas.el.id === 'particles-portfolio') {
+            window.pJSDom[i].pJS.fn.vendors.destroypJS();
+            window.pJSDom.splice(i, 1);
+            break;
+          }
+        }
+      }
+      // Always reinitialize particles-portfolio when navigating to Portfolio section
+      if (window.particlesPortfolioConfig) {
+        particlesJS("particles-portfolio", window.particlesPortfolioConfig);
+      }
+    }, 800);
   }
 })
 $('#blog-link').on('click',function(){
