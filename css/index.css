@@ -560,7 +560,7 @@ body{
 }
 
 .color{
-    color: #7f0024;
+    color: #d4af37;
     transition: all .4s ease;
 }
 
@@ -571,27 +571,27 @@ body{
 }
 
 .color-bg {
-    background: #7f0024 !important;
+    background: #d4af37 !important;
 }
 
 .color-border {
-    border-color: #7f0024 !important;
+    border-color: #d4af37 !important;
 }
 
 .color-text {
-    color: #7f0024 !important;
+    color: #d4af37 !important;
 }
 
 .cv-button:hover {
-    background: #7f0024 !important;
+    background: #d4af37 !important;
 }
 
 #submit {
-    background: #7f0024 !important;
+    background: #d4af37 !important;
 }
 
 .footer {
-    border-top: 2px solid #7f0024 !important;
+    border-top: 2px solid #d4af37 !important;
 }
 
 /* Mobile section borders */
@@ -639,7 +639,7 @@ body{
 .requirements-analysis-progress, .user-centered-design-progress,
 .project-management-progress, .workflow-automation-progress,
 .data-driven-decisions-progress {
-    background: #7f0024 !important;
+    background: #d4af37 !important;
 }
 #about{
     background-color: #000000;

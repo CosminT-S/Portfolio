@@ -11,9 +11,9 @@
    <link rel="icon" type="image/png" href="images/favicon.png">
    <!--favicon-img-->
     <!--main css file should not be removed -->
-    <link rel="stylesheet" href="css/index.css?v=20250319001">
+    <link rel="stylesheet" href="css/index.css?v=20250319002">
     <!--gold noir theme-->
-    <link rel="stylesheet" href="css/color-gold-noir.css?v=20250319001">
+    <link rel="stylesheet" href="css/color-gold-noir.css?v=20250319002">
     <!--main css file-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
 </head>
@@ -842,6 +842,33 @@ console.log('All particles initialized on page load');
 
         .project-header h2 {
             margin-bottom: 0;
+        }
+    }
+    
+    /* Force gold borders on mobile - override any red borders */
+    @media only screen and (max-width: 550px) {
+        #header, #about, #portfolio, #contact, #blog {
+            border-bottom: 3px solid #d4af37 !important;
+        }
+        
+        /* Fix portfolio height on mobile - allow full content to show */
+        #portfolio {
+            height: auto !important;
+            min-height: 100vh !important;
+            overflow-y: visible !important;
+        }
+    }
+    
+    @media all and (max-width: 1025px) and (min-width: 551px) {
+        #header, #about, #portfolio, #contact, #blog {
+            border-bottom: 3px solid #d4af37 !important;
+        }
+        
+        /* Fix portfolio height on tablet - allow full content to show */
+        #portfolio {
+            height: auto !important;
+            min-height: 100vh !important;
+            overflow-y: visible !important;
         }
     }
 

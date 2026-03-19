@@ -219,6 +219,17 @@ button,
     }
 }
 
+/* Mobile border - override red with gold */
+@media only screen and (max-width: 550px) {
+    #header, #about, #portfolio {
+        border-bottom: 3px solid var(--gold) !important;
+    }
+    
+    .footer {
+        border-top: 2px solid var(--gold) !important;
+    }
+}
+
 /* Header/Homepage styling */
 #header {
     position: relative !important;
