@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmin Turculeanu — CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --charcoal: #1a1a1a;
+            --rust: #c17a4a;
+            --warm-gray: #6b6b6b;
+            --light-gray: #e8e8e8;
+            --off-white: #fafafa;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color-adjust: exact !important;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--white);
+            color: var(--charcoal);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 210mm;
+            background: var(--white);
+        }
+
+        /* Header */
+        .header {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 50px 50px 35px;
+            border-bottom: 1px solid var(--light-gray);
+            position: relative;
+            page-break-after: avoid;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--rust);
+        }
+
+        .eyebrow {
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--rust);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .name {
+            font-family: 'Crimson Pro', serif;
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .tagline {
+            font-family: 'Crimson Pro', serif;
+            font-size: 18px;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--warm-gray);
+            margin-bottom: 20px;
+        }
+
+        .tagline span {
+            color: var(--rust);
+            font-style: normal;
+        }
+
+        .summary {
+            font-size: 11px;
+            line-height: 1.7;
+            color: var(--warm-gray);
+        }
+
+        .summary strong {
+            color: var(--charcoal);
+            font-weight: 600;
+        }
+
+        /* Sidebar */
+        .profile-card {
+            background: var(--off-white);
+            padding: 20px;
+            border-left: 3px solid var(--rust);
+        }
+
+        .profile-image {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            margin-bottom: 16px;
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--light-gray);
+            font-size: 10px;
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-item i {
+            width: 14px;
+            color: var(--rust);
+            font-size: 10px;
+        }
+
+        .contact-item a {
+            color: var(--charcoal);
+            text-decoration: none;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 0 50px 50px;
+        }
+
+        .section {
+            margin-top: 40px;
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--rust);
+        }
+
+        /* Expertise Grid */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .expertise-card {
+            padding: 20px;
+            background: var(--off-white);
+            border-left: 3px solid var(--rust);
+            page-break-inside: avoid;
+        }
+
+        .expertise-label {
+            font-size: 8px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--rust);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .expertise-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--charcoal);
+        }
+
+        .expertise-description {
+            font-size: 10px;
+            line-height: 1.6;
+            color: var(--warm-gray);
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            bottom: 0;
+            width: 2px;
+            background: var(--light-gray);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 28px;
+            page-break-inside: avoid;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 6px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--rust);
+            border: 2px solid var(--white);
+            box-shadow: 0 0 0 2px var(--light-gray);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            gap: 15px;
+        }
+
+        .timeline-role {
+            font-family: 'Crimson Pro', serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 3px;
+        }
+
+        .timeline-company {
+            font-size: 11px;
+            color: var(--rust);
+            font-weight: 500;
+        }
+
+        .timeline-duration {
+            font-size: 9px;
+            letter-spacing: 0.5px;
+            color: var(--warm-gray);
+            padding: 4px 10px;
+            background: var(--off-white);
+            border: 1px solid var(--light-gray);
+            white-space: nowrap;
+        }
+
+        .timeline-description {
+            font-size: 10px;
+            font-style: italic;
+            color: var(--warm-gray);
+            margin-bottom: 10px;
+        }
+
+        .timeline-achievements {
+            list-style: none;
+        }
+
+        .timeline-achievements li {
+            position: relative;
+            padding-left: 15px;
+            margin-bottom: 6px;
+            font-size: 10px;
+            line-height: 1.6;
+            color: var(--charcoal);
+        }
+
+        .timeline-achievements li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--rust);
+            font-weight: 700;
+        }
+
+        .timeline-achievements strong {
+            font-weight: 600;
+        }
+
+        .metric {
+            color: var(--rust);
+            font-weight: 700;
+        }
+
+        /* Skills Section */
+        .skills-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+        }
+
+        .skills-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: var(--off-white);
+            padding: 18px;
+            border-left: 3px solid var(--rust);
+            page-break-inside: avoid;
+        }
+
+        .skill-category-title {
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--rust);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .skill-tag {
+            padding: 8px 12px;
+            background: var(--white);
+            border: 1px solid var(--light-gray);
+            font-size: 9px;
+            font-weight: 500;
+            color: var(--charcoal);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 20px 12px;
+            background: var(--off-white);
+            border-top: 3px solid var(--rust);
+            page-break-inside: avoid;
+        }
+
+        .stat-number {
+            font-family: 'Crimson Pro', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--rust);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--warm-gray);
+            font-weight: 600;
+        }
+
+        /* Education Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .info-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--charcoal);
+        }
+
+        .info-item {
+            padding: 14px;
+            background: var(--off-white);
+            margin-bottom: 10px;
+            border-left: 3px solid var(--rust);
+            page-break-inside: avoid;
+        }
+
+        .info-item-title {
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 3px;
+            font-size: 11px;
+        }
+
+        .info-item-subtitle {
+            font-size: 9px;
+            color: var(--warm-gray);
+        }
+
+        /* Page breaks */
+        .page-break {
+            page-break-after: always;
+        }
+
+        .avoid-break {
+            page-break-inside: avoid;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="eyebrow">Operations × Engineering</div>
+                <h1 class="name">Cosmin Turculeanu</h1>
+                <p class="tagline">Technical Delivery | Automation & Systems | Bridging <span>Business and Engineering</span></p>
+                
+                <div class="summary">
+                    6.5 years running global operations at Dell — hit 95% production targets, drove 30-35% recovery rate increases across 5 global projects, coordinated cross-regional teams. Moved deliberately into automation and delivery: built the function from scratch as one of two people, then shifted into owning the full delivery cycle — intake to sign-off — as the team grew. Built reporting pipelines that cut manual work by 80%, designed workflow automation across 25+ desks, and still write the code when the backlog demands it. Currently building x-Data Pulse, a multi-tenant SaaS ticketing platform. Targeting <strong>Technical Project Lead</strong> and <strong>TPM</strong> roles where owning the full cycle — from requirements to delivery — is the job.
+                </div>
+            </div>
+
+            <aside class="sidebar">
+                <div class="profile-card">
+                    <img src="profile.jpg" alt="Cosmin Turculeanu" class="profile-image">
+                    
+                    <ul class="contact-list">
+                        <li class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:cosminturculeanu@gmail.com">cosminturculeanu@gmail.com</a>
+                        </li>
+                        <li class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+40743233047</span>
+                        </li>
+                        <li class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Craiova, Romania</span>
+                        </li>
+                        <li class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <span>linkedin.com/in/cosminturculeanu</span>
+                        </li>
+                        <li class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <span>github.com/Cosmin-T</span>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Core Expertise -->
+            <section class="section avoid-break">
+                <h2 class="section-title">Core Expertise</h2>
+                
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <div class="expertise-label">Delivery</div>
+                        <h3 class="expertise-title">Technical Project Lead</h3>
+                        <p class="expertise-description">
+                            Own the full cycle — intake, requirements, stakeholder sign-off, ticket, delivery. Started a new automation function from scratch and grew it while staying close enough to the work to contribute when needed.
+                        </p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <div class="expertise-label">Automation</div>
+                        <h3 class="expertise-title">Workflow Automation</h3>
+                        <p class="expertise-description">
+                            Find the broken process, build the fix. Python pipelines, n8n workflows, LiveVox integrations — cut 80% of manual reporting and removed human intervention from operational routing entirely.
+                        </p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <div class="expertise-label">Operations</div>
+                        <h3 class="expertise-title">Global Operations Management</h3>
+                        <p class="expertise-description">
+                            6.5 years running Dell's reverse logistics across 5 global regions. Set targets, owned the numbers, coordinated teams across time zones. Moved recovery rates from the low 70s to 93-96%.
+                        </p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <div class="expertise-label">Data & Reporting</div>
+                        <h3 class="expertise-title">Pipelines & Dashboards</h3>
+                        <p class="expertise-description">
+                            Build reporting pipelines from raw operational data to Looker dashboards — SQL, Python, Pandas. Cut manual reporting work by 80%. If it can be measured, it should be automated.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience & Skills -->
+            <section class="section">
+                <h2 class="section-title">Experience & Skills</h2>
+                
+                <div class="skills-layout">
+                    <!-- Skills Sidebar -->
+                    <aside class="skills-sidebar">
+                        <div class="skill-category">
+                            <h4 class="skill-category-title">Core Competencies</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Finding Broken Processes</span>
+                                <span class="skill-tag">Building Tools That Fix Them</span>
+                                <span class="skill-tag">Requirements Gathering</span>
+                                <span class="skill-tag">Workflow Automation</span>
+                                <span class="skill-tag">Stakeholder Management</span>
+                                <span class="skill-tag">Leading Teams</span>
+                                <span class="skill-tag">Working with Clients</span>
+                                <span class="skill-tag">Cross-functional Collaboration</span>
+                                <span class="skill-tag">Translating Business to Tech</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h4 class="skill-category-title">Technical Stack</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">SQL</span>
+                                <span class="skill-tag">FastAPI</span>
+                                <span class="skill-tag">n8n</span>
+                                <span class="skill-tag">Selenium</span>
+                                <span class="skill-tag">Playwright</span>
+                                <span class="skill-tag">Pandas</span>
+                                <span class="skill-tag">Looker</span>
+                                <span class="skill-tag">WebSockets</span>
+                                <span class="skill-tag">Google OAuth</span>
+                                <span class="skill-tag">LLM Integration</span>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Experience Timeline -->
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <div>
+                                    <h3 class="timeline-role">Technical Delivery Lead</h3>
+                                    <div class="timeline-company">D&S Global Solutions, a Cadex Company</div>
+                                </div>
+                                <div class="timeline-duration">Jul 2023 - Present</div>
+                            </div>
+                            <p class="timeline-description">
+                                Moved into this role by design — wanted to shift from pure operations into product and automation delivery. Joined as one of two people standing up a new function from scratch. As the team grew to four, my focus shifted to owning the delivery cycle: intake, requirements, stakeholder alignment, ticket creation, and monitoring through sign-off. Still contribute directly to automation when the backlog demands it.
+                            </p>
+                            <ul class="timeline-achievements">
+                                <li>Manage a cross-departmental backlog of automation requests — translate business problems from Operations, Client Services, and Legal into technical requirements and drive delivery from intake to sign-off</li>
+                                <li>Diagnosed workflow bottlenecks responsible for <span class="metric">~10% excess in monthly operational costs</span> — the work below is what fixed them</li>
+                                <li>Defined requirements and led delivery of automated reporting pipelines (<strong>Python, SQL, Looker</strong>), cutting manual reporting time by <span class="metric">80%</span> across daily, weekly, and monthly cycles</li>
+                                <li>Designed and implemented <strong>n8n</strong> workflow automation to rebalance workloads dynamically across 25+ desks — removed manual intervention entirely from operational routing</li>
+                                <li>Built account prioritization in <strong>n8n</strong> feeding directly into <strong>LiveVox</strong> — agents start each day with a pre-built, ranked call queue and auto-dial through it without manual setup; RPC rate up <span class="metric">8%</span>, tracked in Looker</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <div>
+                                    <h3 class="timeline-role">Global Operations Manager</h3>
+                                    <div class="timeline-company">Dell - Reverse Logistics Department (via D&S Global Solutions)</div>
+                                </div>
+                                <div class="timeline-duration">Jun 2020 - Aug 2023</div>
+                            </div>
+                            <p class="timeline-description">
+                                Managed Dell's reverse logistics globally. Set production targets, coordinated cross-regional teams, balanced competing priorities between revenue and production.
+                            </p>
+                            <ul class="timeline-achievements">
+                                <li>Raised global production target to <span class="metric">95% average</span> across all regions</li>
+                                <li>Drove a <span class="metric">30-35% cumulative increase in global recovery rates</span> across 5 projects (US, EMEA, APJ, LATAM, GDO) — moved regional averages from the low 70s to 93-96% through process improvements and full ownership of target-setting</li>
+                                <li>Led cross-functional teams across regions - balanced what revenue wanted vs what production could deliver</li>
+                                <li>Acted as business-side owner for IT-delivered tools — defined the problem, set requirements, validated delivery, and owned the outcome</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <div>
+                                    <h3 class="timeline-role">Operations Supervisor</h3>
+                                    <div class="timeline-company">Dell - Reverse Logistics Department (via D&S Global Solutions)</div>
+                                </div>
+                                <div class="timeline-duration">Jan 2017 - Jun 2020</div>
+                            </div>
+                            <p class="timeline-description">
+                                Ran day-to-day reverse logistics operations. Kept teams on track, made sure product returns didn't get stuck or lost.
+                            </p>
+                            <ul class="timeline-achievements">
+                                <li>Mapped and resolved workflow gaps across multiple operational areas, eliminating the recurring process failures costing the most time and money</li>
+                                <li>Bridged frontline teams and management by converting reported problems into fixes with named owners, keeping the gap between "this is broken" and resolved as short as possible</li>
+                                <li>Tracked production metrics daily and flagged performance drops before they escalated, keeping regional targets on course</li>
+                                <li>Built the team habits and daily routines that delivered a <span class="metric">15% recovery rate improvement</span> — working within approval chains as Supervisor, changes had to go through sign-off, which limited pace but built the operational foundation carried forward into the Manager role</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Current Projects -->
+            <section class="section">
+                <h2 class="section-title">Current Projects</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="timeline-role">x-Data Pulse - SaaS Ticketing Platform</h3>
+                                <div class="timeline-company">Personal Project</div>
+                            </div>
+                            <div class="timeline-duration">80% Complete</div>
+                        </div>
+                        <p class="timeline-description">
+                            Multi-tenant ticketing platform — each company gets isolated data, shared infrastructure. Built end-to-end: architecture, backend, auth, real-time updates.
+                        </p>
+                        <ul class="timeline-achievements">
+                            <li>Built on <strong>FastAPI, WebSockets, and Google OAuth</strong> — real-time ticket updates and secure per-company authentication</li>
+                            <li>Multi-tenant architecture: multiple companies on one platform with full data isolation</li>
+                            <li>Currently in security audit phase before release — demo available in portfolio</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="timeline-role">Freelance Automation Projects</h3>
+                                <div class="timeline-company">Client Work</div>
+                            </div>
+                            <div class="timeline-duration">2023 - Present</div>
+                        </div>
+                        <p class="timeline-description">
+                            Build workflow automation solutions for clients using n8n, APIs, and database integrations.
+                        </p>
+                        <ul class="timeline-achievements">
+                            <li>Built a <strong>fleet management system</strong> for Cesivo (Romanian energy & agriculture company) using n8n — tracks vehicle insurance, inspections, and maintenance schedules with automated Telegram alerts for expiring documents</li>
+                            <li>Integrated <strong>Google Gemini LLM</strong> with their fleet database to create an assistant that answers operational queries in natural language</li>
+                            <li>Designed workflows with conditional routing, database operations, and multi-step automation logic</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Education & Languages -->
+            <section class="section avoid-break">
+                <h2 class="section-title">Education & Languages</h2>
+                
+                <div class="info-grid">
+                    <div>
+                        <h3 class="info-title">Education</h3>
+                        <div class="info-item">
+                            <div class="info-item-title">Python Programming</div>
+                            <div class="info-item-subtitle">Scoala Informala de IT (2023)</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-item-title">Engineering & Environmental Protection in Agriculture</div>
+                            <div class="info-item-subtitle">Faculty of Agronomy - IPMA (2013-2014)</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-item-title">Mechatronics and Automation Engineering</div>
+                            <div class="info-item-subtitle">Technology School of Transportation Railways (2008-2012)</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="info-title">Languages</h3>
+                        <div class="info-item">
+                            <div class="info-item-title">Romanian</div>
+                            <div class="info-item-subtitle">Native</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-item-title">English</div>
+                            <div class="info-item-subtitle">Advanced (C2)</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
