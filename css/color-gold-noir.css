@@ -522,21 +522,21 @@ textarea:focus {
 }
 
 #particles-cv {
-    position: absolute !important;
+    position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     width: 100% !important;
-    height: 100% !important;
+    height: 100vh !important;
     z-index: 1000 !important;
     pointer-events: none !important;
 }
 
 #particles-cv canvas {
-    position: absolute !important;
+    position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     width: 100% !important;
-    height: 100% !important;
+    height: 100vh !important;
 }
 
 /* Particles for Portfolio page */

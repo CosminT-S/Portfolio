@@ -23,13 +23,15 @@
     <!--mouse  follower-->
         <div class="cursor"></div>
     <!--mouse  follower-->
-    <!--loader-->
+<!--loader-->
         <div id="loader">
             <span class="color">Cosmin</span>T
         </div>
     <!--loader-end-->
-    <!-- Particles for Portfolio - moved outside portfolio section -->
+    <!-- Particles for Portfolio -->
     <div id="particles-portfolio"></div>
+    <!-- Particles for About/CV - outside #about to prevent scrolling -->
+    <div id="particles-cv"></div>
         <!--Main-Section-->
         <!--Navigator-fullscreen-->
         <div id="navigation-content">
@@ -99,9 +101,6 @@
         <!--Main-Section End-->
         <!--about-->
         <div id="about">
-            <!-- Particles background for CV section -->
-            <div id="particles-cv"></div>
-            
             
             <!-- CV Content with Portfolio UI -->
             <div class="cv-content-wrapper">
@@ -738,9 +737,8 @@ window.particlesPortfolioConfig = {
 };
 
 // Initialize particles immediately for all sections
-particlesJS("particles-cv", window.particlesCVConfig);
+// DO NOT initialize particles-cv on page load - it gets reinitialized on nav click causing duplicates
 particlesJS("particles-portfolio", window.particlesPortfolioConfig);
-console.log('All particles initialized on page load');
     </script>
 <style>
     /* Zoom effect on hover CSS */
