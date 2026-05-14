@@ -30,9 +30,8 @@ async def create_pdf():
             ]
         )
 
-        # Create context with dark mode
         context = await browser.new_context(
-            color_scheme='dark',
+            color_scheme='light',
             viewport={'width': 1200, 'height': 1600}
         )
 
@@ -47,21 +46,26 @@ async def create_pdf():
         await page.evaluate('document.fonts.ready')
         await page.wait_for_timeout(2000)
 
-        # Generate PDF
+        await page.evaluate('''() => {
+            document.querySelectorAll('*').forEach(el => {
+                el.style.pageBreakInside = 'auto';
+                el.style.pageBreakAfter = 'auto';
+                el.style.pageBreakBefore = 'auto';
+            });
+        }''')
+
         print("⏳ Generating PDF...")
         await page.pdf(
             path=pdf_file,
             format='A4',
             print_background=True,
-            prefer_css_page_size=False,
             display_header_footer=False,
             margin={
                 'top': '0',
                 'right': '0',
                 'bottom': '0',
                 'left': '0'
-            },
-            scale=1.0
+            }
         )
 
         await browser.close()
