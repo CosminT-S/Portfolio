@@ -21,7 +21,7 @@ async def create_pdf():
         # Launch browser
         browser = await p.chromium.launch(
             headless=True,
-            executable_path="/Users/cosmint/Library/Caches/ms-playwright/chromium_headless_shell-1155/chrome-mac/headless_shell",
+            executable_path="/Users/cosmint/Library/Caches/ms-playwright/chromium_headless_shell-1169/chrome-mac/headless_shell",
             args=[
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
