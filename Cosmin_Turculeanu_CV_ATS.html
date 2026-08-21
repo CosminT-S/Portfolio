@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmin Turculeanu - CV (ATS)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --charcoal: #1a1a1a;
+            --rust: #c17a4a;
+            --warm-gray: #6b6b6b;
+            --light-gray: #e8e8e8;
+            --off-white: #fafafa;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color-adjust: exact !important;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--white);
+            color: var(--charcoal);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            width: 210mm;
+            background: var(--white);
+            padding: 26px 50px 32px;
+            position: relative;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--rust);
+        }
+
+        /* Header - single column, name/contact first for correct ATS field extraction */
+        .name {
+            font-family: 'Crimson Pro', serif;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+
+        .tagline {
+            font-family: 'Crimson Pro', serif;
+            font-size: 14px;
+            font-style: italic;
+            color: var(--warm-gray);
+            margin-bottom: 10px;
+        }
+
+        .tagline span {
+            color: var(--rust);
+            font-style: normal;
+        }
+
+        .contact-line {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 6px 14px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .contact-item {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 5px;
+            font-size: 10px;
+            white-space: nowrap;
+            padding-right: 14px;
+            border-right: 1px solid var(--light-gray);
+        }
+
+        .contact-item:last-child {
+            padding-right: 0;
+            border-right: none;
+        }
+
+        .contact-item .contact-label {
+            color: var(--rust);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-item a,
+        .contact-item span.value {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .profile-image {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 2px solid var(--rust);
+            float: right;
+            margin: 0 0 10px 16px;
+        }
+
+        .summary {
+            font-size: 11px;
+            line-height: 1.5;
+            color: var(--warm-gray);
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--light-gray);
+            margin-bottom: 16px;
+        }
+
+        .metric {
+            color: var(--rust);
+            font-weight: 700;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 44px;
+            height: 3px;
+            background: var(--rust);
+        }
+
+        /* Core Expertise - single column stack, condensed */
+        .expertise-block {
+            margin-bottom: 10px;
+            padding-left: 14px;
+            border-left: 3px solid var(--rust);
+        }
+
+        .expertise-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .expertise-label {
+            font-size: 8px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--rust);
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .expertise-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .expertise-description {
+            font-size: 9.5px;
+            line-height: 1.45;
+            color: var(--warm-gray);
+        }
+
+        .expertise-description li {
+            margin-bottom: 1px;
+            list-style: none;
+        }
+
+        /* Skills - compact single-line tag rows, no sidebar column */
+        .skills-block {
+            padding: 10px 0;
+            border-top: 1px solid var(--light-gray);
+            border-bottom: 1px solid var(--light-gray);
+            margin-bottom: 16px;
+        }
+
+        .skills-row {
+            font-size: 10px;
+            line-height: 1.7;
+        }
+
+        .skills-row + .skills-row {
+            margin-top: 6px;
+            padding-top: 6px;
+            border-top: 1px dotted var(--light-gray);
+        }
+
+        .skills-row-label {
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        .skills-row-values {
+            color: var(--warm-gray);
+        }
+
+        /* Experience Timeline - single column, no sidebar */
+        .timeline-item {
+            margin-bottom: 14px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .timeline-header {
+            margin-bottom: 6px;
+        }
+
+        .timeline-role {
+            font-family: 'Crimson Pro', serif;
+            font-size: 15px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .timeline-company {
+            font-size: 11px;
+            color: var(--rust);
+            font-weight: 500;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .timeline-duration {
+            display: inline-block;
+            font-size: 9px;
+            letter-spacing: 0.5px;
+            color: var(--warm-gray);
+            padding: 3px 9px;
+            background: var(--off-white);
+            border: 1px solid var(--light-gray);
+        }
+
+        .timeline-description {
+            font-size: 9.5px;
+            font-style: italic;
+            color: var(--warm-gray);
+            margin: 3px 0 5px;
+        }
+
+        .timeline-achievements {
+            list-style: none;
+        }
+
+        .timeline-achievements li {
+            padding-left: 13px;
+            position: relative;
+            margin-bottom: 3px;
+            font-size: 9.5px;
+            line-height: 1.45;
+        }
+
+        .timeline-achievements li::before {
+            content: '-';
+            position: absolute;
+            left: 0;
+            color: var(--rust);
+            font-weight: 700;
+        }
+
+        .timeline-achievements strong {
+            color: var(--rust);
+        }
+
+        /* Compact info blocks (Projects / Education / Languages) */
+        .info-item {
+            margin-bottom: 8px;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-item-title {
+            font-weight: 600;
+            font-size: 10.5px;
+        }
+
+        .info-item-subtitle {
+            font-size: 9.5px;
+            color: var(--warm-gray);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header: name, title, contact all inline single-column for correct ATS parsing -->
+        <img src="profile.jpg" alt="Cosmin Turculeanu" class="profile-image">
+        <h1 class="name">Cosmin Turculeanu</h1>
+        <p class="tagline">Product Owner | Program Management Background | Bridging <span>Business and Engineering</span></p>
+        <div class="contact-line">
+            <span class="contact-item"><span class="contact-label">Email</span><a href="mailto:cosminturculeanu@gmail.com">cosminturculeanu@gmail.com</a></span>
+            <span class="contact-item"><span class="contact-label">Phone</span><span class="value">+40743233047</span></span>
+            <span class="contact-item"><span class="contact-label">Location</span><span class="value">Craiova, Romania</span></span>
+            <span class="contact-item"><span class="contact-label">LinkedIn</span><a href="https://linkedin.com/in/cosminturculeanu" target="_blank">linkedin.com/in/cosminturculeanu</a></span>
+            <span class="contact-item"><span class="contact-label">Portfolio</span><a href="https://cosmint-s.github.io/Portfolio/#" target="_blank">cosmint-s.github.io/Portfolio</a></span>
+        </div>
+
+        <div class="summary">
+            3+ years owning a cross-departmental product backlog across <span class="metric">25+ desks</span>, prioritizing by business value and working directly with engineers to ship it. 6.5 years managing global delivery on Dell's reverse logistics account, where production hit a <span class="metric">95%</span> average and recovery rates rose <span class="metric">30-35%</span> across 5 regions. Looking for roles where owning the backlog outcome is part of the job.
+        </div>
+
+        <!-- Core Expertise -->
+        <section class="section">
+            <h2 class="section-title">Core Expertise</h2>
+
+            <div class="expertise-block">
+                <div class="expertise-label">Program Delivery</div>
+                <h3 class="expertise-title">Program Manager</h3>
+                <ul class="expertise-description">
+                    <li>- Reverse logistics program spanning US, EMEA, APJ, LATAM for Dell</li>
+                    <li>- Authored and deployed operational guidebook used across regional teams</li>
+                    <li>- Held firm on out-of-scope requests to protect delivery boundaries and keep clients aligned on agreed scope</li>
+                    <li>- Set production targets within budget constraints, balancing capacity limits and revenue requirements to meet financial goals</li>
+                    <li>- Tracked daily output metrics and intervened in underperforming streams to recover volume</li>
+                    <li>- Improved recovery rates by 30 to 35 percent while sustaining 95 percent average production attainment</li>
+                </ul>
+            </div>
+
+            <div class="expertise-block">
+                <div class="expertise-label">Regional Expansion</div>
+                <h3 class="expertise-title">Regional Program Expansion</h3>
+                <ul class="expertise-description">
+                    <li>- Launched Dell's reverse logistics function across EMEA and APJ from the ground up, adapting an existing program model to both regions</li>
+                    <li>- Built each region end-to-end by adapting the global reverse logistics framework to fit regional context, covering intake, execution, monitoring, and control</li>
+                    <li>- Set up performance tracking as a live management tool, feeding directly into planning, capacity decisions, and daily execution</li>
+                    <li>- Monitoring never closed after launch. It became a permanent operational loop feeding real-time data into daily planning</li>
+                    <li>- Delivered consistent results across both regions under Dell's global governance structure</li>
+                </ul>
+            </div>
+
+            <div class="expertise-block">
+                <div class="expertise-label">Product Ownership</div>
+                <h3 class="expertise-title">Legal Automation Program</h3>
+                <ul class="expertise-description">
+                    <li>- Received a large-scale project from a legal client whose goal was to completely shift how their teams worked</li>
+                    <li>- Translated their scope into a full project structure, building the backlog, project plan, and communication plan from nothing</li>
+                    <li>- Governed the full project lifecycle from initiation through closure, managing scope, timeline, and stakeholder expectations across an 8-month period with weekly standups and sprint reviews</li>
+                    <li>- Prioritized 6 legal and compliance workflows into a single delivery roadmap, sequencing database updates, letter and email generation, contract reviews, and legal approvals by business impact</li>
+                    <li>- Managed the full backlog in Jira from initial intake through to technical sign-off, shifting the client's teams from doing the work manually to reviewing automated output</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Experience & Skills -->
+        <section class="section">
+            <h2 class="section-title">Experience & Skills</h2>
+            <div class="skills-block">
+                <p class="skills-row"><span class="skills-row-label">Core Competencies: </span><span class="skills-row-values">Product Backlog Ownership and Prioritization, Requirements Gathering and Translation, Jira Backlog Management and Sprint Planning, Stakeholder Management Across Operations, Legal, and Client Services, Cross-functional Team Leadership, Process Mapping and Optimization</span></p>
+                <p class="skills-row"><span class="skills-row-label">Tools & Platforms: </span><span class="skills-row-values">Jira, Looker, n8n, SQL, Python</span></p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-role">Product Owner</span>
+                    <span class="timeline-company">D&amp;S Global Solutions, a Cadex Company</span>
+                    <span class="timeline-duration">Jul 2023 - Present</span>
+                </div>
+                <p class="timeline-description">
+                    Joined as one of two people building the automation function from scratch. Now own the product backlog end to end and run 2-week sprints and scrum ceremonies with engineers and analysts.
+                </p>
+                <ul class="timeline-achievements">
+                    <li>Own a cross-departmental product backlog of automation requests, translate business problems from Operations, Client Services, and Legal into technical requirements and prioritize by business value</li>
+                    <li>Identified workflow risks causing <span class="metric">~10% excess in monthly operational costs</span>, then fixed them</li>
+                    <li>Defined requirements and led delivery of automated reporting pipelines (<strong>Python, SQL, Looker</strong>), cutting manual reporting time by <span class="metric">80%</span> across daily, weekly, and monthly cycles</li>
+                    <li>Built <strong>n8n</strong> workflow automation to rebalance workloads dynamically across 25+ desks, removed manual intervention entirely from operational routing</li>
+                    <li>Built account prioritization in <strong>n8n</strong> feeding directly into <strong>LiveVox</strong>, agents start each day with a pre-built, ranked call queue and auto-dial through it without manual setup; RPC rate up <span class="metric">8%</span>, tracked in Looker</li>
+                    <li>Diagnose database translation errors, document the root cause, and create detailed issues for DevOps to resolve</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-role">Program Manager</span>
+                    <span class="timeline-company">Dell - Reverse Logistics Department (via D&amp;S Global Solutions)</span>
+                    <span class="timeline-duration">Jun 2020 - Aug 2023</span>
+                </div>
+                <p class="timeline-description">
+                    Managed Dell's reverse logistics globally. Set production targets, coordinated cross-regional teams, and navigated stakeholder governance across revenue, production, and client requirements.
+                </p>
+                <ul class="timeline-achievements">
+                    <li>Raised global production target to <span class="metric">95% average</span> across all regions</li>
+                    <li>Drove a <span class="metric">30-35% cumulative increase in global recovery rates</span> across 5 projects (US, EMEA, APJ, LATAM, GDO), moved regional averages from the low 70s to 93-96% through process improvements and full ownership of target-setting</li>
+                    <li>Led cross-functional teams across regions - balanced what revenue wanted vs what production could deliver</li>
+                    <li>Acted as business-side owner for IT-delivered tools, defined the problem, set requirements, validated delivery, and owned the outcome</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-role">Operations Supervisor</span>
+                    <span class="timeline-company">Dell - Reverse Logistics Department (via D&amp;S Global Solutions)</span>
+                    <span class="timeline-duration">Jan 2017 - Jun 2020</span>
+                </div>
+                <p class="timeline-description">
+                    Ran day-to-day reverse logistics operations. Kept teams on track and product returns moving through the system without delays.
+                </p>
+                <ul class="timeline-achievements">
+                    <li>Mapped and resolved workflow gaps across multiple operational areas, eliminating the recurring process failures costing the most time and money</li>
+                    <li>Connected frontline teams and management by converting reported problems into fixes with named owners, keeping the gap between "this is broken" and resolved as short as possible</li>
+                    <li>Tracked production metrics daily and flagged performance drops before they escalated, keeping regional targets on course</li>
+                    <li>Built the team habits and daily routines that delivered a <span class="metric">15% recovery rate improvement</span>, working within approval chains as Supervisor, changes had to go through sign-off, which limited pace but built the operational foundation carried forward into the Manager role</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Current Projects -->
+        <section class="section">
+            <h2 class="section-title">Current Projects</h2>
+            <div class="info-item">
+                <div class="info-item-title">x-Data Pulse - SaaS Ticketing Platform (Personal Project, 80% complete)</div>
+                <div class="info-item-subtitle">Multi-tenant support ticketing platform with real-time updates and per-company data isolation. In security audit phase before release; demo in portfolio.</div>
+            </div>
+            <div class="info-item">
+                <div class="info-item-title">Freelance Automation Projects (Client Work, 2023 - Present)</div>
+                <div class="info-item-subtitle">Built a fleet management and alerting system for Cesivo (Romanian energy & agriculture company), plus an LLM-based natural-language assistant over their fleet database.</div>
+            </div>
+        </section>
+
+        <!-- Education & Languages -->
+        <section class="section">
+            <h2 class="section-title">Education</h2>
+            <div class="info-item">
+                <div class="info-item-title">Python Programming</div>
+                <div class="info-item-subtitle">Scoala Informala de IT (2023)</div>
+            </div>
+            <div class="info-item">
+                <div class="info-item-title">Engineering & Environmental Protection in Agriculture</div>
+                <div class="info-item-subtitle">Faculty of Agronomy - IPMA (2013-2014)</div>
+            </div>
+            <div class="info-item">
+                <div class="info-item-title">Mechatronics and Automation Engineering</div>
+                <div class="info-item-subtitle">Technology School of Transportation Railways (2008-2012)</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Languages</h2>
+            <div class="info-item">
+                <div class="info-item-title">Romanian</div>
+                <div class="info-item-subtitle">Native</div>
+            </div>
+            <div class="info-item">
+                <div class="info-item-title">English</div>
+                <div class="info-item-subtitle">Advanced (C2)</div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
