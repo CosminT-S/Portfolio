@@ -12,7 +12,7 @@ async def create_pdf():
     """Generate PDF using Playwright with optimized settings"""
 
     html_file = os.path.join(os.path.dirname(__file__), 'Cosmin_Turculeanu_PDF_CV.html')
-    pdf_file = os.path.join(os.path.dirname(__file__), 'Cosmin T - Resume.pdf')
+    pdf_file = os.path.join(os.path.dirname(__file__), 'Cosmin T - Resume - PM.pdf')
 
     print(f"📄 Creating PDF from: {html_file}")
     print(f"💾 Output will be: {pdf_file}")
