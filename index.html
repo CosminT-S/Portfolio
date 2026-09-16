@@ -260,19 +260,23 @@
                     <div class="project-item-cv">
                         <div class="project-header-cv">
                             <div>
-                                <h3 class="project-title-cv">x-Data Pulse - SaaS Ticketing Platform</h3>
+                                <h3 class="project-title-cv">x-Data - Self-Hosted Automation Platform</h3>
                                 <div class="project-type-cv">Personal Project</div>
                             </div>
-                            <div class="project-status-cv">80% Complete</div>
+                            <div class="project-status-cv">In Progress</div>
                         </div>
                         <p class="project-desc-cv">
-                            For teams managing high-volume support queues across multiple companies, with real-time updates and secure per-company access.
+                            I scoped what needed to get built and in what order, then had AI agents as my build team to actually build it, running on my own VPS across 4 separate services:
                         </p>
                         <ul class="project-details-cv">
-                            <li>Designed the architecture - <span class="color">FastAPI backend, WebSockets for real-time updates, Google OAuth</span> - and used agentic AI tools to build it</li>
-                            <li>Multi-tenant: multiple companies on one platform, each with its own isolated data</li>
-                            <li>Currently in security audit before release, demo available on request</li>
+                            <li>React frontend</li>
+                            <li>Backend service handling Stripe payments</li>
+                            <li>Backend service handling Zoho scheduling</li>
+                            <li>Self-hosted n8n instance running the automation</li>
                         </ul>
+                        <p class="project-desc-cv">
+                            Stripe stands alone, handles payments and nothing else. Zoho sends bookings over to n8n through a webhook. n8n has a second job too, a live AI chat demo that talks to the browser directly, no backend in the middle. Includes x-Data Pulse, a multi-tenant support ticketing tool, still going through a security audit before it ships.
+                        </p>
                     </div>
 
                     <div class="project-item-cv">
@@ -364,7 +368,7 @@
                              <h2>x-Data Pulse</h2>
                              <div class="status-badge in-progress">In Progress</div>
                          </div>
-                         <p>A <span class="color">multi-company SaaS ticketing platform</span> for support teams juggling multiple client organizations on one system. Runs on FastAPI with WebSockets for real-time ticket updates, Google OAuth for login, and per-company data isolation so one client can never see another's tickets. Designed the architecture and access model, and used agentic AI tools to build it. Currently going through a security audit before release.</p>
+                         <p>A <span class="color">multi-company SaaS ticketing platform</span> for support teams juggling multiple client organizations on one system. Runs on FastAPI with WebSockets for real-time ticket updates, Google OAuth for login, and per-company data isolation so one client can never see another's tickets — same database, access scoped per company at the query level. Designed the architecture and access model, and used AI coding tools to build it. Currently going through a security audit before release.</p>
                          <div class="button"><a href="mailto:cosmin.turculeanu@gmail.com?subject=Demo Request - x-Data Pulse&body=Hi Cosmin,%0D%0A%0D%0AI'm interested in seeing a demo of your x-Data Pulse project. Could we schedule a time to discuss?%0D%0A%0D%0AThanks!"><button><span class="index"> Email for Demo<i class="gg-arrow-right"></i></span></button></a></div>
                      </div>
                  </div>
